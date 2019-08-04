@@ -8,6 +8,7 @@
 [![Join the chat at https://gitter.im/ketoo/NoahGameFrame](https://badges.gitter.im/ketoo/NoahGameFrame.svg)](https://gitter.im/ketoo/NoahGameFrame?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 #####QQ Group1：341159815 (Already full)
+
 #####QQ Group2：330241037
 
 ## What is NoahGameFrame?
