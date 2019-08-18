@@ -16,6 +16,7 @@ enum EGameEventCode
 	EGEC_VERIFY_KEY_FAIL						= 8;        //
 	EGEC_SELECTSERVER_SUCCESS					= 9;        //
 	EGEC_SELECTSERVER_FAIL						= 10;       //
+	
 
 	EGEC_CHARACTER_EXIST						= 110;       //
 	EGEC_SVRZONEID_INVALID						= 111;       //
@@ -85,11 +86,17 @@ enum EGameMsgID
 	EGMI_GTW_GAME_UNREGISTERED		= 41;
 	EGMI_GTW_GAME_REFRESH			= 42;
 
+	
 	EGMI_DTW_DB_REGISTERED			= 60;
 	EGMI_DTW_DB_UNREGISTERED		= 61;
 	EGMI_DTW_DB_REFRESH				= 62;
 
 	EGMI_STS_NET_INFO				= 70;
+	
+	EGEC_REQ_LAG_TEST				= 80;
+	EGEC_ACK_GATE_LAG_TEST			= 81;
+	EGEC_ACK_GAME_LAG_TEST			= 82;
+	
 	EGMI_STS_SERVER_REPORT          = 90;
 	EGMI_STS_HEART_BEAT				= 100;
 	//////////////////////////////////////////////////////////////////////////////////////
@@ -145,6 +152,7 @@ enum EGameMsgID
 	EGMI_ACK_PROPERTY_OBJECT					= 214;			//
 	EGMI_ACK_PROPERTY_VECTOR2                   = 215;
 	EGMI_ACK_PROPERTY_VECTOR3                   = 216;
+	EGMI_ACK_PROPERTY_CLEAR                   	= 217;
 
 	EGMI_ACK_ADD_ROW							= 220;
 	EGMI_ACK_REMOVE_ROW							= 221;
@@ -351,12 +359,9 @@ enum EGameMsgID
 	EGMI_REQ_CREATE_ITEM						= 20102;
 	EGMI_REQ_BUILD_OPERATE						= 20103;
 
-	/////////////////////Base SHARE-TOOL MSG/////////////////////////////////////
-	EGMI_REQ_SEARCH_TO_SHARE 					= 30000;
-	EGMI_ACK_SEARCH_TO_SHARE 					= 30001;
-	EGMI_REQ_SHARE_TO_ATART 					= 30002;
-	EGMI_ACK_SHARE_TO_ATART 					= 30003;
+	/////////////////////client-world MSG/////////////////////////////////////
 
+	EGMI_REQ_ADD_FRIEND = 50000;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -536,32 +541,11 @@ enum ENPCType
 };
 enum ESubNPCType_TURRET
 {
-    ENPCTYPE_SUB_TOWN 				= 0;			  //
-    ENPCTYPE_SUB_GOLD_MINE 			= 1;              //
-    ENPCTYPE_SUB_ENEGER_MINE 		= 2;              //
-    ENPCTYPE_SUB_GOLD_STORE 		= 3;              //
-    ENPCTYPE_SUB_ENEGER_STORE 		= 4;              //
-	
-	
-    ENPCTYPE_SUB_CANNON 		= 10;              //
-    ENPCTYPE_SUB_ACID			= 11;			//
-    ENPCTYPE_SUB_TESLA 			= 12;              //
-    ENPCTYPE_SUB_X_BOW 			= 13;              //
-    ENPCTYPE_SUB_CRYSTAL 		= 14;              //
-    ENPCTYPE_SUB_FIRE 			= 15;              //
-    ENPCTYPE_SUB_GATLING 		= 16;              //
-    ENPCTYPE_SUB_GAUSS 			= 17;              //
-    ENPCTYPE_SUB_HAMMER 		= 18;              //
-    ENPCTYPE_SUB_LASER 			= 19;              //
-    ENPCTYPE_SUB_MACGINEGUN 	= 20;              //
-    ENPCTYPE_SUB_MORTAR 		= 21;              //
-    ENPCTYPE_SUB_PLASMA 		= 22;              //
-    ENPCTYPE_SUB_RADAR 			= 23;              //
-    ENPCTYPE_SUB_ROCKET 		= 24;              //
-	
-    ENPCTYPE_SUB_BOMB 	= 100;              //
-    ENPCTYPE_SUB_TRAP 	= 101;              //
-    ENPCTYPE_SUB_SPINE 	= 102;              //
+    ENPCTYPE_SUB_STORAGE 		= 0;
+    ENPCTYPE_SUB_WEAPONE 		= 1;
+    ENPCTYPE_SUB_GUARD 			= 2;
+    ENPCTYPE_SUB_BOMB 			= 3;
+    ENPCTYPE_SUB_TRAP 			= 4;
 
 };
 enum EMeleeType
@@ -600,4 +584,13 @@ enum EGameElementType
 	EELEMENTTYPE_DARK          		= 5;    //
 };
 
-
+enum EBattleType
+{
+	EBT_SINGLE_MODE = 0;
+	EBT_MULTI_MODE = 1;
+	EBT_CLAN_MODE = 2;
+	EBT_CLAN_BOSS_MODE = 3;
+	EBT_WORLD_BOSS_MODE = 4;
+	EBT_MOBA_MODE = 5;
+	EBT_SURVIVAL_MODE = 6;
+};

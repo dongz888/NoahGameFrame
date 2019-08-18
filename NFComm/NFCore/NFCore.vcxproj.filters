@@ -80,7 +80,7 @@
     <ClInclude Include="NFConsistentHash.hpp">
       <Filter>Unit</Filter>
     </ClInclude>
-    <ClInclude Include="NFException.hpp">
+    <ClInclude Include="NFException.h">
       <Filter>Unit</Filter>
     </ClInclude>
     <ClInclude Include="NFPerformance.hpp">
@@ -101,8 +101,14 @@
     <ClInclude Include="NFProperty.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="NFQueue.hpp">
+      <Filter>Unit</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="NFException.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="NFObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

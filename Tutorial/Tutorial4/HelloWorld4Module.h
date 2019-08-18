@@ -52,25 +52,28 @@ public:
 
 	virtual bool Init()
 	{
-		AddMsgObserver(0, this, &NFHttpComponent::OnMsgEvent);
-		AddMsgObserver(1, this, &NFHttpComponent::OnMsgEvent);
-		AddMsgObserver(2, this, &NFHttpComponent::OnMsgEvent);
-		AddMsgObserver(3, this, &NFHttpComponent::OnMsgEvent);
-		AddMsgObserver(4, this, &NFHttpComponent::OnMsgEvent);
-		AddMsgObserver(5, this, &NFHttpComponent::OnMsgEvent);
-		AddMsgObserver(6, this, &NFHttpComponent::OnMsgEvent);
-		AddMsgObserver(7, this, &NFHttpComponent::OnMsgEvent);
-		AddMsgObserver(8, this, &NFHttpComponent::OnMsgEvent);
-		AddMsgObserver(9, this, &NFHttpComponent::OnMsgEvent);
+		AddMsgHandler(0, this, &NFHttpComponent::OnMsgEvent);
+		AddMsgHandler(1, this, &NFHttpComponent::OnMsgEvent);
+		AddMsgHandler(2, this, &NFHttpComponent::OnMsgEvent);
+		AddMsgHandler(3, this, &NFHttpComponent::OnMsgEvent);
+		AddMsgHandler(4, this, &NFHttpComponent::OnMsgEvent);
+		AddMsgHandler(5, this, &NFHttpComponent::OnMsgEvent);
+		AddMsgHandler(6, this, &NFHttpComponent::OnMsgEvent);
+		AddMsgHandler(7, this, &NFHttpComponent::OnMsgEvent);
+		AddMsgHandler(8, this, &NFHttpComponent::OnMsgEvent);
+		AddMsgHandler(9, this, &NFHttpComponent::OnMsgEvent);
 
 		return true;
 	}
 
-
-	virtual int OnMsgEvent(const int from, const int event, std::string& arg)
+	//it's very important to note here:
+	//sometimes, the function below not finished but other thread call it at the same time
+	//the reason is the main thread post a new message to this actor and the schedulel assigned another thread to take the execution right
+	//so, you wouldnot use the data which not thread-safe in this function
+	virtual int OnMsgEvent(NFActorMessage& arg)
 	{
 
-		std::cout << "Thread: " << std::this_thread::get_id() << " MsgID: " << event << " Data:" << arg << std::endl;
+		std::cout << "Thread: " << std::this_thread::get_id() << " MsgID: " << arg.msgID << " Data:" << arg.data << std::endl;
 
 
 		return 0;
@@ -100,7 +103,7 @@ public:
     virtual bool Shut();
 
 protected:
-	int RequestAsyEnd(const int nFormActor, const int nSubMsgID, const std::string& strData);
+	void RequestAsyEnd(NFActorMessage& actorMessage);
 	
 protected:
     NFIActorModule* m_pActorModule;

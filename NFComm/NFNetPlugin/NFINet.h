@@ -94,7 +94,7 @@ struct NFIMsgHead
 
     virtual void SetBodyLength(uint32_t nLength) = 0;
 
-    int64_t NF_HTONLL(int64_t nData)
+    static int64_t NF_HTONLL(int64_t nData)
     {
 #if NF_PLATFORM == NF_PLATFORM_WIN
         return htonll(nData);
@@ -105,7 +105,7 @@ struct NFIMsgHead
 #endif
     }
 
-    int64_t NF_NTOHLL(int64_t nData)
+    static int64_t NF_NTOHLL(int64_t nData)
     {
 #if NF_PLATFORM == NF_PLATFORM_WIN
         return ntohll(nData);
@@ -118,7 +118,7 @@ struct NFIMsgHead
 #endif
     }
 
-    int32_t NF_HTONL(int32_t nData)
+    static int32_t NF_HTONL(int32_t nData)
     {
 #if NF_PLATFORM == NF_PLATFORM_WIN
         return htonl(nData);
@@ -129,7 +129,7 @@ struct NFIMsgHead
 #endif
     }
 
-    int32_t NF_NTOHL(int32_t nData)
+    static int32_t NF_NTOHL(int32_t nData)
     {
 #if NF_PLATFORM == NF_PLATFORM_WIN
         return ntohl(nData);
@@ -142,7 +142,7 @@ struct NFIMsgHead
 #endif
     }
 
-    int16_t NF_HTONS(int16_t nData)
+    static int16_t NF_HTONS(int16_t nData)
     {
 #if NF_PLATFORM == NF_PLATFORM_WIN
         return htons(nData);
@@ -153,7 +153,7 @@ struct NFIMsgHead
 #endif
     }
 
-    int16_t NF_NTOHS(int16_t nData)
+    static int16_t NF_NTOHS(int16_t nData)
     {
 #if NF_PLATFORM == NF_PLATFORM_WIN
         return ntohs(nData);
@@ -444,8 +444,10 @@ public:
     //need to call this function every frame to drive network library
     virtual bool Execute() = 0;
 
+    //as client
     virtual void Initialization(const char* strIP, const unsigned short nPort) = 0;
 
+    //as server
     virtual int Initialization(const unsigned int nMaxClient, const unsigned short nPort, const int nCpuCount = 4) = 0;
 
     virtual int ExpandBufferSize(const unsigned int size) = 0;
@@ -453,8 +455,10 @@ public:
     virtual bool Final() = 0;
 
     //send a message with out msg-head[auto add msg-head in this function]
-    virtual bool
-    SendMsgWithOutHead(const int16_t nMsgID, const char* msg, const size_t nLen, const NFSOCK nSockIndex = 0) = 0;
+    virtual bool SendMsgWithOutHead(const int16_t nMsgID, const char* msg, const size_t nLen, const NFSOCK nSockIndex = 0) = 0;
+
+    //send a message with out msg-head[need to add msg-head for this message by youself]
+    virtual bool SendMsg(const char* msg, const size_t nLen, const NFSOCK nSockIndex) = 0;
 
     //send a message to all client[need to add msg-head for this message by youself]
     virtual bool SendMsgToAllClient(const char* msg, const size_t nLen) = 0;

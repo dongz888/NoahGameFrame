@@ -26,11 +26,6 @@
 
 #include "NFThreadPoolModule.h"
 
-void ThreadExecute()
-{
-	//return the thread to the idle thread pool
-}
-
 NFThreadPoolModule::NFThreadPoolModule(NFIPluginManager* p)
 {
 	pPluginManager = p;
@@ -42,9 +37,9 @@ NFThreadPoolModule::~NFThreadPoolModule()
 
 bool NFThreadPoolModule::Init()
 {
-	for (int i = 0; i < 10; ++i)
+	for (int i = 0; i < NF_ACTOR_THREAD_COUNT; ++i)
 	{
-		mThreadPool.AddElement(i, NF_SHARE_PTR<NFThreadCell>(NF_NEW NFThreadCell(this)));
+		mThreadPool.push_back(NF_SHARE_PTR<NFThreadCell>(NF_NEW NFThreadCell(this)));
 	}
 
     return true;
@@ -74,33 +69,33 @@ bool NFThreadPoolModule::Execute()
     return true;
 }
 
-void NFThreadPoolModule::DoAsyncTask(const int hash, const NFGUID taskID, const std::string & data, TASK_PROCESS_FUNCTOR asyncFunctor, TASK_PROCESS_RESULT_FUNCTOR functor_end)
+void NFThreadPoolModule::DoAsyncTask(const NFGUID taskID, const std::string & data, TASK_PROCESS_FUNCTOR_PTR asyncFunctor, TASK_PROCESS_FUNCTOR_PTR functor_end)
 {
 	NFThreadTask task;
 	task.nTaskID = taskID;
 	task.data = data;
 	task.xThreadFunc = asyncFunctor;
 	task.xEndFunc = functor_end;
-
-	NF_SHARE_PTR<NFThreadCell> threadobject = mThreadPool.GetElementBySuit(hash);
+	
+	int index = taskID.nHead64 % mThreadPool.size();
+	NF_SHARE_PTR<NFThreadCell> threadobject = mThreadPool[index];
 	threadobject->AddTask(task);
 }
 
 void NFThreadPoolModule::ExecuteTaskResult()
 {
-	NFThreaTaskResult xMsg;
-	bool bRet = false;
-	bRet = mTaskResult.TryPop(xMsg);
-	while (bRet)
+	NFThreadTask xMsg;
+	while (mTaskResult.TryPop(xMsg))
 	{
-		xMsg.xEndFunc(xMsg.nTaskID, xMsg.resultData);
-
-		bRet = mTaskResult.TryPop(xMsg);
+		if (xMsg.xEndFunc)
+		{
+			xMsg.xEndFunc->operator()(xMsg);
+		}
 	}
 }
 
-void NFThreadPoolModule::TaskResult(const NFGUID taskID,  const std::string & resultData, TASK_PROCESS_RESULT_FUNCTOR functor_end)
+void NFThreadPoolModule::TaskResult(const NFThreadTask& task)
 {
-	mTaskResult.Push(NFThreaTaskResult(taskID, resultData, functor_end));
+	mTaskResult.Push(task);
 }
 

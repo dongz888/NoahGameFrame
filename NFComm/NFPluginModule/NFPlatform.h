@@ -315,6 +315,7 @@ typedef int64_t NFSOCK;
 #include <unistd.h>
 #define EPOCHFILETIME 11644473600000000ULL
 #else
+#include <WinSock2.h>
 #include <windows.h>
 #include <time.h>
 #include <process.h>
@@ -351,21 +352,9 @@ typedef int64_t NFSOCK;
 //#define NF_USE_TCMALLOC 1
 
 //using actor mode--begin
-#define NF_ACTOR_THREAD_COUNT 16
-#ifndef NF_USE_ACTOR
-
+#define NF_ACTOR_THREAD_COUNT 2
 #define NF_USE_ACTOR
-#ifdef NF_DEBUG_MODE
-#define THERON_DEBUG 1
-#else
-#define THERON_DEBUG 0
-#endif
 
-#ifndef THERON_CPP11
-#define THERON_CPP11 1
-#endif
-
-#endif
 //use actor mode--end
 
 #define GET_CLASS_NAME(className) (#className)

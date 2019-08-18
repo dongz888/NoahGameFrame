@@ -26,9 +26,9 @@
 #include "NFActor.h"
 #include "NFComm/NFPluginModule/NFIPluginManager.h"
 
-NFActor::NFActor(Theron::Framework & framework, NFIActorModule* pModule)
-	: NFIActor(framework)
+NFActor::NFActor(const NFGUID id, NFIActorModule* pModule)
 {
+	this->id = id;
 	m_pActorModule = pModule;
 }
 
@@ -36,23 +36,60 @@ NFActor::~NFActor()
 {
 }
 
-void NFActor::HandlerEx(const NFIActorMessage& message, const Theron::Address from)
+const NFGUID NFActor::ID()
 {
-    m_pActorModule->HandlerEx(message, from.AsInteger());
+	return this->id;
 }
 
-void NFActor::AddComponent(NF_SHARE_PTR<NFIComponent> pComponent)
+bool NFActor::Execute()
+{
+	//bulk
+	NFActorMessage messageObject;
+	while (mMessageQueue.TryPop(messageObject))
+	{
+		//must make sure that only one thread running this function at the same time
+		//mxProcessFunctor is not thread-safe
+		NFLock lock;
+
+		lock.lock();
+		ACTOR_PROCESS_FUNCTOR_PTR xBeginFunctor = mxProcessFunctor.GetElement(messageObject.msgID);
+		lock.unlock();
+
+		if (xBeginFunctor != nullptr)
+		{
+			xBeginFunctor->operator()(messageObject);
+
+			//return the result to the main thread
+			m_pActorModule->AddResult(messageObject);
+		}
+	}
+
+	return true;
+}
+
+bool NFActor::AddComponent(NF_SHARE_PTR<NFIComponent> pComponent)
 {
 	//if you want to add more components for the actor, please don't clear the component
-	mxComponent.ClearAll();
+	//mxComponent.ClearAll();
+	if (!mxComponent.ExistElement(pComponent->GetComponentName()))
+	{
+		mxComponent.AddElement(pComponent->GetComponentName(), pComponent);
+		pComponent->SetActor(NF_SHARE_PTR<NFIActor>(this));
 
-	mxComponent.AddElement(pComponent->GetComponentName(), pComponent);
-	pComponent->SetActor(this);
+		pComponent->Awake();
+		pComponent->Init();
+		pComponent->AfterInit();
+		pComponent->ReadyExecute();
 
-	pComponent->Awake();
-	pComponent->Init();
-	pComponent->AfterInit();
-	pComponent->ReadyExecute();
+		return true;
+	}
+
+	return false;
+}
+
+bool NFActor::RemoveComponent(const std::string& strComponentName)
+{
+	return false;
 }
 
 NF_SHARE_PTR<NFIComponent> NFActor::FindComponent(const std::string & strComponentName)
@@ -60,75 +97,12 @@ NF_SHARE_PTR<NFIComponent> NFActor::FindComponent(const std::string & strCompone
 	return mxComponent.GetElement(strComponentName);
 }
 
-bool NFActor::AddBeginFunc(const int nSubMsgID, ACTOR_PROCESS_FUNCTOR_PTR xBeginFunctor)
+bool NFActor::AddMessageHandler(const int nSubMsgID, ACTOR_PROCESS_FUNCTOR_PTR xBeginFunctor)
 {
-	if (mxProcessFuntor.GetElement(nSubMsgID))
-	{
-		return false;
-	}
-
-	mxProcessFuntor.AddElement(nSubMsgID, xBeginFunctor);
-	return true;
+	return mxProcessFunctor.AddElement(nSubMsgID, xBeginFunctor);
 }
 
-bool NFActor::AddEndFunc(const int nSubMsgID, ACTOR_PROCESS_FUNCTOR_PTR xEndFunctor)
+bool NFActor::SendMsg(const NFActorMessage& message)
 {
-	if (mxEndProcessFuntor.GetElement(nSubMsgID))
-	{
-		return false;
-	}
-
-	mxEndProcessFuntor.AddElement(nSubMsgID, xEndFunctor);
-	
-	return true;
-}
-
-bool NFActor::AddDefaultEndFunc(ACTOR_PROCESS_FUNCTOR_PTR xEndFunctor)
-{
-	mxDefaultEndProcessFuntor = xEndFunctor;
-
-	return true;
-}
-
-void NFActor::Handler(const NFIActorMessage& message, const Theron::Address from)
-{
-    std::string strData = message.data;
-
-	ACTOR_PROCESS_FUNCTOR_PTR ptrBegin = mxProcessFuntor.GetElement(message.nMsgID);
-	if (ptrBegin != nullptr)
-	{
-		
-		ACTOR_PROCESS_FUNCTOR* pFun = ptrBegin.get();
-		pFun->operator()(message.nFormActor, message.nMsgID, strData);
-	}
- 
-    ////////////////////////////////////////////////////////
-	// it should return a message to the main thread
-    NFIActorMessage xReturnMessage;
-
-	xReturnMessage.msgType = NFIActorMessage::ACTOR_MSG_TYPE_END_FUNC;
-	xReturnMessage.nMsgID = message.nMsgID;
-    xReturnMessage.data = strData;
-    xReturnMessage.nFormActor = this->GetAddress().AsInteger();
-
-	ACTOR_PROCESS_FUNCTOR_PTR ptrEnd = mxEndProcessFuntor.GetElement(message.nMsgID);
-	if (ptrEnd != nullptr)
-	{
-		xReturnMessage.xEndFuncptr = ptrEnd;
-	}
-	else
-	{
-		//default end function
-		if (mxDefaultEndProcessFuntor != nullptr)
-		{
-			xReturnMessage.xEndFuncptr = mxDefaultEndProcessFuntor;
-		}
-	}
-
-    Send(xReturnMessage, from);
-}
-
-bool NFActor::SendMsg(const Theron::Address address, const NFIActorMessage& message)
-{
-    return Send(message, address);
+	return mMessageQueue.Push(message);
 }

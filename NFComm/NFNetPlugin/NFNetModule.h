@@ -46,6 +46,10 @@
 #pragma warning(default: 4244 4267)
 #endif
 
+#if NF_PLATFORM != NF_PLATFORM_WIN
+#include "NFComm/NFCore/NFException.h"
+#endif
+
 class NFNetModule: public NFINetModule
 {
 public:

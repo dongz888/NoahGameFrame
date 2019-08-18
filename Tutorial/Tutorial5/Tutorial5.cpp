@@ -24,7 +24,7 @@
 */
 
 #include "Tutorial5.h"
-#include "HelloWorld.h"
+#include "HelloWorld5.h"
 
 #ifdef NF_DYNAMIC_PLUGIN
 
@@ -37,7 +37,7 @@ NF_EXPORT void DllStartPlugin(NFIPluginManager* pm)
 
 NF_EXPORT void DllStopPlugin(NFIPluginManager* pm)
 {
-    DESTROY_PLUGIN(pm, Tutorial2)
+    DESTROY_PLUGIN(pm, Tutorial5)
 };
 
 #endif
@@ -55,11 +55,11 @@ const std::string Tutorial5::GetPluginName()
 
 void Tutorial5::Install()
 {
-    REGISTER_MODULE(pPluginManager, NFIHelloWorld, NFHelloWorld)
+    REGISTER_MODULE(pPluginManager, NFIHelloWorld5, NFHelloWorld5)
     
 }
 
 void Tutorial5::Uninstall()
 {
-    UNREGISTER_MODULE(pPluginManager, NFIHelloWorld, NFHelloWorld)
+    UNREGISTER_MODULE(pPluginManager, NFIHelloWorld5, NFHelloWorld5)
 }

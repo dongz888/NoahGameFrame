@@ -97,60 +97,68 @@ namespace NFMsg {
             "Gi5ORk1zZy5SZXFBZGRTY2VuZUJ1aWxkaW5nInoKFlJlcVN0b3JlU2NlbmVC",
             "dWlsZGluZ3MSGgoEZ3VpZBgBIAEoCzIMLk5GTXNnLklkZW50EhUKDWhvbWVf",
             "c2NlbmVfaWQYAiABKAUSLQoJYnVpbGRpbmdzGAMgAygLMhouTkZNc2cuUmVx",
-            "QWRkU2NlbmVCdWlsZGluZyJEChBSZXFBY2tDcmVhdGVDbGFuEh0KB2NsYW5f",
-            "aWQYASABKAsyDC5ORk1zZy5JZGVudBIRCgljbGFuX25hbWUYAiABKAwiIgoN",
-            "UmVxU2VhcmNoQ2xhbhIRCgljbGFuX25hbWUYASABKAwihAIKDUFja1NlYXJj",
-            "aENsYW4SOAoJY2xhbl9saXN0GAEgAygLMiUuTkZNc2cuQWNrU2VhcmNoQ2xh",
-            "bi5TZWFyY2hDbGFuT2JqZWN0GrgBChBTZWFyY2hDbGFuT2JqZWN0Eh0KB2Ns",
-            "YW5fSUQYASABKAsyDC5ORk1zZy5JZGVudBIRCgljbGFuX25hbWUYAiABKAwS",
-            "EQoJY2xhbl9pY29uGAMgASgMEhkKEWNsYW5fbWVtYmVyX2NvdW50GAQgASgF",
-            "Eh0KFWNsYW5fbWVtYmVyX21heF9jb3VudBgFIAEoBRISCgpjbGFuX2hvbm9y",
-            "GAYgASgFEhEKCWNsYW5fcmFuaxgHIAEoBSJCCg5SZXFBY2tKb2luQ2xhbhId",
-            "CgdjbGFuX2lkGAEgASgLMgwuTkZNc2cuSWRlbnQSEQoJY2xhbl9uYW1lGAIg",
-            "ASgMIkMKD1JlcUFja0xlYXZlQ2xhbhIdCgdjbGFuX2lkGAEgASgLMgwuTkZN",
-            "c2cuSWRlbnQSEQoJY2xhbl9uYW1lGAIgASgMItUBChNSZXFBY2tPcHJDbGFu",
-            "TWVtYmVyEh0KB2NsYW5faWQYASABKAsyDC5ORk1zZy5JZGVudBIfCgltZW1i",
-            "ZXJfaWQYAiABKAsyDC5ORk1zZy5JZGVudBI8CgR0eXBlGAMgASgOMi4uTkZN",
-            "c2cuUmVxQWNrT3ByQ2xhbk1lbWJlci5FR0NsYW5NZW1iZXJPcHJUeXBlIkAK",
-            "E0VHQ2xhbk1lbWJlck9wclR5cGUSDQoJRUdBVF9ET1dOEAASCwoHRUdBVF9V",
-            "UBABEg0KCUVHQVRfS0lDSxACIjMKElJlcUVudGVyQ2xhbkVjdHlwZRIdCgdj",
-            "bGFuX2lkGAEgASgLMgwuTkZNc2cuSWRlbnQiPAoPUmVxU2V0RmlnaHRIZXJv",
-            "EhwKBkhlcm9pZBgBIAEoCzIMLk5GTXNnLklkZW50EgsKA1NldBgCIAEoBSIy",
-            "ChJSZXFTd2l0Y2hGaWdodEhlcm8SHAoGSGVyb2lkGAEgASgLMgwuTkZNc2cu",
-            "SWRlbnQiMwoSUmVxQnV5SXRlbUZyb21TaG9wEg4KBml0ZW1JRBgBIAEoDBIN",
-            "CgVjb3VudBgCIAEoBSLuAgoNUFZQUGxheWVySW5mbxIYCgJpZBgBIAEoCzIM",
-            "Lk5GTXNnLklkZW50Eg4KBnNpbmdsZRgCIAEoBRINCgVsZXZlbBgEIAEoBRIU",
-            "CgxiYXR0bGVfcG9pbnQYBSABKAUSDAoEbmFtZRgGIAEoDBIMCgRoZWFkGAcg",
-            "ASgMEgwKBGdvbGQYCCABKAUSDwoHZGlhbW9uZBgJIAEoBRIRCgloZXJvX2Nu",
-            "ZjEYFCABKAwSEQoJaGVyb19jbmYyGBUgASgMEhEKCWhlcm9fY25mMxgWIAEo",
-            "DBISCgpoZXJvX3N0YXIxGBkgASgFEhIKCmhlcm9fc3RhcjIYGiABKAUSEgoK",
-            "aGVyb19zdGFyMxgbIAEoBRIeCghoZXJvX2lkMRgcIAEoCzIMLk5GTXNnLklk",
-            "ZW50Eh4KCGhlcm9faWQyGB0gASgLMgwuTkZNc2cuSWRlbnQSHgoIaGVyb19p",
-            "ZDMYHiABKAsyDC5ORk1zZy5JZGVudCJsChBSZXFTZWFyY2hPcHBuZW50EhIK",
-            "CnNlbGZfc2NlbmUYASABKAUSDwoHZGlhbW9uZBgCIAEoBRIUCgxiYXR0bGVf",
-            "cG9pbnQYAyABKAUSHQoHZnJpZW5kcxgKIAMoCzIMLk5GTXNnLklkZW50ItYB",
-            "ChBBY2tTZWFyY2hPcHBuZW50EhAKCHNjZW5lX2lkGAEgASgFEh0KB3RlYW1f",
-            "aWQYAiABKAsyDC5ORk1zZy5JZGVudBIWCg5nYW1ibGVfZGlhbW9uZBgDIAEo",
-            "BRIiCgx0ZWFtX21lbWJlcnMYBSADKAsyDC5ORk1zZy5JZGVudBImCghvcHBv",
-            "bmVudBgOIAEoCzIULk5GTXNnLlBWUFBsYXllckluZm8SLQoJYnVpbGRpbmdz",
-            "GBQgAygLMhouTkZNc2cuUmVxQWRkU2NlbmVCdWlsZGluZyIyChJSZXFBY2tD",
-            "YW5jZWxTZWFyY2gSHAoGc2VsZmlkGAEgASgLMgwuTkZNc2cuSWRlbnQiIAoM",
-            "UmVxRW5kQmF0dGxlEhAKCGF1dG9fZW5kGAEgASgFIukBCgxBY2tFbmRCYXR0",
-            "bGUSCwoDd2luGAEgASgFEgwKBHN0YXIYAiABKAUSDAoEZ29sZBgDIAEoBRIL",
-            "CgNjdXAYBCABKAUSDwoHZGlhbW9uZBgFIAEoBRIOCgZzaW5nbGUYBiABKAUS",
-            "HQoHdGVhbV9pZBgHIAEoCzIMLk5GTXNnLklkZW50Eh4KCG1hdGNoX2lkGAgg",
-            "ASgLMgwuTkZNc2cuSWRlbnQSHQoHbWVtYmVycxgJIAMoCzIMLk5GTXNnLklk",
-            "ZW50EiQKCWl0ZW1fbGlzdBgKIAMoCzIRLk5GTXNnLkl0ZW1TdHJ1Y3QigQEK",
-            "C1JlcVNlbmRNYWlsEh4KCHJlY2lldmVyGAEgASgLMgwuTkZNc2cuSWRlbnQS",
-            "JAoJaXRlbV9saXN0GAIgAygLMhEuTkZNc2cuSXRlbVN0cnVjdBIsCg1jdXJy",
-            "ZW5jeV9saXN0GAMgAygLMhUuTkZNc2cuQ3VycmVuY3lTdHJ1Y3QiuQEKD1Jl",
-            "cVN3aXRjaFNlcnZlchIcCgZzZWxmaWQYASABKAsyDC5ORk1zZy5JZGVudBIV",
-            "Cg1zZWxmX3NlcnZlcmlkGAIgASgDEhcKD3RhcmdldF9zZXJ2ZXJpZBgDIAEo",
-            "AxIVCg1nYXRlX3NlcnZlcmlkGAQgASgDEg8KB1NjZW5lSUQYBSABKAMSHwoJ",
-            "Y2xpZW50X2lkGAYgASgLMgwuTkZNc2cuSWRlbnQSDwoHZ3JvdXBJRBgHIAEo",
-            "AyJ2Cg9BY2tTd2l0Y2hTZXJ2ZXISHAoGc2VsZmlkGAEgASgLMgwuTkZNc2cu",
+            "QWRkU2NlbmVCdWlsZGluZyKvAQoQUmVxQWNrQ3JlYXRlQ2xhbhIdCgdjbGFu",
+            "X2lkGAEgASgLMgwuTkZNc2cuSWRlbnQSEQoJY2xhbl9uYW1lGAIgASgMEhEK",
+            "CWNsYW5fZGVzYxgDIAEoDBIkCg5jbGFuX3BsYXllcl9pZBgEIAEoCzIMLk5G",
+            "TXNnLklkZW50EhgKEGNsYW5fcGxheWVyX25hbWUYBSABKAwSFgoOY2xhbl9w",
+            "bGF5ZXJfYnAYBiABKAUiIgoNUmVxU2VhcmNoQ2xhbhIRCgljbGFuX25hbWUY",
+            "ASABKAwihAIKDUFja1NlYXJjaENsYW4SOAoJY2xhbl9saXN0GAEgAygLMiUu",
+            "TkZNc2cuQWNrU2VhcmNoQ2xhbi5TZWFyY2hDbGFuT2JqZWN0GrgBChBTZWFy",
+            "Y2hDbGFuT2JqZWN0Eh0KB2NsYW5fSUQYASABKAsyDC5ORk1zZy5JZGVudBIR",
+            "CgljbGFuX25hbWUYAiABKAwSEQoJY2xhbl9pY29uGAMgASgMEhkKEWNsYW5f",
+            "bWVtYmVyX2NvdW50GAQgASgFEh0KFWNsYW5fbWVtYmVyX21heF9jb3VudBgF",
+            "IAEoBRISCgpjbGFuX2hvbm9yGAYgASgFEhEKCWNsYW5fcmFuaxgHIAEoBSKH",
+            "AQoOUmVxQWNrSm9pbkNsYW4SHQoHY2xhbl9pZBgBIAEoCzIMLk5GTXNnLklk",
+            "ZW50EiQKDmNsYW5fcGxheWVyX2lkGAQgASgLMgwuTkZNc2cuSWRlbnQSGAoQ",
+            "Y2xhbl9wbGF5ZXJfbmFtZRgFIAEoDBIWCg5jbGFuX3BsYXllcl9icBgGIAEo",
+            "BSJWCg9SZXFBY2tMZWF2ZUNsYW4SHQoHY2xhbl9pZBgBIAEoCzIMLk5GTXNn",
+            "LklkZW50EiQKDmNsYW5fcGxheWVyX2lkGAIgASgLMgwuTkZNc2cuSWRlbnQi",
+            "9gEKE1JlcUFja09wckNsYW5NZW1iZXISHQoHY2xhbl9pZBgBIAEoCzIMLk5G",
+            "TXNnLklkZW50Eh8KCXBsYXllcl9pZBgCIAEoCzIMLk5GTXNnLklkZW50Eh8K",
+            "CW1lbWJlcl9pZBgDIAEoCzIMLk5GTXNnLklkZW50EjwKBHR5cGUYBCABKA4y",
+            "Li5ORk1zZy5SZXFBY2tPcHJDbGFuTWVtYmVyLkVHQ2xhbk1lbWJlck9wclR5",
+            "cGUiQAoTRUdDbGFuTWVtYmVyT3ByVHlwZRINCglFR0FUX0RPV04QABILCgdF",
+            "R0FUX1VQEAESDQoJRUdBVF9LSUNLEAIiMwoSUmVxRW50ZXJDbGFuRWN0eXBl",
+            "Eh0KB2NsYW5faWQYASABKAsyDC5ORk1zZy5JZGVudCI8Cg9SZXFTZXRGaWdo",
+            "dEhlcm8SHAoGSGVyb2lkGAEgASgLMgwuTkZNc2cuSWRlbnQSCwoDU2V0GAIg",
+            "ASgFIjIKElJlcVN3aXRjaEZpZ2h0SGVybxIcCgZIZXJvaWQYASABKAsyDC5O",
+            "Rk1zZy5JZGVudCIzChJSZXFCdXlJdGVtRnJvbVNob3ASDgoGaXRlbUlEGAEg",
+            "ASgMEg0KBWNvdW50GAIgASgFIocDCg1QVlBQbGF5ZXJJbmZvEhgKAmlkGAEg",
+            "ASgLMgwuTkZNc2cuSWRlbnQSJwoLYmF0dGxlX21vZGUYAiABKA4yEi5ORk1z",
+            "Zy5FQmF0dGxlVHlwZRINCgVsZXZlbBgEIAEoBRIUCgxiYXR0bGVfcG9pbnQY",
+            "BSABKAUSDAoEbmFtZRgGIAEoDBIMCgRoZWFkGAcgASgMEgwKBGdvbGQYCCAB",
+            "KAUSDwoHZGlhbW9uZBgJIAEoBRIRCgloZXJvX2NuZjEYFCABKAwSEQoJaGVy",
+            "b19jbmYyGBUgASgMEhEKCWhlcm9fY25mMxgWIAEoDBISCgpoZXJvX3N0YXIx",
+            "GBkgASgFEhIKCmhlcm9fc3RhcjIYGiABKAUSEgoKaGVyb19zdGFyMxgbIAEo",
+            "BRIeCghoZXJvX2lkMRgcIAEoCzIMLk5GTXNnLklkZW50Eh4KCGhlcm9faWQy",
+            "GB0gASgLMgwuTkZNc2cuSWRlbnQSHgoIaGVyb19pZDMYHiABKAsyDC5ORk1z",
+            "Zy5JZGVudCKVAQoQUmVxU2VhcmNoT3BwbmVudBISCgpzZWxmX3NjZW5lGAEg",
+            "ASgFEg8KB2RpYW1vbmQYAiABKAUSFAoMYmF0dGxlX3BvaW50GAMgASgFEicK",
+            "C2JhdHRsZV9tb2RlGAQgASgOMhIuTkZNc2cuRUJhdHRsZVR5cGUSHQoHZnJp",
+            "ZW5kcxgKIAMoCzIMLk5GTXNnLklkZW50ItYBChBBY2tTZWFyY2hPcHBuZW50",
+            "EhAKCHNjZW5lX2lkGAEgASgFEh0KB3RlYW1faWQYAiABKAsyDC5ORk1zZy5J",
+            "ZGVudBIWCg5nYW1ibGVfZGlhbW9uZBgDIAEoBRIiCgx0ZWFtX21lbWJlcnMY",
+            "BSADKAsyDC5ORk1zZy5JZGVudBImCghvcHBvbmVudBgOIAEoCzIULk5GTXNn",
+            "LlBWUFBsYXllckluZm8SLQoJYnVpbGRpbmdzGBQgAygLMhouTkZNc2cuUmVx",
+            "QWRkU2NlbmVCdWlsZGluZyIyChJSZXFBY2tDYW5jZWxTZWFyY2gSHAoGc2Vs",
+            "ZmlkGAEgASgLMgwuTkZNc2cuSWRlbnQiIAoMUmVxRW5kQmF0dGxlEhAKCGF1",
+            "dG9fZW5kGAEgASgFIoICCgxBY2tFbmRCYXR0bGUSCwoDd2luGAEgASgFEgwK",
+            "BHN0YXIYAiABKAUSDAoEZ29sZBgDIAEoBRILCgNjdXAYBCABKAUSDwoHZGlh",
+            "bW9uZBgFIAEoBRInCgtiYXR0bGVfbW9kZRgGIAEoDjISLk5GTXNnLkVCYXR0",
+            "bGVUeXBlEh0KB3RlYW1faWQYByABKAsyDC5ORk1zZy5JZGVudBIeCghtYXRj",
+            "aF9pZBgIIAEoCzIMLk5GTXNnLklkZW50Eh0KB21lbWJlcnMYCSADKAsyDC5O",
+            "Rk1zZy5JZGVudBIkCglpdGVtX2xpc3QYCiADKAsyES5ORk1zZy5JdGVtU3Ry",
+            "dWN0IoEBCgtSZXFTZW5kTWFpbBIeCghyZWNpZXZlchgBIAEoCzIMLk5GTXNn",
+            "LklkZW50EiQKCWl0ZW1fbGlzdBgCIAMoCzIRLk5GTXNnLkl0ZW1TdHJ1Y3QS",
+            "LAoNY3VycmVuY3lfbGlzdBgDIAMoCzIVLk5GTXNnLkN1cnJlbmN5U3RydWN0",
+            "IrkBCg9SZXFTd2l0Y2hTZXJ2ZXISHAoGc2VsZmlkGAEgASgLMgwuTkZNc2cu",
             "SWRlbnQSFQoNc2VsZl9zZXJ2ZXJpZBgCIAEoAxIXCg90YXJnZXRfc2VydmVy",
-            "aWQYAyABKAMSFQoNZ2F0ZV9zZXJ2ZXJpZBgEIAEoA2IGcHJvdG8z"));
+            "aWQYAyABKAMSFQoNZ2F0ZV9zZXJ2ZXJpZBgEIAEoAxIPCgdTY2VuZUlEGAUg",
+            "ASgDEh8KCWNsaWVudF9pZBgGIAEoCzIMLk5GTXNnLklkZW50Eg8KB2dyb3Vw",
+            "SUQYByABKAMidgoPQWNrU3dpdGNoU2VydmVyEhwKBnNlbGZpZBgBIAEoCzIM",
+            "Lk5GTXNnLklkZW50EhUKDXNlbGZfc2VydmVyaWQYAiABKAMSFwoPdGFyZ2V0",
+            "X3NlcnZlcmlkGAMgASgDEhUKDWdhdGVfc2VydmVyaWQYBCABKANiBnByb3Rv",
+            "Mw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::NFMsg.NFDefineReflection.Descriptor, global::NFMsg.NFMsgBaseReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
@@ -180,22 +188,22 @@ namespace NFMsg {
             new pbr::GeneratedClrTypeInfo(typeof(global::NFMsg.ReqSceneBuildings), global::NFMsg.ReqSceneBuildings.Parser, new[]{ "scene_id", "pos" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NFMsg.AckSceneBuildings), global::NFMsg.AckSceneBuildings.Parser, new[]{ "buildings" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NFMsg.ReqStoreSceneBuildings), global::NFMsg.ReqStoreSceneBuildings.Parser, new[]{ "guid", "home_scene_id", "buildings" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NFMsg.ReqAckCreateClan), global::NFMsg.ReqAckCreateClan.Parser, new[]{ "clan_id", "clan_name" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::NFMsg.ReqAckCreateClan), global::NFMsg.ReqAckCreateClan.Parser, new[]{ "clan_id", "clan_name", "clan_desc", "clan_player_id", "clan_player_name", "clan_player_bp" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NFMsg.ReqSearchClan), global::NFMsg.ReqSearchClan.Parser, new[]{ "clan_name" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NFMsg.AckSearchClan), global::NFMsg.AckSearchClan.Parser, new[]{ "clan_list" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::NFMsg.AckSearchClan.Types.SearchClanObject), global::NFMsg.AckSearchClan.Types.SearchClanObject.Parser, new[]{ "clan_ID", "clan_name", "clan_icon", "clan_member_count", "clan_member_max_count", "clan_honor", "clan_rank" }, null, null, null)}),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NFMsg.ReqAckJoinClan), global::NFMsg.ReqAckJoinClan.Parser, new[]{ "clan_id", "clan_name" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NFMsg.ReqAckLeaveClan), global::NFMsg.ReqAckLeaveClan.Parser, new[]{ "clan_id", "clan_name" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NFMsg.ReqAckOprClanMember), global::NFMsg.ReqAckOprClanMember.Parser, new[]{ "clan_id", "member_id", "type" }, null, new[]{ typeof(global::NFMsg.ReqAckOprClanMember.Types.EGClanMemberOprType) }, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::NFMsg.ReqAckJoinClan), global::NFMsg.ReqAckJoinClan.Parser, new[]{ "clan_id", "clan_player_id", "clan_player_name", "clan_player_bp" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::NFMsg.ReqAckLeaveClan), global::NFMsg.ReqAckLeaveClan.Parser, new[]{ "clan_id", "clan_player_id" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::NFMsg.ReqAckOprClanMember), global::NFMsg.ReqAckOprClanMember.Parser, new[]{ "clan_id", "player_id", "member_id", "type" }, null, new[]{ typeof(global::NFMsg.ReqAckOprClanMember.Types.EGClanMemberOprType) }, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NFMsg.ReqEnterClanEctype), global::NFMsg.ReqEnterClanEctype.Parser, new[]{ "clan_id" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NFMsg.ReqSetFightHero), global::NFMsg.ReqSetFightHero.Parser, new[]{ "Heroid", "Set" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NFMsg.ReqSwitchFightHero), global::NFMsg.ReqSwitchFightHero.Parser, new[]{ "Heroid" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NFMsg.ReqBuyItemFromShop), global::NFMsg.ReqBuyItemFromShop.Parser, new[]{ "itemID", "count" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NFMsg.PVPPlayerInfo), global::NFMsg.PVPPlayerInfo.Parser, new[]{ "id", "single", "level", "battle_point", "name", "head", "gold", "diamond", "hero_cnf1", "hero_cnf2", "hero_cnf3", "hero_star1", "hero_star2", "hero_star3", "hero_id1", "hero_id2", "hero_id3" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NFMsg.ReqSearchOppnent), global::NFMsg.ReqSearchOppnent.Parser, new[]{ "self_scene", "diamond", "battle_point", "friends" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::NFMsg.PVPPlayerInfo), global::NFMsg.PVPPlayerInfo.Parser, new[]{ "id", "battle_mode", "level", "battle_point", "name", "head", "gold", "diamond", "hero_cnf1", "hero_cnf2", "hero_cnf3", "hero_star1", "hero_star2", "hero_star3", "hero_id1", "hero_id2", "hero_id3" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::NFMsg.ReqSearchOppnent), global::NFMsg.ReqSearchOppnent.Parser, new[]{ "self_scene", "diamond", "battle_point", "battle_mode", "friends" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NFMsg.AckSearchOppnent), global::NFMsg.AckSearchOppnent.Parser, new[]{ "scene_id", "team_id", "gamble_diamond", "team_members", "opponent", "buildings" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NFMsg.ReqAckCancelSearch), global::NFMsg.ReqAckCancelSearch.Parser, new[]{ "selfid" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NFMsg.ReqEndBattle), global::NFMsg.ReqEndBattle.Parser, new[]{ "auto_end" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NFMsg.AckEndBattle), global::NFMsg.AckEndBattle.Parser, new[]{ "win", "star", "gold", "cup", "diamond", "single", "team_id", "match_id", "members", "item_list" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::NFMsg.AckEndBattle), global::NFMsg.AckEndBattle.Parser, new[]{ "win", "star", "gold", "cup", "diamond", "battle_mode", "team_id", "match_id", "members", "item_list" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NFMsg.ReqSendMail), global::NFMsg.ReqSendMail.Parser, new[]{ "reciever", "item_list", "currency_list" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NFMsg.ReqSwitchServer), global::NFMsg.ReqSwitchServer.Parser, new[]{ "selfid", "self_serverid", "target_serverid", "gate_serverid", "SceneID", "client_id", "groupID" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::NFMsg.AckSwitchServer), global::NFMsg.AckSwitchServer.Parser, new[]{ "selfid", "self_serverid", "target_serverid", "gate_serverid" }, null, null, null)
@@ -5677,6 +5685,10 @@ namespace NFMsg {
     public ReqAckCreateClan(ReqAckCreateClan other) : this() {
       clanId_ = other.clanId_ != null ? other.clanId_.Clone() : null;
       clanName_ = other.clanName_;
+      clanDesc_ = other.clanDesc_;
+      clanPlayerId_ = other.clanPlayerId_ != null ? other.clanPlayerId_.Clone() : null;
+      clanPlayerName_ = other.clanPlayerName_;
+      clanPlayerBp_ = other.clanPlayerBp_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -5707,6 +5719,50 @@ namespace NFMsg {
       }
     }
 
+    /// <summary>Field number for the "clan_desc" field.</summary>
+    public const int clan_descFieldNumber = 3;
+    private pb::ByteString clanDesc_ = pb::ByteString.Empty;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pb::ByteString clan_desc {
+      get { return clanDesc_; }
+      set {
+        clanDesc_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "clan_player_id" field.</summary>
+    public const int clan_player_idFieldNumber = 4;
+    private global::NFMsg.Ident clanPlayerId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::NFMsg.Ident clan_player_id {
+      get { return clanPlayerId_; }
+      set {
+        clanPlayerId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "clan_player_name" field.</summary>
+    public const int clan_player_nameFieldNumber = 5;
+    private pb::ByteString clanPlayerName_ = pb::ByteString.Empty;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pb::ByteString clan_player_name {
+      get { return clanPlayerName_; }
+      set {
+        clanPlayerName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "clan_player_bp" field.</summary>
+    public const int clan_player_bpFieldNumber = 6;
+    private int clanPlayerBp_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int clan_player_bp {
+      get { return clanPlayerBp_; }
+      set {
+        clanPlayerBp_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as ReqAckCreateClan);
@@ -5722,6 +5778,10 @@ namespace NFMsg {
       }
       if (!object.Equals(clan_id, other.clan_id)) return false;
       if (clan_name != other.clan_name) return false;
+      if (clan_desc != other.clan_desc) return false;
+      if (!object.Equals(clan_player_id, other.clan_player_id)) return false;
+      if (clan_player_name != other.clan_player_name) return false;
+      if (clan_player_bp != other.clan_player_bp) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -5730,6 +5790,10 @@ namespace NFMsg {
       int hash = 1;
       if (clanId_ != null) hash ^= clan_id.GetHashCode();
       if (clan_name.Length != 0) hash ^= clan_name.GetHashCode();
+      if (clan_desc.Length != 0) hash ^= clan_desc.GetHashCode();
+      if (clanPlayerId_ != null) hash ^= clan_player_id.GetHashCode();
+      if (clan_player_name.Length != 0) hash ^= clan_player_name.GetHashCode();
+      if (clan_player_bp != 0) hash ^= clan_player_bp.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -5751,6 +5815,22 @@ namespace NFMsg {
         output.WriteRawTag(18);
         output.WriteBytes(clan_name);
       }
+      if (clan_desc.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteBytes(clan_desc);
+      }
+      if (clanPlayerId_ != null) {
+        output.WriteRawTag(34);
+        output.WriteMessage(clan_player_id);
+      }
+      if (clan_player_name.Length != 0) {
+        output.WriteRawTag(42);
+        output.WriteBytes(clan_player_name);
+      }
+      if (clan_player_bp != 0) {
+        output.WriteRawTag(48);
+        output.WriteInt32(clan_player_bp);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -5764,6 +5844,18 @@ namespace NFMsg {
       }
       if (clan_name.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeBytesSize(clan_name);
+      }
+      if (clan_desc.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeBytesSize(clan_desc);
+      }
+      if (clanPlayerId_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(clan_player_id);
+      }
+      if (clan_player_name.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeBytesSize(clan_player_name);
+      }
+      if (clan_player_bp != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(clan_player_bp);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -5785,6 +5877,21 @@ namespace NFMsg {
       if (other.clan_name.Length != 0) {
         clan_name = other.clan_name;
       }
+      if (other.clan_desc.Length != 0) {
+        clan_desc = other.clan_desc;
+      }
+      if (other.clanPlayerId_ != null) {
+        if (clanPlayerId_ == null) {
+          clanPlayerId_ = new global::NFMsg.Ident();
+        }
+        clan_player_id.MergeFrom(other.clan_player_id);
+      }
+      if (other.clan_player_name.Length != 0) {
+        clan_player_name = other.clan_player_name;
+      }
+      if (other.clan_player_bp != 0) {
+        clan_player_bp = other.clan_player_bp;
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -5805,6 +5912,25 @@ namespace NFMsg {
           }
           case 18: {
             clan_name = input.ReadBytes();
+            break;
+          }
+          case 26: {
+            clan_desc = input.ReadBytes();
+            break;
+          }
+          case 34: {
+            if (clanPlayerId_ == null) {
+              clanPlayerId_ = new global::NFMsg.Ident();
+            }
+            input.ReadMessage(clanPlayerId_);
+            break;
+          }
+          case 42: {
+            clan_player_name = input.ReadBytes();
+            break;
+          }
+          case 48: {
+            clan_player_bp = input.ReadInt32();
             break;
           }
         }
@@ -6408,7 +6534,9 @@ namespace NFMsg {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public ReqAckJoinClan(ReqAckJoinClan other) : this() {
       clanId_ = other.clanId_ != null ? other.clanId_.Clone() : null;
-      clanName_ = other.clanName_;
+      clanPlayerId_ = other.clanPlayerId_ != null ? other.clanPlayerId_.Clone() : null;
+      clanPlayerName_ = other.clanPlayerName_;
+      clanPlayerBp_ = other.clanPlayerBp_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -6428,14 +6556,36 @@ namespace NFMsg {
       }
     }
 
-    /// <summary>Field number for the "clan_name" field.</summary>
-    public const int clan_nameFieldNumber = 2;
-    private pb::ByteString clanName_ = pb::ByteString.Empty;
+    /// <summary>Field number for the "clan_player_id" field.</summary>
+    public const int clan_player_idFieldNumber = 4;
+    private global::NFMsg.Ident clanPlayerId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString clan_name {
-      get { return clanName_; }
+    public global::NFMsg.Ident clan_player_id {
+      get { return clanPlayerId_; }
       set {
-        clanName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        clanPlayerId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "clan_player_name" field.</summary>
+    public const int clan_player_nameFieldNumber = 5;
+    private pb::ByteString clanPlayerName_ = pb::ByteString.Empty;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pb::ByteString clan_player_name {
+      get { return clanPlayerName_; }
+      set {
+        clanPlayerName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "clan_player_bp" field.</summary>
+    public const int clan_player_bpFieldNumber = 6;
+    private int clanPlayerBp_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int clan_player_bp {
+      get { return clanPlayerBp_; }
+      set {
+        clanPlayerBp_ = value;
       }
     }
 
@@ -6453,7 +6603,9 @@ namespace NFMsg {
         return true;
       }
       if (!object.Equals(clan_id, other.clan_id)) return false;
-      if (clan_name != other.clan_name) return false;
+      if (!object.Equals(clan_player_id, other.clan_player_id)) return false;
+      if (clan_player_name != other.clan_player_name) return false;
+      if (clan_player_bp != other.clan_player_bp) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -6461,7 +6613,9 @@ namespace NFMsg {
     public override int GetHashCode() {
       int hash = 1;
       if (clanId_ != null) hash ^= clan_id.GetHashCode();
-      if (clan_name.Length != 0) hash ^= clan_name.GetHashCode();
+      if (clanPlayerId_ != null) hash ^= clan_player_id.GetHashCode();
+      if (clan_player_name.Length != 0) hash ^= clan_player_name.GetHashCode();
+      if (clan_player_bp != 0) hash ^= clan_player_bp.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -6479,9 +6633,17 @@ namespace NFMsg {
         output.WriteRawTag(10);
         output.WriteMessage(clan_id);
       }
-      if (clan_name.Length != 0) {
-        output.WriteRawTag(18);
-        output.WriteBytes(clan_name);
+      if (clanPlayerId_ != null) {
+        output.WriteRawTag(34);
+        output.WriteMessage(clan_player_id);
+      }
+      if (clan_player_name.Length != 0) {
+        output.WriteRawTag(42);
+        output.WriteBytes(clan_player_name);
+      }
+      if (clan_player_bp != 0) {
+        output.WriteRawTag(48);
+        output.WriteInt32(clan_player_bp);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -6494,8 +6656,14 @@ namespace NFMsg {
       if (clanId_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(clan_id);
       }
-      if (clan_name.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeBytesSize(clan_name);
+      if (clanPlayerId_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(clan_player_id);
+      }
+      if (clan_player_name.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeBytesSize(clan_player_name);
+      }
+      if (clan_player_bp != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(clan_player_bp);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -6514,8 +6682,17 @@ namespace NFMsg {
         }
         clan_id.MergeFrom(other.clan_id);
       }
-      if (other.clan_name.Length != 0) {
-        clan_name = other.clan_name;
+      if (other.clanPlayerId_ != null) {
+        if (clanPlayerId_ == null) {
+          clanPlayerId_ = new global::NFMsg.Ident();
+        }
+        clan_player_id.MergeFrom(other.clan_player_id);
+      }
+      if (other.clan_player_name.Length != 0) {
+        clan_player_name = other.clan_player_name;
+      }
+      if (other.clan_player_bp != 0) {
+        clan_player_bp = other.clan_player_bp;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -6535,8 +6712,19 @@ namespace NFMsg {
             input.ReadMessage(clanId_);
             break;
           }
-          case 18: {
-            clan_name = input.ReadBytes();
+          case 34: {
+            if (clanPlayerId_ == null) {
+              clanPlayerId_ = new global::NFMsg.Ident();
+            }
+            input.ReadMessage(clanPlayerId_);
+            break;
+          }
+          case 42: {
+            clan_player_name = input.ReadBytes();
+            break;
+          }
+          case 48: {
+            clan_player_bp = input.ReadInt32();
             break;
           }
         }
@@ -6574,7 +6762,7 @@ namespace NFMsg {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public ReqAckLeaveClan(ReqAckLeaveClan other) : this() {
       clanId_ = other.clanId_ != null ? other.clanId_.Clone() : null;
-      clanName_ = other.clanName_;
+      clanPlayerId_ = other.clanPlayerId_ != null ? other.clanPlayerId_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -6594,14 +6782,14 @@ namespace NFMsg {
       }
     }
 
-    /// <summary>Field number for the "clan_name" field.</summary>
-    public const int clan_nameFieldNumber = 2;
-    private pb::ByteString clanName_ = pb::ByteString.Empty;
+    /// <summary>Field number for the "clan_player_id" field.</summary>
+    public const int clan_player_idFieldNumber = 2;
+    private global::NFMsg.Ident clanPlayerId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString clan_name {
-      get { return clanName_; }
+    public global::NFMsg.Ident clan_player_id {
+      get { return clanPlayerId_; }
       set {
-        clanName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        clanPlayerId_ = value;
       }
     }
 
@@ -6619,7 +6807,7 @@ namespace NFMsg {
         return true;
       }
       if (!object.Equals(clan_id, other.clan_id)) return false;
-      if (clan_name != other.clan_name) return false;
+      if (!object.Equals(clan_player_id, other.clan_player_id)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -6627,7 +6815,7 @@ namespace NFMsg {
     public override int GetHashCode() {
       int hash = 1;
       if (clanId_ != null) hash ^= clan_id.GetHashCode();
-      if (clan_name.Length != 0) hash ^= clan_name.GetHashCode();
+      if (clanPlayerId_ != null) hash ^= clan_player_id.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -6645,9 +6833,9 @@ namespace NFMsg {
         output.WriteRawTag(10);
         output.WriteMessage(clan_id);
       }
-      if (clan_name.Length != 0) {
+      if (clanPlayerId_ != null) {
         output.WriteRawTag(18);
-        output.WriteBytes(clan_name);
+        output.WriteMessage(clan_player_id);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -6660,8 +6848,8 @@ namespace NFMsg {
       if (clanId_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(clan_id);
       }
-      if (clan_name.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeBytesSize(clan_name);
+      if (clanPlayerId_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(clan_player_id);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -6680,8 +6868,11 @@ namespace NFMsg {
         }
         clan_id.MergeFrom(other.clan_id);
       }
-      if (other.clan_name.Length != 0) {
-        clan_name = other.clan_name;
+      if (other.clanPlayerId_ != null) {
+        if (clanPlayerId_ == null) {
+          clanPlayerId_ = new global::NFMsg.Ident();
+        }
+        clan_player_id.MergeFrom(other.clan_player_id);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -6702,7 +6893,10 @@ namespace NFMsg {
             break;
           }
           case 18: {
-            clan_name = input.ReadBytes();
+            if (clanPlayerId_ == null) {
+              clanPlayerId_ = new global::NFMsg.Ident();
+            }
+            input.ReadMessage(clanPlayerId_);
             break;
           }
         }
@@ -6740,6 +6934,7 @@ namespace NFMsg {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public ReqAckOprClanMember(ReqAckOprClanMember other) : this() {
       clanId_ = other.clanId_ != null ? other.clanId_.Clone() : null;
+      playerId_ = other.playerId_ != null ? other.playerId_.Clone() : null;
       memberId_ = other.memberId_ != null ? other.memberId_.Clone() : null;
       type_ = other.type_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -6761,8 +6956,19 @@ namespace NFMsg {
       }
     }
 
+    /// <summary>Field number for the "player_id" field.</summary>
+    public const int player_idFieldNumber = 2;
+    private global::NFMsg.Ident playerId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::NFMsg.Ident player_id {
+      get { return playerId_; }
+      set {
+        playerId_ = value;
+      }
+    }
+
     /// <summary>Field number for the "member_id" field.</summary>
-    public const int member_idFieldNumber = 2;
+    public const int member_idFieldNumber = 3;
     private global::NFMsg.Ident memberId_;
     /// <summary>
     ///被操作的ID
@@ -6776,7 +6982,7 @@ namespace NFMsg {
     }
 
     /// <summary>Field number for the "type" field.</summary>
-    public const int typeFieldNumber = 3;
+    public const int typeFieldNumber = 4;
     private global::NFMsg.ReqAckOprClanMember.Types.EGClanMemberOprType type_ = 0;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::NFMsg.ReqAckOprClanMember.Types.EGClanMemberOprType type {
@@ -6800,6 +7006,7 @@ namespace NFMsg {
         return true;
       }
       if (!object.Equals(clan_id, other.clan_id)) return false;
+      if (!object.Equals(player_id, other.player_id)) return false;
       if (!object.Equals(member_id, other.member_id)) return false;
       if (type != other.type) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -6809,6 +7016,7 @@ namespace NFMsg {
     public override int GetHashCode() {
       int hash = 1;
       if (clanId_ != null) hash ^= clan_id.GetHashCode();
+      if (playerId_ != null) hash ^= player_id.GetHashCode();
       if (memberId_ != null) hash ^= member_id.GetHashCode();
       if (type != 0) hash ^= type.GetHashCode();
       if (_unknownFields != null) {
@@ -6828,12 +7036,16 @@ namespace NFMsg {
         output.WriteRawTag(10);
         output.WriteMessage(clan_id);
       }
-      if (memberId_ != null) {
+      if (playerId_ != null) {
         output.WriteRawTag(18);
+        output.WriteMessage(player_id);
+      }
+      if (memberId_ != null) {
+        output.WriteRawTag(26);
         output.WriteMessage(member_id);
       }
       if (type != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(32);
         output.WriteEnum((int) type);
       }
       if (_unknownFields != null) {
@@ -6846,6 +7058,9 @@ namespace NFMsg {
       int size = 0;
       if (clanId_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(clan_id);
+      }
+      if (playerId_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(player_id);
       }
       if (memberId_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(member_id);
@@ -6869,6 +7084,12 @@ namespace NFMsg {
           clanId_ = new global::NFMsg.Ident();
         }
         clan_id.MergeFrom(other.clan_id);
+      }
+      if (other.playerId_ != null) {
+        if (playerId_ == null) {
+          playerId_ = new global::NFMsg.Ident();
+        }
+        player_id.MergeFrom(other.player_id);
       }
       if (other.memberId_ != null) {
         if (memberId_ == null) {
@@ -6898,13 +7119,20 @@ namespace NFMsg {
             break;
           }
           case 18: {
+            if (playerId_ == null) {
+              playerId_ = new global::NFMsg.Ident();
+            }
+            input.ReadMessage(playerId_);
+            break;
+          }
+          case 26: {
             if (memberId_ == null) {
               memberId_ = new global::NFMsg.Ident();
             }
             input.ReadMessage(memberId_);
             break;
           }
-          case 24: {
+          case 32: {
             type_ = (global::NFMsg.ReqAckOprClanMember.Types.EGClanMemberOprType) input.ReadEnum();
             break;
           }
@@ -7560,7 +7788,7 @@ namespace NFMsg {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public PVPPlayerInfo(PVPPlayerInfo other) : this() {
       id_ = other.id_ != null ? other.id_.Clone() : null;
-      single_ = other.single_;
+      battleMode_ = other.battleMode_;
       level_ = other.level_;
       battlePoint_ = other.battlePoint_;
       name_ = other.name_;
@@ -7595,14 +7823,14 @@ namespace NFMsg {
       }
     }
 
-    /// <summary>Field number for the "single" field.</summary>
-    public const int singleFieldNumber = 2;
-    private int single_;
+    /// <summary>Field number for the "battle_mode" field.</summary>
+    public const int battle_modeFieldNumber = 2;
+    private global::NFMsg.EBattleType battleMode_ = 0;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int single {
-      get { return single_; }
+    public global::NFMsg.EBattleType battle_mode {
+      get { return battleMode_; }
       set {
-        single_ = value;
+        battleMode_ = value;
       }
     }
 
@@ -7785,7 +8013,7 @@ namespace NFMsg {
         return true;
       }
       if (!object.Equals(id, other.id)) return false;
-      if (single != other.single) return false;
+      if (battle_mode != other.battle_mode) return false;
       if (level != other.level) return false;
       if (battle_point != other.battle_point) return false;
       if (name != other.name) return false;
@@ -7808,7 +8036,7 @@ namespace NFMsg {
     public override int GetHashCode() {
       int hash = 1;
       if (id_ != null) hash ^= id.GetHashCode();
-      if (single != 0) hash ^= single.GetHashCode();
+      if (battle_mode != 0) hash ^= battle_mode.GetHashCode();
       if (level != 0) hash ^= level.GetHashCode();
       if (battle_point != 0) hash ^= battle_point.GetHashCode();
       if (name.Length != 0) hash ^= name.GetHashCode();
@@ -7841,9 +8069,9 @@ namespace NFMsg {
         output.WriteRawTag(10);
         output.WriteMessage(id);
       }
-      if (single != 0) {
+      if (battle_mode != 0) {
         output.WriteRawTag(16);
-        output.WriteInt32(single);
+        output.WriteEnum((int) battle_mode);
       }
       if (level != 0) {
         output.WriteRawTag(32);
@@ -7916,8 +8144,8 @@ namespace NFMsg {
       if (id_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(id);
       }
-      if (single != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(single);
+      if (battle_mode != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) battle_mode);
       }
       if (level != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(level);
@@ -7981,8 +8209,8 @@ namespace NFMsg {
         }
         id.MergeFrom(other.id);
       }
-      if (other.single != 0) {
-        single = other.single;
+      if (other.battle_mode != 0) {
+        battle_mode = other.battle_mode;
       }
       if (other.level != 0) {
         level = other.level;
@@ -8057,7 +8285,7 @@ namespace NFMsg {
             break;
           }
           case 16: {
-            single = input.ReadInt32();
+            battleMode_ = (global::NFMsg.EBattleType) input.ReadEnum();
             break;
           }
           case 32: {
@@ -8166,6 +8394,7 @@ namespace NFMsg {
       selfScene_ = other.selfScene_;
       diamond_ = other.diamond_;
       battlePoint_ = other.battlePoint_;
+      battleMode_ = other.battleMode_;
       friends_ = other.friends_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -8208,6 +8437,17 @@ namespace NFMsg {
       }
     }
 
+    /// <summary>Field number for the "battle_mode" field.</summary>
+    public const int battle_modeFieldNumber = 4;
+    private global::NFMsg.EBattleType battleMode_ = 0;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::NFMsg.EBattleType battle_mode {
+      get { return battleMode_; }
+      set {
+        battleMode_ = value;
+      }
+    }
+
     /// <summary>Field number for the "friends" field.</summary>
     public const int friendsFieldNumber = 10;
     private static readonly pb::FieldCodec<global::NFMsg.Ident> _repeated_friends_codec
@@ -8234,6 +8474,7 @@ namespace NFMsg {
       if (self_scene != other.self_scene) return false;
       if (diamond != other.diamond) return false;
       if (battle_point != other.battle_point) return false;
+      if (battle_mode != other.battle_mode) return false;
       if(!friends_.Equals(other.friends_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -8244,6 +8485,7 @@ namespace NFMsg {
       if (self_scene != 0) hash ^= self_scene.GetHashCode();
       if (diamond != 0) hash ^= diamond.GetHashCode();
       if (battle_point != 0) hash ^= battle_point.GetHashCode();
+      if (battle_mode != 0) hash ^= battle_mode.GetHashCode();
       hash ^= friends_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -8270,6 +8512,10 @@ namespace NFMsg {
         output.WriteRawTag(24);
         output.WriteInt32(battle_point);
       }
+      if (battle_mode != 0) {
+        output.WriteRawTag(32);
+        output.WriteEnum((int) battle_mode);
+      }
       friends_.WriteTo(output, _repeated_friends_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -8287,6 +8533,9 @@ namespace NFMsg {
       }
       if (battle_point != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(battle_point);
+      }
+      if (battle_mode != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) battle_mode);
       }
       size += friends_.CalculateSize(_repeated_friends_codec);
       if (_unknownFields != null) {
@@ -8308,6 +8557,9 @@ namespace NFMsg {
       }
       if (other.battle_point != 0) {
         battle_point = other.battle_point;
+      }
+      if (other.battle_mode != 0) {
+        battle_mode = other.battle_mode;
       }
       friends_.Add(other.friends_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -8331,6 +8583,10 @@ namespace NFMsg {
           }
           case 24: {
             battle_point = input.ReadInt32();
+            break;
+          }
+          case 32: {
+            battleMode_ = (global::NFMsg.EBattleType) input.ReadEnum();
             break;
           }
           case 82: {
@@ -8917,7 +9173,7 @@ namespace NFMsg {
       gold_ = other.gold_;
       cup_ = other.cup_;
       diamond_ = other.diamond_;
-      single_ = other.single_;
+      battleMode_ = other.battleMode_;
       teamId_ = other.teamId_ != null ? other.teamId_.Clone() : null;
       matchId_ = other.matchId_ != null ? other.matchId_.Clone() : null;
       members_ = other.members_.Clone();
@@ -8999,16 +9255,16 @@ namespace NFMsg {
       }
     }
 
-    /// <summary>Field number for the "single" field.</summary>
-    public const int singleFieldNumber = 6;
-    private int single_;
+    /// <summary>Field number for the "battle_mode" field.</summary>
+    public const int battle_modeFieldNumber = 6;
+    private global::NFMsg.EBattleType battleMode_ = 0;
     /// <summary>
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int single {
-      get { return single_; }
+    public global::NFMsg.EBattleType battle_mode {
+      get { return battleMode_; }
       set {
-        single_ = value;
+        battleMode_ = value;
       }
     }
 
@@ -9075,7 +9331,7 @@ namespace NFMsg {
       if (gold != other.gold) return false;
       if (cup != other.cup) return false;
       if (diamond != other.diamond) return false;
-      if (single != other.single) return false;
+      if (battle_mode != other.battle_mode) return false;
       if (!object.Equals(team_id, other.team_id)) return false;
       if (!object.Equals(match_id, other.match_id)) return false;
       if(!members_.Equals(other.members_)) return false;
@@ -9091,7 +9347,7 @@ namespace NFMsg {
       if (gold != 0) hash ^= gold.GetHashCode();
       if (cup != 0) hash ^= cup.GetHashCode();
       if (diamond != 0) hash ^= diamond.GetHashCode();
-      if (single != 0) hash ^= single.GetHashCode();
+      if (battle_mode != 0) hash ^= battle_mode.GetHashCode();
       if (teamId_ != null) hash ^= team_id.GetHashCode();
       if (matchId_ != null) hash ^= match_id.GetHashCode();
       hash ^= members_.GetHashCode();
@@ -9129,9 +9385,9 @@ namespace NFMsg {
         output.WriteRawTag(40);
         output.WriteInt32(diamond);
       }
-      if (single != 0) {
+      if (battle_mode != 0) {
         output.WriteRawTag(48);
-        output.WriteInt32(single);
+        output.WriteEnum((int) battle_mode);
       }
       if (teamId_ != null) {
         output.WriteRawTag(58);
@@ -9166,8 +9422,8 @@ namespace NFMsg {
       if (diamond != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(diamond);
       }
-      if (single != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(single);
+      if (battle_mode != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) battle_mode);
       }
       if (teamId_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(team_id);
@@ -9203,8 +9459,8 @@ namespace NFMsg {
       if (other.diamond != 0) {
         diamond = other.diamond;
       }
-      if (other.single != 0) {
-        single = other.single;
+      if (other.battle_mode != 0) {
+        battle_mode = other.battle_mode;
       }
       if (other.teamId_ != null) {
         if (teamId_ == null) {
@@ -9252,7 +9508,7 @@ namespace NFMsg {
             break;
           }
           case 48: {
-            single = input.ReadInt32();
+            battleMode_ = (global::NFMsg.EBattleType) input.ReadEnum();
             break;
           }
           case 58: {

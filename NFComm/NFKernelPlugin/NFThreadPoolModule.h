@@ -29,36 +29,10 @@
 
 #include <map>
 #include <string>
+#include "NFComm/NFPluginModule/NFPlatform.h"
 #include "NFComm/NFPluginModule/NFIThreadPoolModule.h"
 #include "NFComm/NFCore/NFQueue.hpp"
 
-class NFThreadTask
-{
-public:
-	NFGUID nTaskID;
-	std::string data;
-	TASK_PROCESS_FUNCTOR xThreadFunc;
-	TASK_PROCESS_RESULT_FUNCTOR xEndFunc;
-};
-
-class NFThreaTaskResult
-{
-public:
-	NFThreaTaskResult()
-	{
-	}
-
-	NFThreaTaskResult(NFGUID taskID, const std::string& resultData, TASK_PROCESS_RESULT_FUNCTOR endFunc)
-	{
-		this->nTaskID = taskID;
-		this->resultData = resultData;
-		this->xEndFunc = endFunc;
-	}
-
-	NFGUID nTaskID;
-	std::string resultData;
-	TASK_PROCESS_RESULT_FUNCTOR xEndFunc;
-};
 
 class NFThreadCell
 {
@@ -81,19 +55,23 @@ protected:
 		while (true)
 		{
 			std::this_thread::sleep_for(std::chrono::milliseconds(1));
-			if (!mTaskList.Empty())
+			
+			//pick the first task and do it
+			NFThreadTask task;
+			if (mTaskList.TryPop(task))
 			{
-				//pick the first task and do it
-				NFThreadTask task;
-				if (mTaskList.TryPop(task))
+				task.xThreadFunc->operator()(task);
+
+				//repush the result to the main thread
+				//and, do we must to tell the result?
+				if (task.xEndFunc)
 				{
-					std::string resultData = task.xThreadFunc(task.nTaskID, task.data);
-					//repush the result to the main thread
-					m_pThreadPoolModule->TaskResult(task.nTaskID, resultData, task.xEndFunc);
+					m_pThreadPoolModule->TaskResult(task);
 				}
 			}
 		}
 	}
+
 private:
 	NFQueue<NFThreadTask> mTaskList;
 	NF_SHARE_PTR<std::thread> mThread;
@@ -117,18 +95,19 @@ public:
 
     virtual bool Execute();
 
-	virtual void DoAsyncTask(const int hash, const NFGUID taskID, const std::string& data,
-		TASK_PROCESS_FUNCTOR asyncFunctor, TASK_PROCESS_RESULT_FUNCTOR functor_end);
+	virtual void DoAsyncTask(const NFGUID taskID, const std::string& data, TASK_PROCESS_FUNCTOR_PTR asyncFunctor, TASK_PROCESS_FUNCTOR_PTR functor_end);
 
-	virtual void TaskResult(const NFGUID taskID, const std::string& resultData, TASK_PROCESS_RESULT_FUNCTOR functor_end);
+	virtual void TaskResult(const NFThreadTask& task);
 
 protected:
 	void ExecuteTaskResult();
 
 private:
 
-	NFQueue<NFThreaTaskResult> mTaskResult;
-	NFConsistentHashMapEx<int, NFThreadCell> mThreadPool;
+	NFQueue<NFThreadTask> mTaskResult;
+	
+	std::vector<NF_SHARE_PTR<NFThreadCell>> mThreadPool;
+	//NFConsistentHashMapEx<int, NFThreadCell> mThreadPool;
 };
 
 #endif

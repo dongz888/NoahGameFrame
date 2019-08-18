@@ -327,9 +327,7 @@ bool NFKernelModule::DestroyObject(const NFGUID& self)
 		return DestroySelf(self);
 	}
 
-
-	int nGroupID = GetPropertyInt32(self, NFrame::IObject::GroupID());
-	int nSceneID = GetPropertyInt32(self, NFrame::IObject::SceneID());
+	const int nSceneID = GetPropertyInt32(self, NFrame::IObject::SceneID());
 
 	NF_SHARE_PTR<NFSceneInfo> pContainerInfo = m_pSceneModule->GetElement(nSceneID);
 	if (pContainerInfo)
@@ -1116,6 +1114,46 @@ bool NFKernelModule::GetGroupObjectList(const int nSceneID, const int nGroupID, 
 	return false;
 }
 
+int NFKernelModule::GetGroupObjectList(const int nSceneID, const int nGroupID, const bool bPlayer, const NFGUID & noSelf)
+{
+	int objectCount = 0;
+	NF_SHARE_PTR<NFSceneInfo> pSceneInfo = m_pSceneModule->GetElement(nSceneID);
+	if (pSceneInfo)
+	{
+		NF_SHARE_PTR<NFSceneGroupInfo> pGroupInfo = pSceneInfo->GetElement(nGroupID);
+		if (pGroupInfo)
+		{
+			NFGUID ident = NFGUID();
+			NF_SHARE_PTR<int> pRet = pGroupInfo->mxPlayerList.First(ident);
+			while (!ident.IsNull())
+			{
+				if (ident != noSelf)
+				{
+					objectCount++;
+				}
+
+				ident = NFGUID();
+				pRet = pGroupInfo->mxPlayerList.Next(ident);
+			}
+
+			ident = NFGUID();
+			pRet = pGroupInfo->mxOtherList.First(ident);
+			while (!ident.IsNull())
+			{
+				if (ident != noSelf)
+				{
+					objectCount++;
+				}
+
+				ident = NFGUID();
+				pRet = pGroupInfo->mxOtherList.Next(ident);
+			}
+		}
+	}
+
+	return objectCount;
+}
+
 bool NFKernelModule::GetGroupObjectList(const int nSceneID, const int nGroupID, NFDataList& list)
 {
 	return GetGroupObjectList(nSceneID, nGroupID, list, NFGUID());
@@ -1560,14 +1598,6 @@ bool NFKernelModule::BeforeShut()
 	mtClassRecordCallBackList.clear();
 
 	return true;
-}
-
-void NFKernelModule::Random(int nStart, int nEnd, int nCount, NFDataList& valueList)
-{
-	for (int i = 0; i < nCount; i++)
-	{
-		valueList.Add(static_cast<NFINT64>(Random(nStart, nEnd)));
-	}
 }
 
 int NFKernelModule::Random(int nStart, int nEnd)

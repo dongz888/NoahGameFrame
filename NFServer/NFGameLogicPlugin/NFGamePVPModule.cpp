@@ -84,8 +84,8 @@ bool NFGamePVPModule::AfterInit()
 	if (!m_pNetClientModule->AddReceiveCallBack(NF_SERVER_TYPES::NF_ST_WORLD, NFMsg::EGMI_ACK_SEARCH_OPPNENT, this, &NFGamePVPModule::OnAckSearchOpponentProcess)) { return false; }
 	if (!m_pNetClientModule->AddReceiveCallBack(NF_SERVER_TYPES::NF_ST_WORLD, NFMsg::EGMI_ACK_CANCEL_SEARCH, this, &NFGamePVPModule::OnAckCancelSearchProcess)) { return false; }
 
-	m_pSceneModule->AddGroupPropertyCallBack(NFrame::Group::MatchKilledHero(), this, &NFGamePVPModule::OnMatchKillsEvent);
-	m_pSceneModule->AddGroupPropertyCallBack(NFrame::Group::MatchBeKilledHero(), this, &NFGamePVPModule::OnMatchDeathsEvent);
+	m_pSceneModule->AddGroupPropertyCallBack(NFrame::Group::MatchOpponentK(), this, &NFGamePVPModule::OnMatchKillsEvent);
+	m_pSceneModule->AddGroupPropertyCallBack(NFrame::Group::MatchOpponentD(), this, &NFGamePVPModule::OnMatchDeathsEvent);
 
     return true;
 }
@@ -244,10 +244,36 @@ void NFGamePVPModule::OnAckSearchOpponentProcess(const NFSOCK nSockIndex, const 
 
 	for (int i = 0; i < xMsg.team_members_size(); ++i)
 	{
-		NFGUID id = NFINetModule::PBToNF(xMsg.team_members(i));
+		const NFGUID id = NFINetModule::PBToNF(xMsg.team_members(i));
+		const std::string& strName = m_pKernelModule->GetPropertyString(id, NFrame::Player::Name());
+		const std::string& strHeroCnf1 = m_pKernelModule->GetPropertyString(id, NFrame::Player::HeroCnfID1());
+		const std::string& strHeroCnf2 = m_pKernelModule->GetPropertyString(id, NFrame::Player::HeroCnfID2());
+		const std::string& strHeroCnf3 = m_pKernelModule->GetPropertyString(id, NFrame::Player::HeroCnfID3());
+
+		const int nStar1 = m_pKernelModule->GetPropertyInt(id, NFrame::Player::HeroStar1());
+		const int nStar2 = m_pKernelModule->GetPropertyInt(id, NFrame::Player::HeroStar2());
+		const int nStar3 = m_pKernelModule->GetPropertyInt(id, NFrame::Player::HeroStar3());
 
 		NF_SHARE_PTR<NFDataList> xRowData = pMatchMemberRecord->GetInitData();
 		xRowData->SetObject(NFrame::Group::MatchMember::GUID, id);
+		xRowData->SetString(NFrame::Group::MatchMember::Name, strName);
+		xRowData->SetInt(NFrame::Group::MatchMember::K, 0);
+		xRowData->SetInt(NFrame::Group::MatchMember::D, 0);
+		xRowData->SetInt(NFrame::Group::MatchMember::A, 0);
+		xRowData->SetInt(NFrame::Group::MatchMember::Diamond, 0);
+		xRowData->SetInt(NFrame::Group::MatchMember::Cup, 0);
+		xRowData->SetInt(NFrame::Group::MatchMember::MVP, 0);
+		xRowData->SetInt(NFrame::Group::MatchMember::Streak, 0);
+		xRowData->SetString(NFrame::Group::MatchMember::HeroCnf1, strHeroCnf1);
+		xRowData->SetString(NFrame::Group::MatchMember::HeroCnf2, strHeroCnf2);
+		xRowData->SetString(NFrame::Group::MatchMember::HeroCnf3, strHeroCnf3);
+		xRowData->SetInt(NFrame::Group::MatchMember::HeroStar1, nStar1);
+		xRowData->SetInt(NFrame::Group::MatchMember::HeroStar2, nStar2);
+		xRowData->SetInt(NFrame::Group::MatchMember::HeroStar3, nStar3);
+		xRowData->SetInt(NFrame::Group::MatchMember::HP1, 0);
+		xRowData->SetInt(NFrame::Group::MatchMember::HP2, 0);
+		xRowData->SetInt(NFrame::Group::MatchMember::HP3, 0);
+
 		pMatchMemberRecord->AddRow(-1, *xRowData);
 
 		
@@ -400,8 +426,18 @@ int NFGamePVPModule::AfterEnterSceneGroupEvent(const NFGUID & self, const int nS
 
 int NFGamePVPModule::BeforeLeaveSceneGroupEvent(const NFGUID & self, const int nSceneID, const int nGroupID, const int nType, const NFDataList & argList)
 {
-	ResetPVPData(self);
-
+	NFMsg::ESceneType eSceneType = (NFMsg::ESceneType)m_pElementModule->GetPropertyInt32(std::to_string(nSceneID), NFrame::Scene::Type());
+	if (eSceneType == NFMsg::ESceneType::SCENE_SINGLE_CLONE)
+	{
+	}
+	else if (eSceneType == NFMsg::ESceneType::SCENE_MULTI_CLONE)
+	{
+	}
+	else if (eSceneType == NFMsg::ESceneType::SCENE_HOME)
+	{
+		ResetPVPData(self);
+	}
+	
 	return 0;
 }
 
@@ -412,42 +448,68 @@ int NFGamePVPModule::AfterLeaveSceneGroupEvent(const NFGUID & self, const int nS
 
 void NFGamePVPModule::ResetPVPData(const NFGUID & self)
 {
-
-	int sceneID = m_pKernelModule->GetPropertyInt32(self, NFrame::Player::SceneID());
-	int groupID = m_pKernelModule->GetPropertyInt32(self, NFrame::Player::GroupID());
+	const int sceneID = m_pKernelModule->GetPropertyInt32(self, NFrame::Player::SceneID());
+	const int groupID = m_pKernelModule->GetPropertyInt32(self, NFrame::Player::GroupID());
 	
 	if (!m_pSceneModule->GetPropertyObject(sceneID, groupID, NFrame::Group::MatchID()).IsNull())
 	{
-		m_pSceneModule->SetPropertyObject(sceneID, groupID, NFrame::Group::MatchID(), NFGUID());
-		m_pSceneModule->SetPropertyObject(sceneID, groupID, NFrame::Group::MatchTeamID(), NFGUID());
-		m_pSceneModule->SetPropertyObject(sceneID, groupID, NFrame::Group::MatchOpponentID(), NFGUID());
+		int playerCount = 0;
+		NF_SHARE_PTR<NFIRecord> record = m_pSceneModule->FindRecord(sceneID, groupID, NFrame::Group::MatchMember::ThisName());
+		if (record)
+		{
+			for (int i = 0; i < record->GetRows(); ++i)
+			{
+				if (record->IsUsed(i))
+				{
+					const NFGUID playerID = record->GetObject(i, NFrame::Group::MatchMember::GUID);
+					const int playerSceneID = m_pKernelModule->GetPropertyInt32(playerID, NFrame::Player::SceneID());
+					const int playerGroupID = m_pKernelModule->GetPropertyInt32(playerID, NFrame::Player::GroupID());
+					if (playerSceneID == sceneID
+						&& playerGroupID == groupID)
+					{
+						playerCount++;
+					}
+				}
+			}
 
-		//m_pSceneModule->SetPropertyInt(sceneID, groupID, NFrame::Group::WarEventTime(), 0);
-		m_pSceneModule->SetPropertyInt(sceneID, groupID, NFrame::Group::MatchStar(), 0);
-		m_pSceneModule->SetPropertyInt(sceneID, groupID, NFrame::Group::MatchGambleDiamond(), 0);
+			if (playerCount <= 1)
+			{
+				record->Clear();
 
-		m_pSceneModule->SetPropertyInt(sceneID, groupID, NFrame::Group::MatchOpponentGold(), 0);
-		m_pSceneModule->SetPropertyInt(sceneID, groupID, NFrame::Group::MatchOpponentDiamond(), 0);
-		m_pSceneModule->SetPropertyInt(sceneID, groupID, NFrame::Group::MatchOpponentLevel(), 0);
-		m_pSceneModule->SetPropertyInt(sceneID, groupID, NFrame::Group::MatchOpponentCup(), 0);
-		m_pSceneModule->SetPropertyString(sceneID, groupID, NFrame::Group::MatchOpponentName(), "");
-		m_pSceneModule->SetPropertyString(sceneID, groupID, NFrame::Group::MatchOpponentHead(), "");
 
-		m_pSceneModule->SetPropertyObject(sceneID, groupID, NFrame::Group::MatchOpponentHeroID1(), NFGUID());
-		m_pSceneModule->SetPropertyString(sceneID, groupID, NFrame::Group::MatchOpponentHeroCnf1(), "");
-		m_pSceneModule->SetPropertyInt(sceneID, groupID, NFrame::Group::MatchOpponentHeroStar1(), 0);
-		m_pSceneModule->SetPropertyObject(sceneID, groupID, NFrame::Group::MatchOpponentHeroID2(), NFGUID());
-		m_pSceneModule->SetPropertyString(sceneID, groupID, NFrame::Group::MatchOpponentHeroCnf2(), "");
-		m_pSceneModule->SetPropertyInt(sceneID, groupID, NFrame::Group::MatchOpponentHeroStar2(), 0);
-		m_pSceneModule->SetPropertyObject(sceneID, groupID, NFrame::Group::MatchOpponentHeroID3(), NFGUID());
-		m_pSceneModule->SetPropertyString(sceneID, groupID, NFrame::Group::MatchOpponentHeroCnf3(), "");
-		m_pSceneModule->SetPropertyInt(sceneID, groupID, NFrame::Group::MatchOpponentHeroStar3(), 0);
+				m_pSceneModule->SetPropertyObject(sceneID, groupID, NFrame::Group::MatchID(), NFGUID());
+				m_pSceneModule->SetPropertyObject(sceneID, groupID, NFrame::Group::MatchTeamID(), NFGUID());
+				m_pSceneModule->SetPropertyObject(sceneID, groupID, NFrame::Group::MatchOpponentID(), NFGUID());
 
-		/*
-		m_pSceneModule->SetPropertyInt(sceneID, groupID, NFrame::Group::MatchItem1UsedCount(), 0);
-		m_pSceneModule->SetPropertyInt(sceneID, groupID, NFrame::Group::MatchItem2UsedCount(), 0);
-		m_pSceneModule->SetPropertyInt(sceneID, groupID, NFrame::Group::MatchItem3UsedCount(), 0);
-		*/
+				//m_pSceneModule->SetPropertyInt(sceneID, groupID, NFrame::Group::WarEventTime(), 0);
+				m_pSceneModule->SetPropertyInt(sceneID, groupID, NFrame::Group::MatchStar(), 0);
+				m_pSceneModule->SetPropertyInt(sceneID, groupID, NFrame::Group::MatchGambleDiamond(), 0);
+
+				m_pSceneModule->SetPropertyInt(sceneID, groupID, NFrame::Group::MatchOpponentGold(), 0);
+				m_pSceneModule->SetPropertyInt(sceneID, groupID, NFrame::Group::MatchOpponentDiamond(), 0);
+				m_pSceneModule->SetPropertyInt(sceneID, groupID, NFrame::Group::MatchOpponentLevel(), 0);
+				m_pSceneModule->SetPropertyInt(sceneID, groupID, NFrame::Group::MatchOpponentCup(), 0);
+				m_pSceneModule->SetPropertyString(sceneID, groupID, NFrame::Group::MatchOpponentName(), "");
+				m_pSceneModule->SetPropertyString(sceneID, groupID, NFrame::Group::MatchOpponentHead(), "");
+
+				m_pSceneModule->SetPropertyObject(sceneID, groupID, NFrame::Group::MatchOpponentHeroID1(), NFGUID());
+				m_pSceneModule->SetPropertyString(sceneID, groupID, NFrame::Group::MatchOpponentHeroCnf1(), "");
+				m_pSceneModule->SetPropertyInt(sceneID, groupID, NFrame::Group::MatchOpponentHeroStar1(), 0);
+				m_pSceneModule->SetPropertyObject(sceneID, groupID, NFrame::Group::MatchOpponentHeroID2(), NFGUID());
+				m_pSceneModule->SetPropertyString(sceneID, groupID, NFrame::Group::MatchOpponentHeroCnf2(), "");
+				m_pSceneModule->SetPropertyInt(sceneID, groupID, NFrame::Group::MatchOpponentHeroStar2(), 0);
+				m_pSceneModule->SetPropertyObject(sceneID, groupID, NFrame::Group::MatchOpponentHeroID3(), NFGUID());
+				m_pSceneModule->SetPropertyString(sceneID, groupID, NFrame::Group::MatchOpponentHeroCnf3(), "");
+				m_pSceneModule->SetPropertyInt(sceneID, groupID, NFrame::Group::MatchOpponentHeroStar3(), 0);
+
+				/*
+				m_pSceneModule->SetPropertyInt(sceneID, groupID, NFrame::Group::MatchItem1UsedCount(), 0);
+				m_pSceneModule->SetPropertyInt(sceneID, groupID, NFrame::Group::MatchItem2UsedCount(), 0);
+				m_pSceneModule->SetPropertyInt(sceneID, groupID, NFrame::Group::MatchItem3UsedCount(), 0);
+				*/
+
+			}
+		}
 	}
 }
 
@@ -569,15 +631,15 @@ int NFGamePVPModule::OnNPCHPEvent(const NFGUID & self, const std::string & strPr
 				const int nExp = m_pKernelModule->GetPropertyInt(self, NFrame::NPC::EXP());
 				
 				const int nFightingStar = m_pSceneModule->GetPropertyInt32(nSceneID, nGroupID, NFrame::Group::MatchStar());
-				const int nkilledHero = m_pSceneModule->GetPropertyInt32(nSceneID, nGroupID, NFrame::Group::MatchKilledHero());
-				const int nBekilledHero = m_pSceneModule->GetPropertyInt32(nSceneID, nGroupID, NFrame::Group::MatchBeKilledHero());
+				const int nkilledHero = m_pSceneModule->GetPropertyInt32(nSceneID, nGroupID, NFrame::Group::MatchOpponentK());
+				const int nBekilledHero = m_pSceneModule->GetPropertyInt32(nSceneID, nGroupID, NFrame::Group::MatchOpponentD());
 				const NFGUID xViewOpponent = m_pSceneModule->GetPropertyObject(nSceneID, nGroupID, NFrame::Group::MatchOpponentID());
 				if (nFightingStar < 3)
 				{
 					m_pSceneModule->SetPropertyInt(nSceneID, nGroupID, NFrame::Group::MatchStar(), nFightingStar + 1);
 				}
 
-				m_pSceneModule->SetPropertyInt(nSceneID, nGroupID, NFrame::Group::MatchKilledHero(), nkilledHero + 1);
+				m_pSceneModule->SetPropertyInt(nSceneID, nGroupID, NFrame::Group::MatchOpponentK(), nkilledHero + 1);
 			}
 		}
 	}
@@ -637,8 +699,8 @@ int NFGamePVPModule::OnPlayerHPEvent(const NFGUID & self, const std::string & st
 		if (!matchID.IsNull()
 			&& sceneType == NFMsg::ESceneType::SCENE_HOME)
 		{
-			const int nBekilledHero = m_pSceneModule->GetPropertyInt32(nSceneID, nGroupID, NFrame::Group::MatchBeKilledHero());
-			m_pSceneModule->SetPropertyInt(nSceneID, nGroupID, NFrame::Group::MatchBeKilledHero(), nBekilledHero + 1);
+			const int nBekilledHero = m_pSceneModule->GetPropertyInt32(nSceneID, nGroupID, NFrame::Group::MatchOpponentD());
+			m_pSceneModule->SetPropertyInt(nSceneID, nGroupID, NFrame::Group::MatchOpponentD(), nBekilledHero + 1);
 		}
 	}
 
@@ -714,7 +776,7 @@ void NFGamePVPModule::EndTheBattle(const NFGUID & self, const int autoEnd)
 
 
 		NFMsg::AckEndBattle xReqAckEndBattle;
-		xReqAckEndBattle.set_single(1);
+		xReqAckEndBattle.set_battle_mode(NFMsg::EBattleType::EBT_SINGLE_MODE);
 		*xReqAckEndBattle.mutable_team_id() = NFINetModule::NFToPB(matchTeamID);
 		*xReqAckEndBattle.mutable_match_id() = NFINetModule::NFToPB(matchID);
 		NFMsg::Ident* pMember = xReqAckEndBattle.add_members();
@@ -760,7 +822,7 @@ void NFGamePVPModule::EndTheBattle(const NFGUID & self, const int autoEnd)
 
 		RecordPVPData(self, nFightingStar, nWinGold, nWinDiamond);
 
-		ResetPVPData(self);
+		//ResetPVPData(self);
 
 		//just show the result ui
 		m_pGameServerNet_ServerModule->SendMsgPBToGate(NFMsg::EGMI_ACK_END_OPPNENT, xReqAckEndBattle, self);

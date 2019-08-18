@@ -58,7 +58,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN;WIN32;_DEBUG;_WINDOWS;_USRDLL;ELPP_NO_DEFAULT_LOG_FILE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)\Dependencies\;$(SolutionDir)\Dependencies\libevent\;$(SolutionDir)\Dependencies\libevent\WIN32-Code\;$(SolutionDir)\Dependencies\libevent\include\;$(SolutionDir)\Dependencies\libevent\compat\;$(SolutionDir)\Dependencies\protobuf\src\;$(SolutionDir)\Dependencies\Theron\Include\;$(SolutionDir)\Dependencies\libevent\WIN32-Code\nmake;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)\Dependencies\;$(SolutionDir)\Dependencies\libevent\;$(SolutionDir)\Dependencies\libevent\WIN32-Code\;$(SolutionDir)\Dependencies\libevent\include\;$(SolutionDir)\Dependencies\libevent\compat\;$(SolutionDir)\Dependencies\protobuf\src\;$(SolutionDir)\Dependencies\libevent\WIN32-Code\nmake;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <BrowseInformation>false</BrowseInformation>
     </ClCompile>
     <Link>
@@ -81,7 +81,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)\Dependencies\;$(SolutionDir)\Dependencies\libevent\;$(SolutionDir)\Dependencies\libevent\WIN32-Code\;$(SolutionDir)\Dependencies\libevent\include\;$(SolutionDir)\Dependencies\libevent\compat\;$(SolutionDir)\Dependencies\protobuf\src\;$(SolutionDir)\Dependencies\Theron\Include\;$(SolutionDir)\Dependencies\websocketpp;$(SolutionDir)\Dependencies\asio;$(SolutionDir)\Dependencies\libevent\WIN32-Code\nmake</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)\Dependencies\;$(SolutionDir)\Dependencies\libevent\;$(SolutionDir)\Dependencies\libevent\WIN32-Code\;$(SolutionDir)\Dependencies\libevent\include\;$(SolutionDir)\Dependencies\libevent\compat\;$(SolutionDir)\Dependencies\protobuf\src\;$(SolutionDir)\Dependencies\websocketpp;$(SolutionDir)\Dependencies\asio;$(SolutionDir)\Dependencies\libevent\WIN32-Code\nmake</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -104,11 +104,11 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="HelloWorld.cpp" />
+    <ClCompile Include="HelloWorld5.cpp" />
     <ClCompile Include="Tutorial5.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="HelloWorld.h" />
+    <ClInclude Include="HelloWorld5.h" />
     <ClInclude Include="Tutorial5.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

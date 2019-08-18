@@ -41,9 +41,7 @@
 #if NF_PLATFORM == NF_PLATFORM_WIN
 
 #elif NF_PLATFORM == NF_PLATFORM_LINUX || NF_PLATFORM == NF_PLATFORM_ANDROID
-//#pragma comment( lib, "libtherond.a" )
 #elif NF_PLATFORM == NF_PLATFORM_APPLE || NF_PLATFORM == NF_PLATFORM_APPLE_IOS
-//#pragma comment( lib, "libtherond.a" )
 #endif
 
 #else
@@ -51,9 +49,7 @@
 #if NF_PLATFORM == NF_PLATFORM_WIN
 
 #elif NF_PLATFORM == NF_PLATFORM_LINUX || NF_PLATFORM == NF_PLATFORM_ANDROID
-//#pragma comment( lib, "libtheron.a" )
 #elif NF_PLATFORM == NF_PLATFORM_APPLE || NF_PLATFORM == NF_PLATFORM_APPLE_IOS
-//#pragma comment( lib, "libtheron.a" )
 #endif
 
 #endif
@@ -111,6 +107,15 @@
 #include "NFMidWare/NFSkillPlugin/NFSkillPlugin.h"
 #include "NFMidWare/NFTaskPlugin/NFTaskPlugin.h"
 #include "NFMidWare/NFUserGiftPlugin/NFUserGiftPlugin.h"
+//TUTORIAL
+#include "Tutorial/Tutorial1/Tutorial1.h"
+#include "Tutorial/Tutorial2/Tutorial2.h"
+#include "Tutorial/Tutorial3/Tutorial3Plugin.h"
+#include "Tutorial/Tutorial4/Tutorial4Plugin.h"
+#include "Tutorial/Tutorial5/Tutorial5.h"
+#include "Tutorial/Tutorial6/Tutorial6.h"
+#include "Tutorial/Tutorial7/Tutorial7.h"
+
 #endif
 
 void CoroutineExecute(void* arg)
@@ -153,6 +158,8 @@ NFPluginManager::~NFPluginManager()
 
 bool NFPluginManager::LoadPlugin()
 {
+	std::cout << "----LoadPlugin----" << std::endl;
+
 	LoadPluginConfig();
 
 #ifndef NF_DYNAMIC_PLUGIN
@@ -178,6 +185,8 @@ bool NFPluginManager::LoadPlugin()
 
 bool NFPluginManager::Awake()
 {
+	std::cout << "----Awake----" << std::endl;
+
 	PluginInstanceMap::iterator itAfterInstance = mPluginInstanceMap.begin();
 	for (; itAfterInstance != mPluginInstanceMap.end(); itAfterInstance++)
 	{
@@ -190,6 +199,8 @@ bool NFPluginManager::Awake()
 
 inline bool NFPluginManager::Init()
 {
+	std::cout << "----Init----" << std::endl;
+
 	PluginInstanceMap::iterator itInstance = mPluginInstanceMap.begin();
 	for (; itInstance != mPluginInstanceMap.end(); itInstance++)
 	{
@@ -225,6 +236,7 @@ bool NFPluginManager::LoadPluginConfig()
 
         mPluginNameMap.insert(PluginNameMap::value_type(strPluginName, true));
 
+		//std::cout << strPluginName << std::endl;
     }
 
     return true;
@@ -291,6 +303,16 @@ bool NFPluginManager::LoadStaticPlugin()
 	CREATE_PLUGIN(this, NFSkillPlugin)
 	CREATE_PLUGIN(this, NFTaskPlugin)
 	CREATE_PLUGIN(this, NFUserGiftPlugin)
+
+//TUTORIAL
+	CREATE_PLUGIN(this, Tutorial1)
+	CREATE_PLUGIN(this, Tutorial2)
+	CREATE_PLUGIN(this, Tutorial3Plugin)
+	CREATE_PLUGIN(this, Tutorial4Plugin)
+	CREATE_PLUGIN(this, Tutorial5)
+	CREATE_PLUGIN(this, Tutorial6)
+	CREATE_PLUGIN(this, Tutorial7)
+
 #endif
 
     return true;
@@ -322,14 +344,24 @@ bool NFPluginManager::CheckStaticPlugin()
 			it++;
 		}
 	}
+
+	for (auto it = mPluginInstanceMap.begin(); it != mPluginInstanceMap.end(); ++it)
+	{
+		std::cout << it->first << std::endl;
+	}
+
+	std::cout << "-------------" << std::endl;
+
 	//////module
 	for (auto it = mModuleInstanceMap.begin(); it != mModuleInstanceMap.end();)
 	{
 		bool bFind = false;
 		const std::string& strModuleName = it->first;
+
 		for (int i = 0; i < mStaticPlugin.size(); ++i)
 		{
 			const std::string& strPluginName = mStaticPlugin[i];
+				
 			NFIPlugin* pPlugin = this->FindPlugin(strPluginName);
 			if (pPlugin)
 			{
@@ -350,6 +382,13 @@ bool NFPluginManager::CheckStaticPlugin()
 		{
 			it++;
 		}
+	}
+
+	std::cout << "-------------" << std::endl;
+
+	for (auto it = mModuleInstanceMap.begin(); it != mModuleInstanceMap.end(); ++it)
+	{
+		std::cout << it->first << std::endl;
 	}
 #endif
 
@@ -760,6 +799,8 @@ std::list<NFIModule*> NFPluginManager::Modules()
 
 bool NFPluginManager::AfterInit()
 {
+	std::cout << "----AfterInit----" << std::endl;
+
     PluginInstanceMap::iterator itAfterInstance = mPluginInstanceMap.begin();
     for (; itAfterInstance != mPluginInstanceMap.end(); itAfterInstance++)
     {
@@ -772,6 +813,8 @@ bool NFPluginManager::AfterInit()
 
 bool NFPluginManager::CheckConfig()
 {
+	std::cout << "----CheckConfig----" << std::endl;
+
     PluginInstanceMap::iterator itCheckInstance = mPluginInstanceMap.begin();
     for (; itCheckInstance != mPluginInstanceMap.end(); itCheckInstance++)
     {
@@ -784,6 +827,8 @@ bool NFPluginManager::CheckConfig()
 
 bool NFPluginManager::ReadyExecute()
 {
+	std::cout << "----ReadyExecute----" << std::endl;
+
     PluginInstanceMap::iterator itCheckInstance = mPluginInstanceMap.begin();
     for (; itCheckInstance != mPluginInstanceMap.end(); itCheckInstance++)
     {

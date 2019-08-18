@@ -45,51 +45,37 @@ bool NFUserGiftModule::Init()
 
 bool NFUserGiftModule::AfterInit()
 {
-	NF_SHARE_PTR<NFIClass> xClass = m_pClassModule->GetElement(NFrame::Item::ThisName());
-	if (xClass)
-	{
-		std::vector<std::string> xGiftItemList = xClass->GetIDList();
-		for (int i = 0; i < xGiftItemList.size(); ++i)
-		{
-			const std::string& strItemID = xGiftItemList[i];
-			if (!m_pElementModule->ExistElement(strItemID))
-			{
-				//can't continue
-				m_pLogModule->LogError("error item id:" + strItemID);
-				continue;
-			}
-
-			int nSubItem = m_pElementModule->GetPropertyInt32(strItemID, NFrame::Item::ItemSubType());
-			if (nSubItem == NFMsg::EGameSupplySubType::EGIT_ITEM_PACK)
-			{
-				int nLevel = m_pElementModule->GetPropertyInt32(strItemID, NFrame::Item::Level());
-				if (nLevel <= 1)
-				{
-					nLevel = 1;
-				}
-
-				NF_SHARE_PTR<std::vector<std::string>> xItemList = mxGiftMap.GetElement(nLevel);
-				if (!xItemList)
-				{
-					xItemList = NF_SHARE_PTR<std::vector<std::string>>(NF_NEW std::vector<std::string>());
-					mxGiftMap.AddElement(nLevel, xItemList);
-				}
-
-				xItemList->push_back(strItemID);
-			}
-		}
-	}
-
 	m_pKernelModule->AddClassCallBack(NFrame::Player::ThisName(), this, &NFUserGiftModule::OnObjectClassEvent);
 
 	mstrIniConfigPath = pPluginManager->GetConfigPath();
 
 	std::string strInitEquipConfig = mstrIniConfigPath + "NFDataCfg/Ini/Common/EquipConfig.xml";
 	std::string strInitPropertyConfig = mstrIniConfigPath + "NFDataCfg/Ini/Common/PropertyConfig.xml";
+	std::string stGMConfig = mstrIniConfigPath + "NFDataCfg/Ini/Common/GMConfig.xml";
 
 	m_pCommonConfigModule->LoadConfig(strInitEquipConfig);
 	m_pCommonConfigModule->LoadConfig(strInitPropertyConfig);
+	m_pCommonConfigModule->LoadConfig(stGMConfig);
 
+	std::string strGiftKey = "Gift";
+	std::vector<std::string> xList = m_pCommonConfigModule->GetSubKeyList(strGiftKey);
+	for (int i = 0; i < xList.size(); ++i)
+	{
+		const std::string& strItemCnfID = xList.at(i);
+		const int nItemCount = m_pCommonConfigModule->GetFieldInt(strGiftKey, strItemCnfID, "Count");
+			
+		NF_SHARE_PTR<std::vector<std::string>> xItemList = mxGiftMap.GetElement(1);
+		if (!xItemList)
+		{
+			xItemList = NF_SHARE_PTR<std::vector<std::string>>(NF_NEW std::vector<std::string>());
+			mxGiftMap.AddElement(1, xItemList);
+		}
+
+		for (int j = 0; j < nItemCount; ++j)
+		{
+			xItemList->push_back(strItemCnfID);
+		}
+	}
 
 	return true;
 }
@@ -102,27 +88,6 @@ bool NFUserGiftModule::CheckConfig()
 
 bool NFUserGiftModule::ReadyExecute()
 {
-	//for test
-	NF_SHARE_PTR<NFIClass> xClass = m_pClassModule->GetElement(NFrame::Item::ThisName());
-	if (xClass)
-	{
-		NF_SHARE_PTR<std::vector<std::string>> xItemList = mxGiftMap.GetElement(1);
-		if (!xItemList)
-		{
-			xItemList = NF_SHARE_PTR<std::vector<std::string>>(NF_NEW std::vector<std::string>());
-			mxGiftMap.AddElement(1, xItemList);
-		}
-
-		std::vector<std::string> xGiftItemList = xClass->GetIDList();
-		for (int i = 0; i < xGiftItemList.size(); ++i)
-		{
-			const std::string& strItemID = xGiftItemList[i];
-			for (int j = 0; j < 10; j++)
-			{
-				xItemList->push_back(strItemID);
-			}
-		}
-	}
 
 	return true;
 }
@@ -232,10 +197,17 @@ bool NFUserGiftModule::ActiveteHero(const NFGUID & self)
 	for (int i = 0; i < xRecord->GetRows(); ++i)
 	{
 		const std::string& strItemID = xRecord->GetString(i, NFrame::Player::BagItemList::ConfigID);
-		int nHeroType = m_pElementModule->GetPropertyInt32(strItemID, NFrame::Item::HeroType());
-		if (nHeroType > 0)
+		NFMsg::EItemType itemType = (NFMsg::EItemType)m_pElementModule->GetPropertyInt32(strItemID, NFrame::Item::ItemType());
+		NFMsg::EGameScrollSubType itemSubType = (NFMsg::EGameScrollSubType)m_pElementModule->GetPropertyInt32(strItemID, NFrame::Item::ItemSubType());
+		if (itemType == NFMsg::EItemType::EIT_SCROLL)
 		{
-			m_pItemModule->UseItem(self, strItemID, self, NFVector3());
+			if (itemSubType == NFMsg::EGameScrollSubType::EGTST_TOKEN_HERO_CARD)
+			{
+				m_pItemModule->UseItem(self, strItemID, self, NFVector3());
+			}
+			else if (itemSubType == NFMsg::EGameScrollSubType::EGTST_TOKEN_BUILD)
+			{
+			}
 		}
 	}
 

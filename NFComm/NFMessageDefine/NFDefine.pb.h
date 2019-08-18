@@ -156,6 +156,9 @@ enum EGameMsgID {
   EGMI_DTW_DB_UNREGISTERED = 61,
   EGMI_DTW_DB_REFRESH = 62,
   EGMI_STS_NET_INFO = 70,
+  EGEC_REQ_LAG_TEST = 80,
+  EGEC_ACK_GATE_LAG_TEST = 81,
+  EGEC_ACK_GAME_LAG_TEST = 82,
   EGMI_STS_SERVER_REPORT = 90,
   EGMI_STS_HEART_BEAT = 100,
   EGMI_REQ_LOGIN = 101,
@@ -200,6 +203,7 @@ enum EGameMsgID {
   EGMI_ACK_PROPERTY_OBJECT = 214,
   EGMI_ACK_PROPERTY_VECTOR2 = 215,
   EGMI_ACK_PROPERTY_VECTOR3 = 216,
+  EGMI_ACK_PROPERTY_CLEAR = 217,
   EGMI_ACK_ADD_ROW = 220,
   EGMI_ACK_REMOVE_ROW = 221,
   EGMI_ACK_SWAP_ROW = 222,
@@ -341,16 +345,13 @@ enum EGameMsgID {
   EGMI_REQ_UP_BUILD_LVL = 20101,
   EGMI_REQ_CREATE_ITEM = 20102,
   EGMI_REQ_BUILD_OPERATE = 20103,
-  EGMI_REQ_SEARCH_TO_SHARE = 30000,
-  EGMI_ACK_SEARCH_TO_SHARE = 30001,
-  EGMI_REQ_SHARE_TO_ATART = 30002,
-  EGMI_ACK_SHARE_TO_ATART = 30003,
+  EGMI_REQ_ADD_FRIEND = 50000,
   EGameMsgID_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
   EGameMsgID_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
 LIBPROTOC_EXPORT bool EGameMsgID_IsValid(int value);
 const EGameMsgID EGameMsgID_MIN = EGMI_UNKNOW;
-const EGameMsgID EGameMsgID_MAX = EGMI_ACK_SHARE_TO_ATART;
+const EGameMsgID EGameMsgID_MAX = EGMI_REQ_ADD_FRIEND;
 const int EGameMsgID_ARRAYSIZE = EGameMsgID_MAX + 1;
 
 LIBPROTOC_EXPORT const ::google::protobuf::EnumDescriptor* EGameMsgID_descriptor();
@@ -757,35 +758,17 @@ inline bool ENPCType_Parse(
     ENPCType_descriptor(), name, value);
 }
 enum ESubNPCType_TURRET {
-  ENPCTYPE_SUB_TOWN = 0,
-  ENPCTYPE_SUB_GOLD_MINE = 1,
-  ENPCTYPE_SUB_ENEGER_MINE = 2,
-  ENPCTYPE_SUB_GOLD_STORE = 3,
-  ENPCTYPE_SUB_ENEGER_STORE = 4,
-  ENPCTYPE_SUB_CANNON = 10,
-  ENPCTYPE_SUB_ACID = 11,
-  ENPCTYPE_SUB_TESLA = 12,
-  ENPCTYPE_SUB_X_BOW = 13,
-  ENPCTYPE_SUB_CRYSTAL = 14,
-  ENPCTYPE_SUB_FIRE = 15,
-  ENPCTYPE_SUB_GATLING = 16,
-  ENPCTYPE_SUB_GAUSS = 17,
-  ENPCTYPE_SUB_HAMMER = 18,
-  ENPCTYPE_SUB_LASER = 19,
-  ENPCTYPE_SUB_MACGINEGUN = 20,
-  ENPCTYPE_SUB_MORTAR = 21,
-  ENPCTYPE_SUB_PLASMA = 22,
-  ENPCTYPE_SUB_RADAR = 23,
-  ENPCTYPE_SUB_ROCKET = 24,
-  ENPCTYPE_SUB_BOMB = 100,
-  ENPCTYPE_SUB_TRAP = 101,
-  ENPCTYPE_SUB_SPINE = 102,
+  ENPCTYPE_SUB_STORAGE = 0,
+  ENPCTYPE_SUB_WEAPONE = 1,
+  ENPCTYPE_SUB_GUARD = 2,
+  ENPCTYPE_SUB_BOMB = 3,
+  ENPCTYPE_SUB_TRAP = 4,
   ESubNPCType_TURRET_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
   ESubNPCType_TURRET_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
 LIBPROTOC_EXPORT bool ESubNPCType_TURRET_IsValid(int value);
-const ESubNPCType_TURRET ESubNPCType_TURRET_MIN = ENPCTYPE_SUB_TOWN;
-const ESubNPCType_TURRET ESubNPCType_TURRET_MAX = ENPCTYPE_SUB_SPINE;
+const ESubNPCType_TURRET ESubNPCType_TURRET_MIN = ENPCTYPE_SUB_STORAGE;
+const ESubNPCType_TURRET ESubNPCType_TURRET_MAX = ENPCTYPE_SUB_TRAP;
 const int ESubNPCType_TURRET_ARRAYSIZE = ESubNPCType_TURRET_MAX + 1;
 
 LIBPROTOC_EXPORT const ::google::protobuf::EnumDescriptor* ESubNPCType_TURRET_descriptor();
@@ -889,6 +872,32 @@ inline bool EGameElementType_Parse(
     const ::std::string& name, EGameElementType* value) {
   return ::google::protobuf::internal::ParseNamedEnum<EGameElementType>(
     EGameElementType_descriptor(), name, value);
+}
+enum EBattleType {
+  EBT_SINGLE_MODE = 0,
+  EBT_MULTI_MODE = 1,
+  EBT_CLAN_MODE = 2,
+  EBT_CLAN_BOSS_MODE = 3,
+  EBT_WORLD_BOSS_MODE = 4,
+  EBT_MOBA_MODE = 5,
+  EBT_SURVIVAL_MODE = 6,
+  EBattleType_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
+  EBattleType_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
+};
+LIBPROTOC_EXPORT bool EBattleType_IsValid(int value);
+const EBattleType EBattleType_MIN = EBT_SINGLE_MODE;
+const EBattleType EBattleType_MAX = EBT_SURVIVAL_MODE;
+const int EBattleType_ARRAYSIZE = EBattleType_MAX + 1;
+
+LIBPROTOC_EXPORT const ::google::protobuf::EnumDescriptor* EBattleType_descriptor();
+inline const ::std::string& EBattleType_Name(EBattleType value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    EBattleType_descriptor(), value);
+}
+inline bool EBattleType_Parse(
+    const ::std::string& name, EBattleType* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<EBattleType>(
+    EBattleType_descriptor(), name, value);
 }
 // ===================================================================
 
@@ -1032,6 +1041,11 @@ template <> struct is_proto_enum< ::NFMsg::EGameElementType> : ::std::true_type 
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::NFMsg::EGameElementType>() {
   return ::NFMsg::EGameElementType_descriptor();
+}
+template <> struct is_proto_enum< ::NFMsg::EBattleType> : ::std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::NFMsg::EBattleType>() {
+  return ::NFMsg::EBattleType_descriptor();
 }
 
 }  // namespace protobuf

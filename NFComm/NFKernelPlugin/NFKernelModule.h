@@ -138,6 +138,7 @@ public:
     virtual bool ReleaseGroupScene(const int nSceneID, const int nGroupID);
     virtual bool ExitGroupScene(const int nSceneID, const int nGroupID);
 
+	virtual int GetGroupObjectList(const int nSceneID, const int nGroupID, const bool bPlayer, const NFGUID& noSelf);
 	virtual bool GetGroupObjectList(const int nSceneID, const int nGroupID, NFDataList& list);
 	virtual bool GetGroupObjectList(const int nSceneID, const int nGroupID, NFDataList& list, const NFGUID& noSelf);
 	virtual bool GetGroupObjectList(const int nSceneID, const int nGroupID, NFDataList& list, const bool bPlayer);
@@ -147,7 +148,6 @@ public:
 	
 	virtual int GetObjectByProperty(const int nSceneID, const int nGroupID, const std::string& strPropertyName, const NFDataList& valueArgArg, NFDataList& list);
 
-	virtual void Random(int nStart, int nEnd, int nCount, NFDataList& valueList);		//return [nStart, nEnd)
 	virtual int Random(int nStart, int nEnd);											//return [nStart, nEnd)
 	virtual float Random();											//return [0f, 1f)
 

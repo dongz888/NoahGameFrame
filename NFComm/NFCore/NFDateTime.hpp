@@ -32,7 +32,7 @@ limitations under the License.
 #include <iomanip>
 #include <string>
 #include <chrono>
-#include "NFException.hpp"
+#include "NFException.h"
 
 #define STR_CASE(_Enum, _Str) case _Enum::_Str : return # _Str
 #define MONTH_CASE(_Month) STR_CASE(::Month, _Month)
@@ -621,8 +621,8 @@ public:
   
 protected:
     NFDateTime(const std::chrono::system_clock::time_point& tp) :
-            _time_point(tp),
-            _time(std::chrono::system_clock::to_time_t(tp))
+            _time(std::chrono::system_clock::to_time_t(tp)),
+            _time_point(tp)
     {
         _tm = *localtime(&_time);
         _millisecond = std::chrono::time_point_cast<milliseconds>(tp).time_since_epoch().count() % 1000;
@@ -646,7 +646,7 @@ protected:
             DAY_CASE(Sunday);
 
             default:
-                throw NFException("Day %d is not in valid weekday range ( %d - %d )", day, ::DayOfWeek::Sunday, ::DayOfWeek::Saturday);
+                //throw NFException("Day %d is not in valid weekday range ( %d - %d )", day, ::DayOfWeek::Sunday, ::DayOfWeek::Saturday);
                 break;
         }
     }
@@ -669,7 +669,7 @@ protected:
             MONTH_CASE(December);
 
             default:
-                throw NFException("Month %d is not in valid range ( %d - %d )", month, ::Month::January, ::Month::December);
+                //throw NFException("Month %d is not in valid range ( %d - %d )", month, ::Month::January, ::Month::December);
                 break;
         }
     }

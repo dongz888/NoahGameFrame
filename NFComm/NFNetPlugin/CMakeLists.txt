@@ -36,8 +36,6 @@ if (APPLE)
 
 		target_link_libraries(NFNetPlugin -static-libstdc++)
 	add_definitions(
-		-D_USRDLL
-		-DTHERON_CPP11
 		-D_THREAD_SAFE
 	)
 elseif(UNIX)
@@ -56,8 +54,7 @@ elseif(UNIX)
 		target_link_libraries(NFNetPlugin NFMessageDefine)
 		target_link_libraries(NFNetPlugin -static-libstdc++)
 	add_definitions(
-		-D_USRDLL
-		-DTHERON_CPP11
+		-D_THREAD_SAFE
 	)
 else()
 	target_link_libraries(NFNetPlugin  libprotobuf libevent_core)
