@@ -34,7 +34,7 @@
 #include "NFComm/NFPluginModule/NFIPropertyConfigModule.h"
 #include "NFComm/NFPluginModule/NFIPluginManager.h"
 #include "NFComm/NFMessageDefine/NFProtocolDefine.hpp"
-#include "NFComm/NFPluginModule/NFILevelModule.h"
+//#include "NFComm/NFPluginModule/NFILevelModule.h"
 
 class NFPropertyModule : public NFIPropertyModule
 {
@@ -73,7 +73,7 @@ private:
     NFIPropertyConfigModule* m_pPropertyConfigModule;
     NFIElementModule* m_pElementModule;
     NFIClassModule* m_pClassModule;
-    NFILevelModule* m_pLevelModule;
+    //NFILevelModule* m_pLevelModule;
 };
 
 

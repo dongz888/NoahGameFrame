@@ -41,7 +41,7 @@
 #include "NFComm/NFPluginModule/NFIGameServerNet_ServerModule.h"
 #include "NFComm/NFPluginModule/NFIElementModule.h"
 #include "NFComm/NFPluginModule/NFISceneProcessModule.h"
-#include "NFComm/NFPluginModule/NFIHeroPropertyModule.h"
+//#include "NFComm/NFPluginModule/NFIHeroPropertyModule.h"
 #include "NFComm/NFPluginModule/NFISceneModule.h"
 #include "NFComm/NFPluginModule/NFILogModule.h"
 
@@ -80,7 +80,7 @@ private:
 	NFIElementModule* m_pElementModule;
 	NFIKernelModule* m_pKernelModule;
 	NFINetModule* m_pNetModule;
-	NFIHeroPropertyModule* m_pHeroPropertyModule;
+	//NFIHeroPropertyModule* m_pHeroPropertyModule;
 	NFIGameServerNet_ServerModule* m_pGameServerNet_ServerModule;
 	NFISceneProcessModule* m_pSceneProcessModule;
 	NFINetClientModule* m_pNetClientModule;

@@ -11,7 +11,7 @@
 		<Plugin Name="NFLuaScriptPlugin" />
 		
 		<Plugin Name="NFActorPlugin" />
-		<Plugin Name="NFChatPlugin" />
+		<!--<Plugin Name="NFChatPlugin" />
 		<Plugin Name="NFHeroPlugin" />
 		<Plugin Name="NFItemBagPlugin" />
 		<Plugin Name="NFShopPlugin" />
@@ -21,7 +21,7 @@
 		<Plugin Name="NFMailPlugin" />
 		<Plugin Name="NFHeroPlugin" />
 		<Plugin Name="NFFriendPlugin" />	
-		<Plugin Name="NFAIPlugin" />
+		<Plugin Name="NFAIPlugin" />-->
 	</GameServer>
 
 	<LoginServer>
@@ -71,9 +71,9 @@
 		<Plugin Name="NFActorPlugin" />
 		<Plugin Name="NFNoSqlPlugin" />
 		<Plugin Name="NFSecurityPlugin" />	
-		<Plugin Name="NFClanPlugin" />	
+		<!--<Plugin Name="NFClanPlugin" />	
 		
-		<Plugin Name="NFRankPlugin" />
+		<Plugin Name="NFRankPlugin" />-->
 	</WorldServer>
 	<DBServer>
 		<Plugin Name="NFNetPlugin" />

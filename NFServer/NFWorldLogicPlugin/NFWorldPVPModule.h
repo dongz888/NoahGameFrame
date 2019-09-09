@@ -41,7 +41,7 @@
 #include "NFComm/NFPluginModule/NFINoSqlModule.h"
 #include "NFComm/NFPluginModule/NFIGameServerNet_ServerModule.h"
 #include "NFComm/NFPluginModule/NFICommonRedisModule.h"
-#include "NFComm/NFPluginModule/NFILevelModule.h"
+//#include "NFComm/NFPluginModule/NFILevelModule.h"
 #include "NFComm/NFPluginModule/NFIHeroModule.h"
 #include "NFComm/NFPluginModule/NFIScheduleModule.h"
 #include "NFComm/NFPluginModule/NFIWorldPVPModule.h"

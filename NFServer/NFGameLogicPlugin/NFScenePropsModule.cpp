@@ -39,7 +39,7 @@ bool NFScenePropsModule::AfterInit()
 	m_pGameServerNet_ServerModule = pPluginManager->FindModule<NFIGameServerNet_ServerModule>();
 	m_pElementModule = pPluginManager->FindModule<NFIElementModule>();
 	m_pSceneProcessModule = pPluginManager->FindModule<NFISceneProcessModule>();
-	m_pHeroPropertyModule = pPluginManager->FindModule<NFIHeroPropertyModule>();
+	//m_pHeroPropertyModule = pPluginManager->FindModule<NFIHeroPropertyModule>();
 	m_pSceneModule = pPluginManager->FindModule<NFISceneModule>();
 	m_pLogModule = pPluginManager->FindModule<NFILogModule>();
 	m_pNetClientModule = pPluginManager->FindModule<NFINetClientModule>();
