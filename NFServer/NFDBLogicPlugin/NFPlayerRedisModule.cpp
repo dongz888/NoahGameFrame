@@ -85,22 +85,22 @@ bool NFPlayerRedisModule::LoadPlayerData(const NFGUID & self, NFMsg::PVPPlayerIn
 	std::vector<std::string> fields;
 	std::vector<std::string> values;
 
-	fields.push_back(NFrame::Player::Level());//0
-	fields.push_back(NFrame::Player::Cup());//1
+	//fields.push_back(NFrame::Player::Level());//0
+	//fields.push_back(NFrame::Player::Cup());//1
 	fields.push_back(NFrame::Player::Name());//2
 	fields.push_back(NFrame::Player::Head());//3
 
-	fields.push_back(NFrame::Player::HeroCnfID1());//4
-	fields.push_back(NFrame::Player::HeroCnfID2());//5
-	fields.push_back(NFrame::Player::HeroCnfID3());//6
+	//fields.push_back(NFrame::Player::HeroCnfID1());//4
+	//fields.push_back(NFrame::Player::HeroCnfID2());//5
+	//fields.push_back(NFrame::Player::HeroCnfID3());//6
 
-	fields.push_back(NFrame::Player::HeroStar1());//7
-	fields.push_back(NFrame::Player::HeroStar2());//8
-	fields.push_back(NFrame::Player::HeroStar3());//9
+	//fields.push_back(NFrame::Player::HeroStar1());//7
+	//fields.push_back(NFrame::Player::HeroStar2());//8
+	//fields.push_back(NFrame::Player::HeroStar3());//9
 
-	fields.push_back(NFrame::Player::HeroID1());//10
-	fields.push_back(NFrame::Player::HeroID2());//11
-	fields.push_back(NFrame::Player::HeroID3());//12
+	//fields.push_back(NFrame::Player::HeroID1());//10
+	//fields.push_back(NFrame::Player::HeroID2());//11
+	//fields.push_back(NFrame::Player::HeroID3());//12
 
 	if (GetPropertyList(self, fields, values) 
 		&& fields.size() == values.size())
@@ -416,11 +416,11 @@ bool NFPlayerRedisModule::CreateRole(const std::string & strAccount, const std::
 					xProperty->SetString(strAccount);
 				}
 
-				xProperty = xPropertyManager->GetElement(NFrame::Player::Level());
-				if (xProperty)
+				//xProperty = xPropertyManager->GetElement(NFrame::Player::Level());
+				/*if (xProperty)
 				{
 					xProperty->SetInt(1);
-				}
+				}*/
 
 				xProperty = xPropertyManager->GetElement(NFrame::Player::Name());
 				if (xProperty)

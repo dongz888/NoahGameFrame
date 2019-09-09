@@ -41,7 +41,7 @@ namespace protobuf_NFMsgPreGame_2eproto {
 struct LIBPROTOC_EXPORT TableStruct {
   static const ::google::protobuf::internal::ParseTableField entries[];
   static const ::google::protobuf::internal::AuxillaryParseTableField aux[];
-  static const ::google::protobuf::internal::ParseTable schema[22];
+  static const ::google::protobuf::internal::ParseTable schema[23];
   static const ::google::protobuf::internal::FieldMetadata field_metadata[];
   static const ::google::protobuf::internal::SerializationTable serialization_table[];
   static const ::google::protobuf::uint32 offsets[];
@@ -61,6 +61,9 @@ LIBPROTOC_EXPORT extern AckRoleLiteInfoListDefaultTypeInternal _AckRoleLiteInfoL
 class AckServerList;
 class AckServerListDefaultTypeInternal;
 LIBPROTOC_EXPORT extern AckServerListDefaultTypeInternal _AckServerList_default_instance_;
+class ObjectDataPack;
+class ObjectDataPackDefaultTypeInternal;
+LIBPROTOC_EXPORT extern ObjectDataPackDefaultTypeInternal _ObjectDataPack_default_instance_;
 class ReqAccountLogin;
 class ReqAccountLoginDefaultTypeInternal;
 LIBPROTOC_EXPORT extern ReqAccountLoginDefaultTypeInternal _ReqAccountLogin_default_instance_;
@@ -122,6 +125,7 @@ template<> LIBPROTOC_EXPORT ::NFMsg::AckConnectWorldResult* Arena::CreateMaybeMe
 template<> LIBPROTOC_EXPORT ::NFMsg::AckEventResult* Arena::CreateMaybeMessage<::NFMsg::AckEventResult>(Arena*);
 template<> LIBPROTOC_EXPORT ::NFMsg::AckRoleLiteInfoList* Arena::CreateMaybeMessage<::NFMsg::AckRoleLiteInfoList>(Arena*);
 template<> LIBPROTOC_EXPORT ::NFMsg::AckServerList* Arena::CreateMaybeMessage<::NFMsg::AckServerList>(Arena*);
+template<> LIBPROTOC_EXPORT ::NFMsg::ObjectDataPack* Arena::CreateMaybeMessage<::NFMsg::ObjectDataPack>(Arena*);
 template<> LIBPROTOC_EXPORT ::NFMsg::ReqAccountLogin* Arena::CreateMaybeMessage<::NFMsg::ReqAccountLogin>(Arena*);
 template<> LIBPROTOC_EXPORT ::NFMsg::ReqAccountLogout* Arena::CreateMaybeMessage<::NFMsg::ReqAccountLogout>(Arena*);
 template<> LIBPROTOC_EXPORT ::NFMsg::ReqConnectWorld* Arena::CreateMaybeMessage<::NFMsg::ReqConnectWorld>(Arena*);
@@ -3223,6 +3227,141 @@ class LIBPROTOC_EXPORT RoleDataPack : public ::google::protobuf::Message /* @@pr
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_NFMsgPreGame_2eproto::TableStruct;
 };
+// -------------------------------------------------------------------
+
+class LIBPROTOC_EXPORT ObjectDataPack : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:NFMsg.ObjectDataPack) */ {
+ public:
+  ObjectDataPack();
+  virtual ~ObjectDataPack();
+
+  ObjectDataPack(const ObjectDataPack& from);
+
+  inline ObjectDataPack& operator=(const ObjectDataPack& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  ObjectDataPack(ObjectDataPack&& from) noexcept
+    : ObjectDataPack() {
+    *this = ::std::move(from);
+  }
+
+  inline ObjectDataPack& operator=(ObjectDataPack&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const ObjectDataPack& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const ObjectDataPack* internal_default_instance() {
+    return reinterpret_cast<const ObjectDataPack*>(
+               &_ObjectDataPack_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    22;
+
+  void Swap(ObjectDataPack* other);
+  friend void swap(ObjectDataPack& a, ObjectDataPack& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline ObjectDataPack* New() const final {
+    return CreateMaybeMessage<ObjectDataPack>(NULL);
+  }
+
+  ObjectDataPack* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<ObjectDataPack>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const ObjectDataPack& from);
+  void MergeFrom(const ObjectDataPack& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(ObjectDataPack* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // .NFMsg.Ident id = 1;
+  bool has_id() const;
+  void clear_id();
+  static const int kIdFieldNumber = 1;
+  private:
+  const ::NFMsg::Ident& _internal_id() const;
+  public:
+  const ::NFMsg::Ident& id() const;
+  ::NFMsg::Ident* release_id();
+  ::NFMsg::Ident* mutable_id();
+  void set_allocated_id(::NFMsg::Ident* id);
+
+  // .NFMsg.ObjectPropertyList property = 2;
+  bool has_property() const;
+  void clear_property();
+  static const int kPropertyFieldNumber = 2;
+  private:
+  const ::NFMsg::ObjectPropertyList& _internal_property() const;
+  public:
+  const ::NFMsg::ObjectPropertyList& property() const;
+  ::NFMsg::ObjectPropertyList* release_property();
+  ::NFMsg::ObjectPropertyList* mutable_property();
+  void set_allocated_property(::NFMsg::ObjectPropertyList* property);
+
+  // .NFMsg.ObjectRecordList record = 3;
+  bool has_record() const;
+  void clear_record();
+  static const int kRecordFieldNumber = 3;
+  private:
+  const ::NFMsg::ObjectRecordList& _internal_record() const;
+  public:
+  const ::NFMsg::ObjectRecordList& record() const;
+  ::NFMsg::ObjectRecordList* release_record();
+  ::NFMsg::ObjectRecordList* mutable_record();
+  void set_allocated_record(::NFMsg::ObjectRecordList* record);
+
+  // @@protoc_insertion_point(class_scope:NFMsg.ObjectDataPack)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::NFMsg::Ident* id_;
+  ::NFMsg::ObjectPropertyList* property_;
+  ::NFMsg::ObjectRecordList* record_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::protobuf_NFMsgPreGame_2eproto::TableStruct;
+};
 // ===================================================================
 
 
@@ -5992,9 +6131,159 @@ inline void RoleDataPack::set_allocated_record(::NFMsg::ObjectRecordList* record
   // @@protoc_insertion_point(field_set_allocated:NFMsg.RoleDataPack.record)
 }
 
+// -------------------------------------------------------------------
+
+// ObjectDataPack
+
+// .NFMsg.Ident id = 1;
+inline bool ObjectDataPack::has_id() const {
+  return this != internal_default_instance() && id_ != NULL;
+}
+inline const ::NFMsg::Ident& ObjectDataPack::_internal_id() const {
+  return *id_;
+}
+inline const ::NFMsg::Ident& ObjectDataPack::id() const {
+  const ::NFMsg::Ident* p = id_;
+  // @@protoc_insertion_point(field_get:NFMsg.ObjectDataPack.id)
+  return p != NULL ? *p : *reinterpret_cast<const ::NFMsg::Ident*>(
+      &::NFMsg::_Ident_default_instance_);
+}
+inline ::NFMsg::Ident* ObjectDataPack::release_id() {
+  // @@protoc_insertion_point(field_release:NFMsg.ObjectDataPack.id)
+  
+  ::NFMsg::Ident* temp = id_;
+  id_ = NULL;
+  return temp;
+}
+inline ::NFMsg::Ident* ObjectDataPack::mutable_id() {
+  
+  if (id_ == NULL) {
+    auto* p = CreateMaybeMessage<::NFMsg::Ident>(GetArenaNoVirtual());
+    id_ = p;
+  }
+  // @@protoc_insertion_point(field_mutable:NFMsg.ObjectDataPack.id)
+  return id_;
+}
+inline void ObjectDataPack::set_allocated_id(::NFMsg::Ident* id) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == NULL) {
+    delete reinterpret_cast< ::google::protobuf::MessageLite*>(id_);
+  }
+  if (id) {
+    ::google::protobuf::Arena* submessage_arena = NULL;
+    if (message_arena != submessage_arena) {
+      id = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, id, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  id_ = id;
+  // @@protoc_insertion_point(field_set_allocated:NFMsg.ObjectDataPack.id)
+}
+
+// .NFMsg.ObjectPropertyList property = 2;
+inline bool ObjectDataPack::has_property() const {
+  return this != internal_default_instance() && property_ != NULL;
+}
+inline const ::NFMsg::ObjectPropertyList& ObjectDataPack::_internal_property() const {
+  return *property_;
+}
+inline const ::NFMsg::ObjectPropertyList& ObjectDataPack::property() const {
+  const ::NFMsg::ObjectPropertyList* p = property_;
+  // @@protoc_insertion_point(field_get:NFMsg.ObjectDataPack.property)
+  return p != NULL ? *p : *reinterpret_cast<const ::NFMsg::ObjectPropertyList*>(
+      &::NFMsg::_ObjectPropertyList_default_instance_);
+}
+inline ::NFMsg::ObjectPropertyList* ObjectDataPack::release_property() {
+  // @@protoc_insertion_point(field_release:NFMsg.ObjectDataPack.property)
+  
+  ::NFMsg::ObjectPropertyList* temp = property_;
+  property_ = NULL;
+  return temp;
+}
+inline ::NFMsg::ObjectPropertyList* ObjectDataPack::mutable_property() {
+  
+  if (property_ == NULL) {
+    auto* p = CreateMaybeMessage<::NFMsg::ObjectPropertyList>(GetArenaNoVirtual());
+    property_ = p;
+  }
+  // @@protoc_insertion_point(field_mutable:NFMsg.ObjectDataPack.property)
+  return property_;
+}
+inline void ObjectDataPack::set_allocated_property(::NFMsg::ObjectPropertyList* property) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == NULL) {
+    delete reinterpret_cast< ::google::protobuf::MessageLite*>(property_);
+  }
+  if (property) {
+    ::google::protobuf::Arena* submessage_arena = NULL;
+    if (message_arena != submessage_arena) {
+      property = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, property, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  property_ = property;
+  // @@protoc_insertion_point(field_set_allocated:NFMsg.ObjectDataPack.property)
+}
+
+// .NFMsg.ObjectRecordList record = 3;
+inline bool ObjectDataPack::has_record() const {
+  return this != internal_default_instance() && record_ != NULL;
+}
+inline const ::NFMsg::ObjectRecordList& ObjectDataPack::_internal_record() const {
+  return *record_;
+}
+inline const ::NFMsg::ObjectRecordList& ObjectDataPack::record() const {
+  const ::NFMsg::ObjectRecordList* p = record_;
+  // @@protoc_insertion_point(field_get:NFMsg.ObjectDataPack.record)
+  return p != NULL ? *p : *reinterpret_cast<const ::NFMsg::ObjectRecordList*>(
+      &::NFMsg::_ObjectRecordList_default_instance_);
+}
+inline ::NFMsg::ObjectRecordList* ObjectDataPack::release_record() {
+  // @@protoc_insertion_point(field_release:NFMsg.ObjectDataPack.record)
+  
+  ::NFMsg::ObjectRecordList* temp = record_;
+  record_ = NULL;
+  return temp;
+}
+inline ::NFMsg::ObjectRecordList* ObjectDataPack::mutable_record() {
+  
+  if (record_ == NULL) {
+    auto* p = CreateMaybeMessage<::NFMsg::ObjectRecordList>(GetArenaNoVirtual());
+    record_ = p;
+  }
+  // @@protoc_insertion_point(field_mutable:NFMsg.ObjectDataPack.record)
+  return record_;
+}
+inline void ObjectDataPack::set_allocated_record(::NFMsg::ObjectRecordList* record) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == NULL) {
+    delete reinterpret_cast< ::google::protobuf::MessageLite*>(record_);
+  }
+  if (record) {
+    ::google::protobuf::Arena* submessage_arena = NULL;
+    if (message_arena != submessage_arena) {
+      record = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, record, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  record_ = record;
+  // @@protoc_insertion_point(field_set_allocated:NFMsg.ObjectDataPack.record)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

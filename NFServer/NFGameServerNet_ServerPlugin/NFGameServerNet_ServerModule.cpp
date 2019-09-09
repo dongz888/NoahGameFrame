@@ -456,23 +456,23 @@ void NFGameServerNet_ServerModule::OnClientReqMoveProcess(const NFSOCK nSockInde
 	}
 	else
 	{
-		const NFGUID xAIOwnerID = m_pKernelModule->GetPropertyObject(xMover, NFrame::NPC::AIOwnerID());
-		if (xAIOwnerID == nPlayerID)
-		{
+		//const NFGUID xAIOwnerID = m_pKernelModule->GetPropertyObject(xMover, NFrame::NPC::AIOwnerID());
+		//if (xAIOwnerID == nPlayerID)
+		//{
 
-			NFMsg::Vector3 vPos = xMsg.target_pos(0);
+		//	NFMsg::Vector3 vPos = xMsg.target_pos(0);
 
-			NFVector3 v;
-			v.SetX(vPos.x());
-			v.SetY(vPos.y());
-			v.SetZ(vPos.z());
+		//	NFVector3 v;
+		//	v.SetX(vPos.x());
+		//	v.SetY(vPos.y());
+		//	v.SetZ(vPos.z());
 
-			//m_pKernelModule->SetPropertyVector3(xMover, NFrame::IObject::Position(), v);
-			const int nSceneID = m_pKernelModule->GetPropertyInt32(xMover, NFrame::Player::SceneID());
-			const int nGroupID = m_pKernelModule->GetPropertyInt32(xMover, NFrame::Player::GroupID());
+		//	//m_pKernelModule->SetPropertyVector3(xMover, NFrame::IObject::Position(), v);
+		//	const int nSceneID = m_pKernelModule->GetPropertyInt32(xMover, NFrame::Player::SceneID());
+		//	const int nGroupID = m_pKernelModule->GetPropertyInt32(xMover, NFrame::Player::GroupID());
 
-			this->SendGroupMsgPBToGate(NFMsg::EGMI_ACK_MOVE, xMsg, nSceneID, nGroupID);
-		}
+		//	this->SendGroupMsgPBToGate(NFMsg::EGMI_ACK_MOVE, xMsg, nSceneID, nGroupID);
+		//}
 	}
 
 }
@@ -482,7 +482,7 @@ void NFGameServerNet_ServerModule::OnClientReqMoveImmuneProcess(const NFSOCK nSo
 {
 	CLIENT_MSG_PROCESS(nMsgID, msg, nLen, NFMsg::ReqAckPlayerMove)
 
-	const NFGUID& self = NFINetModule::PBToNF(xMsg.mover());
+	/*const NFGUID& self = NFINetModule::PBToNF(xMsg.mover());
 	const NFGUID& xOwnerID = m_pKernelModule->GetPropertyObject(self, NFrame::NPC::AIOwnerID());
 	if (self == nPlayerID
 		|| xOwnerID == nPlayerID)
@@ -504,7 +504,7 @@ void NFGameServerNet_ServerModule::OnClientReqMoveImmuneProcess(const NFSOCK nSo
 
 
 		this->SendGroupMsgPBToGate(NFMsg::EGMI_ACK_MOVE_IMMUNE, xMsg, nSceneID, nGroupID);
-	}
+	}*/
 }
 
 void NFGameServerNet_ServerModule::OnClientReqStateSyncProcess(const NFSOCK nSockIndex, const int nMsgID,
@@ -551,12 +551,12 @@ void NFGameServerNet_ServerModule::OnClientReqPosSyncProcess(const NFSOCK nSockI
 	const NFGUID& xMover = NFINetModule::PBToNF(xMsg.mover());
 	if (xMover != nPlayerID)
 	{
-		const NFGUID xMasterID = m_pKernelModule->GetPropertyObject(xMover, NFrame::NPC::MasterID());
+		/*const NFGUID xMasterID = m_pKernelModule->GetPropertyObject(xMover, NFrame::NPC::MasterID());
 		if (xMasterID != nPlayerID)
 		{
 			m_pLogModule->LogNormal(NFILogModule::NLL_ERROR_NORMAL, xMover, "Message come from player ", nPlayerID.ToString());
 			return;
-		}
+		}*/
 		return;
 	}
 
@@ -1391,12 +1391,12 @@ void NFGameServerNet_ServerModule::OnClanTransWorld(const NFSOCK nSockIndex, con
 			NFGUID nPlayer;
 			if (NFINetModule::ReceivePB(nMsgID, msg, nLen, strMsg, nPlayer) && !nPlayer.IsNull())
 			{
-				NFGUID xClanID = m_pKernelModule->GetPropertyObject(nPlayer, NFrame::Player::Clan_ID());
+				/*NFGUID xClanID = m_pKernelModule->GetPropertyObject(nPlayer, NFrame::Player::Clan_ID());
 				if (xClanID.IsNull())
 				{
 					int nHashKey = nPlayer.nHead64;
 					m_pNetClientModule->SendBySuitWithOutHead(NF_SERVER_TYPES::NF_ST_WORLD, nHashKey, nMsgID, std::string(msg, nLen));
-				}
+				}*/
 			}
 		}
 			break;

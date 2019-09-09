@@ -48,7 +48,7 @@ bool NFCellModule::Init()
 
 bool NFCellModule::AfterInit()
 {
-	m_pKernelModule->AddClassCallBack(NFrame::NPC::ThisName(), this, &NFCellModule::OnObjectEvent);
+	//m_pKernelModule->AddClassCallBack(NFrame::NPC::ThisName(), this, &NFCellModule::OnObjectEvent);
 	m_pKernelModule->AddClassCallBack(NFrame::Player::ThisName(), this, &NFCellModule::OnObjectEvent);
 
 	//NF SYNC

@@ -59,37 +59,37 @@ int NFScenePropsModule::OnSceneGroupEvent(const NFGUID & self, const int nSceneI
 	const int type = m_pElementModule->GetPropertyInt(std::to_string(nSceneID), NFrame::Scene::Type());
 	if (type == NFMsg::SCENE_HOME)
 	{
-		const int& homeSceneID = m_pKernelModule->GetPropertyInt(self, NFrame::Player::HomeSceneID());
-		const NFGUID& matchID = m_pSceneModule->GetPropertyObject(nSceneID, nGroupID, NFrame::Group::MatchID());
-		if (matchID.IsNull() && homeSceneID == nSceneID)
-		{
-			//now he dosen't fighting with others, must be home, we build up he buildings for him
-			NF_SHARE_PTR<NFIRecord> pRecord = m_pKernelModule->FindRecord(self, NFrame::Player::BuildingList::ThisName());
-			if (pRecord)
-			{
-				for (int i = 0; i < pRecord->GetRows(); ++i)
-				{
-					if (pRecord->IsUsed(i))
-					{
-						const NFGUID& id = pRecord->GetObject(i, NFrame::Player::BuildingList::BuildingGUID);
-						const NFVector3& vector = pRecord->GetVector3(i, NFrame::Player::BuildingList::Pos);
-						const std::string& strCnfID = pRecord->GetString(i, NFrame::Player::BuildingList::BuildingCnfID);
+		//const int& homeSceneID = m_pKernelModule->GetPropertyInt(self, NFrame::Player::HomeSceneID());
+		//const NFGUID& matchID = m_pSceneModule->GetPropertyObject(nSceneID, nGroupID, NFrame::Group::MatchID());
+		//if (matchID.IsNull() && homeSceneID == nSceneID)
+		//{
+		//	//now he dosen't fighting with others, must be home, we build up he buildings for him
+		//	NF_SHARE_PTR<NFIRecord> pRecord = m_pKernelModule->FindRecord(self, NFrame::Player::BuildingList::ThisName());
+		//	if (pRecord)
+		//	{
+		//		for (int i = 0; i < pRecord->GetRows(); ++i)
+		//		{
+		//			if (pRecord->IsUsed(i))
+		//			{
+		//				const NFGUID& id = pRecord->GetObject(i, NFrame::Player::BuildingList::BuildingGUID);
+		//				const NFVector3& vector = pRecord->GetVector3(i, NFrame::Player::BuildingList::Pos);
+		//				const std::string& strCnfID = pRecord->GetString(i, NFrame::Player::BuildingList::BuildingCnfID);
 
-						NFDataList xDataArg;
-						xDataArg.AddString(NFrame::NPC::Position());
-						xDataArg.AddVector3(vector);
-						xDataArg.AddString(NFrame::NPC::MasterID());
-						xDataArg.AddObject(self);
-						xDataArg.AddString(NFrame::NPC::AIOwnerID());
-						xDataArg.AddObject(self);
-						xDataArg.AddString(NFrame::NPC::NPCType());
-						xDataArg.AddInt(NFMsg::ENPCType::ENPCTYPE_TURRET);
+		//				NFDataList xDataArg;
+		//				xDataArg.AddString(NFrame::NPC::Position());
+		//				xDataArg.AddVector3(vector);
+		//				xDataArg.AddString(NFrame::NPC::MasterID());
+		//				xDataArg.AddObject(self);
+		//				xDataArg.AddString(NFrame::NPC::AIOwnerID());
+		//				xDataArg.AddObject(self);
+		//				xDataArg.AddString(NFrame::NPC::NPCType());
+		//				xDataArg.AddInt(NFMsg::ENPCType::ENPCTYPE_TURRET);
 
-						m_pKernelModule->CreateObject(id, nSceneID, nGroupID, NFrame::NPC::ThisName(), strCnfID, xDataArg);
-					}
-				}
-			}
-		}
+		//				m_pKernelModule->CreateObject(id, nSceneID, nGroupID, NFrame::NPC::ThisName(), strCnfID, xDataArg);
+		//			}
+		//		}
+		//	}
+		//}
 	}
 
 	return 0;
@@ -120,7 +120,7 @@ int NFScenePropsModule::OnPlayerClassEvent(const NFGUID & self, const std::strin
 	{
 		m_pKernelModule->AddPropertyCallBack(self, NFrame::Player::Position(), this, &NFScenePropsModule::OnPlayePositionEvent);
 
-		m_pKernelModule->AddRecordCallBack(self, NFrame::Player::BuildingList::ThisName(), this, &NFScenePropsModule::OnObjectBuildingRecordEvent);
+		//m_pKernelModule->AddRecordCallBack(self, NFrame::Player::BuildingList::ThisName(), this, &NFScenePropsModule::OnObjectBuildingRecordEvent);
 
 	}
 	return 0;
@@ -146,7 +146,7 @@ int NFScenePropsModule::OnObjectBuildingRecordEvent(const NFGUID & self, const R
 	if (xEventData.nOpType == RECORD_EVENT_DATA::RecordOptype::Add)
 	{
 		//send message to world to store this building
-		NF_SHARE_PTR<NFIRecord> pRecord = m_pKernelModule->FindRecord(self, NFrame::Player::BuildingList::ThisName());
+		/*NF_SHARE_PTR<NFIRecord> pRecord = m_pKernelModule->FindRecord(self, NFrame::Player::BuildingList::ThisName());
 		if (pRecord)
 		{
 			const int nHomeSceneID = m_pKernelModule->GetPropertyInt(self, NFrame::Player::HomeSceneID());
@@ -197,7 +197,7 @@ int NFScenePropsModule::OnObjectBuildingRecordEvent(const NFGUID & self, const R
 
 				m_pNetClientModule->SendSuitByPB(NF_SERVER_TYPES::NF_ST_WORLD, nHomeSceneID, NFMsg::EGMI_REQ_STORE_BUILDING_LIST, sceneProps);
 			}
-		}
+		}*/
 	}
 
 	return 0;
@@ -207,7 +207,7 @@ void NFScenePropsModule::OnAckBuildingsProcess(const NFSOCK nSockIndex, const in
 {
 	CLIENT_MSG_PROCESS_NO_OBJECT(nMsgID, msg, nLen, NFMsg::AckSceneBuildings);
 
-	for (int i = 0; i < xMsg.buildings_size(); ++i)
+	/*for (int i = 0; i < xMsg.buildings_size(); ++i)
 	{
 		const NFMsg::ReqAddSceneBuilding& xSceneBuilding = xMsg.buildings(i);
 		
@@ -229,5 +229,5 @@ void NFScenePropsModule::OnAckBuildingsProcess(const NFSOCK nSockIndex, const in
 			arg.AddObject(masterID);
 			m_pKernelModule->CreateObject(guid, sceneID, 1, NFrame::NPC::ThisName(),configID, arg);
 		}
-	}
+	}*/
 }

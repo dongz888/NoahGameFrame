@@ -57,29 +57,9 @@ public:
 
 	virtual bool CalculatePropertyValue(const NFGUID& self, const std::string& strPropertyName, const NFPropertyGroup eGroupType, const int64_t nValue, const bool bPositive = false);
 
-    virtual bool FullHPMP(const NFGUID& self);
-    virtual bool AddHP(const NFGUID& self, const int nValue);
-    virtual bool ConsumeHP(const NFGUID& self, const int nValue);
-	virtual bool EnoughHP(const NFGUID& self, const int nValue);
-	virtual bool DamageHP(const NFGUID& self, const int nValue);
-
-    virtual bool AddMP(const NFGUID& self, const int nValue);
-    virtual bool ConsumeMP(const NFGUID& self, const int nValue);
-	virtual bool EnoughMP(const NFGUID& self, const int nValue);
-	virtual bool DamageMP(const NFGUID& self, const int nValue);
-
-    virtual bool FullSP(const NFGUID& self);
-    virtual bool AddSP(const NFGUID& self, const int nValue);
-    virtual bool ConsumeSP(const NFGUID& self, const int nValue);
-    virtual bool EnoughSP(const NFGUID& self, const int nValue);
-
     virtual bool AddGold(const NFGUID& self, const int64_t nValue);
     virtual bool ConsumeGold(const NFGUID& self, const int64_t nValue);
     virtual bool EnoughGold(const NFGUID& self, const int64_t nValue);
-
-    virtual bool AddDiamond(const NFGUID& self, const int nValue);
-    virtual bool ConsumeDiamond(const NFGUID& self, const int nValue);
-    virtual bool EnoughDiamond(const NFGUID& self, const int nValue);
 
 protected:
     int OnObjectClassEvent(const NFGUID& self, const std::string& strClassName, const CLASS_OBJECT_EVENT eClassEvent, const NFDataList& var);

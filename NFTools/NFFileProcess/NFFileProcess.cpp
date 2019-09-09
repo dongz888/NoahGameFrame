@@ -148,7 +148,7 @@ bool NFFileProcess::LoadIniData(MiniExcelReader::Sheet & sheet, ClassData * pCla
 		MiniExcelReader::Cell* pIDCell = sheet.getCell(r, dim.firstCol);
 		if (pIDCell && !pIDCell->value.empty())
 		{
-			NFlassElement::ElementData* pIniObject = new NFlassElement::ElementData();
+			NFClassElement::ElementData* pIniObject = new NFClassElement::ElementData();
 			pClassData->xIniData.xElementList[pIDCell->value] = pIniObject;
 
 			for (std::map<std::string, int>::iterator itProperty = PropertyIndex.begin(); itProperty != PropertyIndex.end(); ++itProperty)
@@ -205,7 +205,7 @@ bool NFFileProcess::LoadDataAndProcessProperty(MiniExcelReader::Sheet & sheet, C
 		int nCol = itProperty->second;
 
 		////////////
-		NFlassProperty* pClassProperty = new NFlassProperty();
+		NFClassProperty* pClassProperty = new NFClassProperty();
 		pClassData->xStructData.xPropertyList[strPropertyName] = pClassProperty;
 
 		////////////
@@ -308,7 +308,7 @@ bool NFFileProcess::LoadDataAndProcessRecord(MiniExcelReader::Sheet & sheet, Cla
 			
 			////////////
 
-			NFlassRecord* pClassRecord = new NFlassRecord();
+			NFClassRecord* pClassRecord = new NFClassRecord();
 			pClassData->xStructData.xRecordList[strRecordName] = pClassRecord;
 			////////////
 
@@ -328,7 +328,7 @@ bool NFFileProcess::LoadDataAndProcessRecord(MiniExcelReader::Sheet & sheet, Cla
 				MiniExcelReader::Cell* pCellColType = sheet.getCell(r + 1, c);
 				MiniExcelReader::Cell* pCellColDesc = sheet.getCell(r + 2, c);
 
-				NFlassRecord::RecordColDesc* pRecordColDesc = new NFlassRecord::RecordColDesc();
+				NFClassRecord::RecordColDesc* pRecordColDesc = new NFClassRecord::RecordColDesc();
 				pRecordColDesc->index = c - 1;
 				pRecordColDesc->type = pCellColType->value;
 				if (pCellColDesc)
@@ -404,11 +404,11 @@ bool NFFileProcess::SaveForCPP()
 			//add base class properties
 			strPropertyInfo += "\t\t// IObject\n";
 			
-			for (std::map<std::string, NFlassProperty*>::iterator itProperty = pBaseObject->xStructData.xPropertyList.begin();
+			for (std::map<std::string, NFClassProperty*>::iterator itProperty = pBaseObject->xStructData.xPropertyList.begin();
 					itProperty != pBaseObject->xStructData.xPropertyList.end(); ++itProperty)
 			{
 				const std::string& strPropertyName = itProperty->first;
-				NFlassProperty* pClassProperty = itProperty->second;
+				NFClassProperty* pClassProperty = itProperty->second;
 
 				strPropertyInfo += "\t\tstatic const std::string& " + strPropertyName + "(){ static std::string x = \"" + strPropertyName + "\"; return x; };";
 				strPropertyInfo += "// " + pClassProperty->descList["Type"] + "\n";
@@ -418,11 +418,11 @@ bool NFFileProcess::SaveForCPP()
 		}
 
 		strPropertyInfo += "\t\t// Property\n";
-		for (std::map<std::string, NFlassProperty*>::iterator itProperty = pClassDta->xStructData.xPropertyList.begin();
+		for (std::map<std::string, NFClassProperty*>::iterator itProperty = pClassDta->xStructData.xPropertyList.begin();
 			itProperty != pClassDta->xStructData.xPropertyList.end(); ++itProperty)
 		{
 			const std::string& strPropertyName = itProperty->first;
-			NFlassProperty* pClassProperty = itProperty->second;
+			NFClassProperty* pClassProperty = itProperty->second;
 
 			strPropertyInfo += "\t\tstatic const std::string& " + strPropertyName + "(){ static std::string x = \"" + strPropertyName + "\"; return x; };";
 			strPropertyInfo += "// " + pClassProperty->descList["Type"] + "\n";
@@ -436,11 +436,11 @@ bool NFFileProcess::SaveForCPP()
 		std::string strRecordInfo = "";
 		strRecordInfo += "\t\t// Record\n";
 
-		for (std::map<std::string, NFlassRecord*>::iterator itRecord = pClassDta->xStructData.xRecordList.begin();
+		for (std::map<std::string, NFClassRecord*>::iterator itRecord = pClassDta->xStructData.xRecordList.begin();
 			itRecord != pClassDta->xStructData.xRecordList.end(); ++itRecord)
 		{
 			const std::string& strRecordName = itRecord->first;
-			NFlassRecord* pClassRecord = itRecord->second;
+			NFClassRecord* pClassRecord = itRecord->second;
 
 			std::cout << "save for cpp ---> " << strClassName  << "::" << strRecordName << std::endl;
 
@@ -453,11 +453,11 @@ bool NFFileProcess::SaveForCPP()
 			//col
 			for (int i = 0; i < pClassRecord->colList.size(); ++i)
 			{
-				for (std::map<std::string, NFlassRecord::RecordColDesc*>::iterator itCol = pClassRecord->colList.begin();
+				for (std::map<std::string, NFClassRecord::RecordColDesc*>::iterator itCol = pClassRecord->colList.begin();
 					itCol != pClassRecord->colList.end(); ++itCol)
 				{
 					const std::string& colTag = itCol->first;
-					NFlassRecord::RecordColDesc* pRecordColDesc = itCol->second;
+					NFClassRecord::RecordColDesc* pRecordColDesc = itCol->second;
 
 					if (pRecordColDesc->index == i)
 					{
@@ -535,11 +535,11 @@ bool NFFileProcess::SaveForCS()
 			//add base class properties
 			strPropertyInfo += "\t\t// IObject\n";
 
-			for (std::map<std::string, NFlassProperty*>::iterator itProperty = pBaseObject->xStructData.xPropertyList.begin();
+			for (std::map<std::string, NFClassProperty*>::iterator itProperty = pBaseObject->xStructData.xPropertyList.begin();
 				itProperty != pBaseObject->xStructData.xPropertyList.end(); ++itProperty)
 			{
 				const std::string& strPropertyName = itProperty->first;
-				NFlassProperty* pClassProperty = itProperty->second;
+				NFClassProperty* pClassProperty = itProperty->second;
 
 				strPropertyInfo += "\t\tpublic static readonly String " + strPropertyName + " = \"" + strPropertyName + "\";";
 				strPropertyInfo += "// " + pClassProperty->descList["Type"] + "\n";
@@ -548,11 +548,11 @@ bool NFFileProcess::SaveForCS()
 
 
 		strPropertyInfo += "\t\t// Property\n";
-		for (std::map<std::string, NFlassProperty*>::iterator itProperty = pClassDta->xStructData.xPropertyList.begin();
+		for (std::map<std::string, NFClassProperty*>::iterator itProperty = pClassDta->xStructData.xPropertyList.begin();
 			itProperty != pClassDta->xStructData.xPropertyList.end(); ++itProperty)
 		{
 			const std::string& strPropertyName = itProperty->first;
-			NFlassProperty* pClassProperty = itProperty->second;
+			NFClassProperty* pClassProperty = itProperty->second;
 
 			strPropertyInfo += "\t\tpublic static readonly String " + strPropertyName + " = \"" + strPropertyName + "\";";
 			strPropertyInfo += "// " + pClassProperty->descList["Type"] + "\n";
@@ -564,11 +564,11 @@ bool NFFileProcess::SaveForCS()
 		std::string strRecordInfo = "";
 		strRecordInfo += "\t\t// Record\n";
 
-		for (std::map<std::string, NFlassRecord*>::iterator itRecord = pClassDta->xStructData.xRecordList.begin();
+		for (std::map<std::string, NFClassRecord*>::iterator itRecord = pClassDta->xStructData.xRecordList.begin();
 			itRecord != pClassDta->xStructData.xRecordList.end(); ++itRecord)
 		{
 			const std::string& strRecordName = itRecord->first;
-			NFlassRecord* pClassRecord = itRecord->second;
+			NFClassRecord* pClassRecord = itRecord->second;
 
 			std::cout << "save for cs ---> " << strClassName << "::" << strRecordName << std::endl;
 
@@ -579,11 +579,11 @@ bool NFFileProcess::SaveForCS()
 			//col
 			for (int i = 0; i < pClassRecord->colList.size(); ++i)
 			{
-				for (std::map<std::string, NFlassRecord::RecordColDesc*>::iterator itCol = pClassRecord->colList.begin();
+				for (std::map<std::string, NFClassRecord::RecordColDesc*>::iterator itCol = pClassRecord->colList.begin();
 					itCol != pClassRecord->colList.end(); ++itCol)
 				{
 					const std::string& colTag = itCol->first;
-					NFlassRecord::RecordColDesc* pRecordColDesc = itCol->second;
+					NFClassRecord::RecordColDesc* pRecordColDesc = itCol->second;
 
 					if (pRecordColDesc->index == i)
 					{
@@ -649,11 +649,11 @@ bool NFFileProcess::SaveForJAVA()
 			//add base class properties
 			strPropertyInfo += "\t\t// IObject\n";
 
-			for (std::map<std::string, NFlassProperty*>::iterator itProperty = pBaseObject->xStructData.xPropertyList.begin();
+			for (std::map<std::string, NFClassProperty*>::iterator itProperty = pBaseObject->xStructData.xPropertyList.begin();
 				itProperty != pBaseObject->xStructData.xPropertyList.end(); ++itProperty)
 			{
 				const std::string& strPropertyName = itProperty->first;
-				NFlassProperty* pClassProperty = itProperty->second;
+				NFClassProperty* pClassProperty = itProperty->second;
 
 				strPropertyInfo += "\t\tpublic static final String " + strPropertyName + " = \"" + strPropertyName + "\";";
 				strPropertyInfo += "// " + pClassProperty->descList["Type"] + "\n";
@@ -661,11 +661,11 @@ bool NFFileProcess::SaveForJAVA()
 		}
 
 		strPropertyInfo += "\t\t// Property\n";
-		for (std::map<std::string, NFlassProperty*>::iterator itProperty = pClassDta->xStructData.xPropertyList.begin();
+		for (std::map<std::string, NFClassProperty*>::iterator itProperty = pClassDta->xStructData.xPropertyList.begin();
 			itProperty != pClassDta->xStructData.xPropertyList.end(); ++itProperty)
 		{
 			const std::string& strPropertyName = itProperty->first;
-			NFlassProperty* pClassProperty = itProperty->second;
+			NFClassProperty* pClassProperty = itProperty->second;
 
 			strPropertyInfo += "\t\tpublic static final String " + strPropertyName + " = \"" + strPropertyName + "\";";
 			strPropertyInfo += "// " + pClassProperty->descList["Type"] + "\n";
@@ -677,11 +677,11 @@ bool NFFileProcess::SaveForJAVA()
 		std::string strRecordInfo = "";
 		strRecordInfo += "\t\t// Record\n";
 
-		for (std::map<std::string, NFlassRecord*>::iterator itRecord = pClassDta->xStructData.xRecordList.begin();
+		for (std::map<std::string, NFClassRecord*>::iterator itRecord = pClassDta->xStructData.xRecordList.begin();
 			itRecord != pClassDta->xStructData.xRecordList.end(); ++itRecord)
 		{
 			const std::string& strRecordName = itRecord->first;
-			NFlassRecord* pClassRecord = itRecord->second;
+			NFClassRecord* pClassRecord = itRecord->second;
 
 			std::cout << "save for java ---> " << strClassName << "::" << strRecordName << std::endl;
 
@@ -692,11 +692,11 @@ bool NFFileProcess::SaveForJAVA()
 			//col
 			for (int i = 0; i < pClassRecord->colList.size(); ++i)
 			{
-				for (std::map<std::string, NFlassRecord::RecordColDesc*>::iterator itCol = pClassRecord->colList.begin();
+				for (std::map<std::string, NFClassRecord::RecordColDesc*>::iterator itCol = pClassRecord->colList.begin();
 					itCol != pClassRecord->colList.end(); ++itCol)
 				{
 					const std::string& colTag = itCol->first;
-					NFlassRecord::RecordColDesc* pRecordColDesc = itCol->second;
+					NFClassRecord::RecordColDesc* pRecordColDesc = itCol->second;
 
 					if (pRecordColDesc->index == i)
 					{
@@ -730,7 +730,6 @@ bool NFFileProcess::SaveForPB()
 
 	return false;
 }
-
 bool NFFileProcess::SaveForSQL()
 {
 	//1 class.sql
@@ -745,29 +744,23 @@ bool NFFileProcess::SaveForSQL()
 		ClassData* pClassDta = it->second;
 		if (strClassName == "IObject")
 		{
-			continue;
+			//continue;
 		}
 
+		strElementData += "################################################################################\n";
 		strElementData += "CREATE TABLE IF NOT EXISTS " + pClassDta->xStructData.strClassName + "  (";
 		strElementData += " `ID` varchar(128) NOT NULL,";
 		strElementData += " PRIMARY KEY (`ID`)";
 		strElementData += " ) ENGINE=InnoDB DEFAULT CHARSET=utf8; \n";
-	}
 
-
-	//2 fields
-	//ALTER TABLE `Buff` ADD `EffectType` bigint(11) DEFAULT '0' COMMENT '影响属性类型(效果类型)  生命，法力(可组合,叠加)';
-	// 2.1) property
-	for (std::map<std::string, ClassData*>::iterator it = mxClassData.begin(); it != mxClassData.end(); ++it)
-	{
-		const std::string& strClassName = it->first;
-		ClassData* pClassDta = it->second;
-
-		for (std::map<std::string, NFlassProperty*>::iterator itProperty = pClassDta->xStructData.xPropertyList.begin();
+		//2 fields
+		//ALTER TABLE `Buff` ADD `EffectType` bigint(11) DEFAULT '0' COMMENT '影响属性类型(效果类型)  生命，法力(可组合,叠加)';
+		// 2.1) property
+		for (std::map<std::string, NFClassProperty*>::iterator itProperty = pClassDta->xStructData.xPropertyList.begin();
 			itProperty != pClassDta->xStructData.xPropertyList.end(); ++itProperty)
 		{
 			const std::string& strPropertyName = itProperty->first;
-			NFlassProperty* xPropertyData = itProperty->second;
+			NFClassProperty* xPropertyData = itProperty->second;
 
 			std::string strType;
 			std::string strSave;
@@ -778,65 +771,70 @@ bool NFFileProcess::SaveForSQL()
 			{
 				const std::string& strKey = itDesc->first;
 				const std::string& strValue = itDesc->second;
-				if (strKey=="Type")
+				if (strKey == "Type")
 				{
 					strType = strValue;
 				}
-				else if (strKey=="Save")
+				else if (strKey == "Save")
 				{
 					strSave = strValue;
-				} 
-				else if (strKey=="Cache")
+				}
+				else if (strKey == "Cache")
 				{
 					strCache = strValue;
 				}
-				else if (strKey=="Desc")
+				else if (strKey == "Desc")
 				{
 					strDesc = strValue;
 				}
 			}
 
-			if (strSave=="1" || strCache=="1")
+			if (strSave == "1" || strCache == "1")
 			{
-				std::string strAlter = "\nALTER TABLE `" + strClassName + "` ADD `" + strPropertyName + "`";
+				std::string strAlter = "ALTER TABLE `" + strClassName + "` ADD `" + strPropertyName + "`";
 				//ALTER TABLE `Buff` ADD `EffectType` bigint(11) DEFAULT '0' COMMENT '影响属性类型(效果类型)  生命，法力(可组合,叠加)';
-				if (strType=="int")
+				if (strType == "int")
 				{
 					strAlter += " bigint(11) DEFAULT '0'";
 				}
-				else if (strType=="string")
+				else if (strType == "string")
 				{
-					strAlter += " text COLLATE utf8mb4_unicode_ci  DEFAULT ''";
+					strAlter += " text ";
 				}
-				else if (strType=="float")
+				else if (strType == "float")
 				{
-					strAlter += " double DEFAULT '0.0'";
+					strAlter += " double(11,2) DEFAULT '0.0'";
 				}
-				else if (strType=="object")
-				{
-					strAlter += " varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT ''";
-				}
-				else if (strType=="vector2")
+				else if (strType == "object")
 				{
 					strAlter += " varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT ''";
 				}
-				else if (strType=="vector3")
+				else if (strType == "vector2")
 				{
 					strAlter += " varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT ''";
 				}
-
-				strAlter += " COMMENT '" + strDesc + "';";
+				else if (strType == "vector3")
+				{
+					strAlter += " varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT ''";
+				}
+				/*else if (strType == "double")
+				{
+				strAlter += " decimal DEFAULT '0.0'";
+				}*/
+				strAlter += " COMMENT '" + strDesc + "'; \n";
 
 				strElementData += strAlter;
 			}
 		}
+		//20190514 xuhan 添加创建时间
+		strElementData += "ALTER TABLE `" + strClassName + "` ADD `CreateTime` datetime NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间' ; \n";
 
 		// 2.2) record
-		for (std::map<std::string, NFlassRecord*>::iterator itRecord = pClassDta->xStructData.xRecordList.begin();
+		for (std::map<std::string, NFClassRecord*>::iterator itRecord = pClassDta->xStructData.xRecordList.begin();
 			itRecord != pClassDta->xStructData.xRecordList.end(); ++itRecord)
 		{
 			const std::string& strRecordName = itRecord->first;
-			NFlassRecord* xRecordData = itRecord->second;
+			NFClassRecord* xRecordData = itRecord->second;
 
 			std::string strType;
 			std::string strSave;
@@ -847,39 +845,246 @@ bool NFFileProcess::SaveForSQL()
 			{
 				const std::string& strKey = itDesc->first;
 				const std::string& strValue = itDesc->second;
-				if (strKey=="Type")
+				if (strKey == "Type")
 				{
 					strType = strValue;
 				}
-				else if (strKey=="Save")
+				else if (strKey == "Save")
 				{
 					strSave = strValue;
-				} 
-				else if (strKey=="Cache")
+				}
+				else if (strKey == "Cache")
 				{
 					strCache = strValue;
 				}
-				else if (strKey=="Desc")
+				else if (strKey == "Desc")
 				{
 					strDesc = strValue;
 				}
 			}
 
-			if (strSave=="1" || strCache=="1")
+			if (strSave == "1" || strCache == "1")
 			{
-				std::string strAlter = "\nALTER TABLE `" + strClassName + "` ADD `" + strRecordName + "`";
-				strAlter += " text COLLATE utf8mb4_unicode_ci  DEFAULT ''";
-				strAlter += " COMMENT '" + strDesc + "';";
+				const std::string& strTableName = strClassName + "_" + strRecordName;
+				strElementData += "CREATE TABLE IF NOT EXISTS " + strTableName + "  (";
+				strElementData += " `ID` varchar(128) NOT NULL,";
+				strElementData += " PRIMARY KEY (`ID`)";
+				strElementData += " ) ENGINE=InnoDB DEFAULT CHARSET=utf8; \n";
+
+				std::string strAlter = "ALTER TABLE `" + strTableName + "` ADD `" + strClassName + "ID" + "`";
+				strAlter += " text ";
+				strAlter += " COMMENT '" + strDesc + "'; \n";
 
 				strElementData += strAlter;
+
+				strAlter = "ALTER TABLE `" + strTableName + "` ADD `" + "Row" + "`";
+				strAlter += " INT DEFAULT '0'";
+				strAlter += " COMMENT '" + strDesc + "'; \n";
+
+				strElementData += strAlter;
+
+				for (std::map<std::string, NFClassRecord::RecordColDesc*>::iterator itCol = xRecordData->colList.begin();
+					itCol != xRecordData->colList.end(); ++itCol)
+				{
+					const std::string& strTag = itCol->first;
+					const std::string& strType = itCol->second->type;
+
+					strAlter = "ALTER TABLE `" + strTableName + "` ADD `" + strTag + "`";
+					//ALTER TABLE `Buff` ADD `EffectType` bigint(11) DEFAULT '0' COMMENT '影响属性类型(效果类型)  生命，法力(可组合,叠加)';
+					if (strType == "int")
+					{
+						strAlter += " bigint(11) DEFAULT '0'";
+					}
+					else if (strType == "string")
+					{
+						strAlter += " text ";
+					}
+					else if (strType == "float")
+					{
+						strAlter += " double(11,2) DEFAULT '0.0'";
+					}
+					else if (strType == "object")
+					{
+						strAlter += " varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT ''";
+					}
+					else if (strType == "vector2")
+					{
+						strAlter += " varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT ''";
+					}
+					else if (strType == "vector3")
+					{
+						strAlter += " varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT ''";
+					}
+					/*else if (strType == "double")
+					{
+					strAlter += " decimal DEFAULT '0.0'";
+					}*/
+					strAlter += " COMMENT '" + strDesc + "'; \n";
+
+					strElementData += strAlter;
+				}
+				//20190514 xuhan 添加创建时间
+				strElementData += "ALTER TABLE `" + strTableName + "` ADD `CreateTime` datetime NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间' ; \n";
 			}
 		}
 	}
-	
+
+
+
 	fwrite(strElementData.c_str(), strElementData.length(), 1, iniWriter);
 
-	return true;
+	return false;
 }
+
+//bool NFFileProcess::SaveForSQL()
+//{
+//	//1 class.sql
+//	std::string strFileName = strXMLStructPath + "NFrame.sql";
+//
+//	FILE* iniWriter = fopen(strFileName.c_str(), "w");
+//
+//	std::string strElementData;
+//	for (std::map<std::string, ClassData*>::iterator it = mxClassData.begin(); it != mxClassData.end(); ++it)
+//	{
+//		const std::string& strClassName = it->first;
+//		ClassData* pClassDta = it->second;
+//		if (strClassName == "IObject")
+//		{
+//			continue;
+//		}
+//
+//		strElementData += "CREATE TABLE IF NOT EXISTS " + pClassDta->xStructData.strClassName + "  (";
+//		strElementData += " `ID` varchar(128) NOT NULL,";
+//		strElementData += " PRIMARY KEY (`ID`)";
+//		strElementData += " ) ENGINE=InnoDB DEFAULT CHARSET=utf8; \n";
+//	}
+//
+//
+//	//2 fields
+//	//ALTER TABLE `Buff` ADD `EffectType` bigint(11) DEFAULT '0' COMMENT '影响属性类型(效果类型)  生命，法力(可组合,叠加)';
+//	// 2.1) property
+//	for (std::map<std::string, ClassData*>::iterator it = mxClassData.begin(); it != mxClassData.end(); ++it)
+//	{
+//		const std::string& strClassName = it->first;
+//		ClassData* pClassDta = it->second;
+//
+//		for (std::map<std::string, NFClassProperty*>::iterator itProperty = pClassDta->xStructData.xPropertyList.begin();
+//			itProperty != pClassDta->xStructData.xPropertyList.end(); ++itProperty)
+//		{
+//			const std::string& strPropertyName = itProperty->first;
+//			NFClassProperty* xPropertyData = itProperty->second;
+//
+//			std::string strType;
+//			std::string strSave;
+//			std::string strCache;
+//			std::string strDesc;
+//			for (std::map<std::string, std::string>::iterator itDesc = xPropertyData->descList.begin();
+//				itDesc != xPropertyData->descList.end(); ++itDesc)
+//			{
+//				const std::string& strKey = itDesc->first;
+//				const std::string& strValue = itDesc->second;
+//				if (strKey=="Type")
+//				{
+//					strType = strValue;
+//				}
+//				else if (strKey=="Save")
+//				{
+//					strSave = strValue;
+//				} 
+//				else if (strKey=="Cache")
+//				{
+//					strCache = strValue;
+//				}
+//				else if (strKey=="Desc")
+//				{
+//					strDesc = strValue;
+//				}
+//			}
+//
+//			if (strSave=="1" || strCache=="1")
+//			{
+//				std::string strAlter = "\nALTER TABLE `" + strClassName + "` ADD `" + strPropertyName + "`";
+//				//ALTER TABLE `Buff` ADD `EffectType` bigint(11) DEFAULT '0' COMMENT '影响属性类型(效果类型)  生命，法力(可组合,叠加)';
+//				if (strType=="int")
+//				{
+//					strAlter += " bigint(11) DEFAULT '0'";
+//				}
+//				else if (strType=="string")
+//				{
+//					strAlter += " text COLLATE utf8mb4_unicode_ci  DEFAULT ''";
+//				}
+//				else if (strType=="float")
+//				{
+//					strAlter += " double DEFAULT '0.0'";
+//				}
+//				else if (strType=="object")
+//				{
+//					strAlter += " varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT ''";
+//				}
+//				else if (strType=="vector2")
+//				{
+//					strAlter += " varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT ''";
+//				}
+//				else if (strType=="vector3")
+//				{
+//					strAlter += " varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT ''";
+//				}
+//
+//				strAlter += " COMMENT '" + strDesc + "';";
+//
+//				strElementData += strAlter;
+//			}
+//		}
+//	
+//		// 2.2) record
+//		for (std::map<std::string, NFClassRecord*>::iterator itRecord = pClassDta->xStructData.xRecordList.begin();
+//			itRecord != pClassDta->xStructData.xRecordList.end(); ++itRecord)
+//		{
+//			const std::string& strRecordName = itRecord->first;
+//			NFClassRecord* xRecordData = itRecord->second;
+//
+//			std::string strType;
+//			std::string strSave;
+//			std::string strCache;
+//			std::string strDesc;
+//			for (std::map<std::string, std::string>::iterator itDesc = xRecordData->descList.begin();
+//				itDesc != xRecordData->descList.end(); ++itDesc)
+//			{
+//				const std::string& strKey = itDesc->first;
+//				const std::string& strValue = itDesc->second;
+//				if (strKey=="Type")
+//				{
+//					strType = strValue;
+//				}
+//				else if (strKey=="Save")
+//				{
+//					strSave = strValue;
+//				} 
+//				else if (strKey=="Cache")
+//				{
+//					strCache = strValue;
+//				}
+//				else if (strKey=="Desc")
+//				{
+//					strDesc = strValue;
+//				}
+//			}
+//
+//			if (strSave=="1" || strCache=="1")
+//			{
+//				std::string strAlter = "\nALTER TABLE `" + strClassName + "` ADD `" + strRecordName + "`";
+//				strAlter += " text COLLATE utf8mb4_unicode_ci  DEFAULT ''";
+//				strAlter += " COMMENT '" + strDesc + "';";
+//
+//				strElementData += strAlter;
+//			}
+//		}
+//	}
+//	
+//	fwrite(strElementData.c_str(), strElementData.length(), 1, iniWriter);
+//
+//	return true;
+//}
 
 bool NFFileProcess::SaveForStruct()
 {
@@ -900,11 +1105,11 @@ bool NFFileProcess::SaveForStruct()
 		std::string strFilePrpertyBegin = "\t<Propertys>\n";
 		fwrite(strFilePrpertyBegin.c_str(), strFilePrpertyBegin.length(), 1, structWriter);
 
-		for (std::map<std::string, NFlassProperty*>::iterator itProperty = pClassDta->xStructData.xPropertyList.begin();
+		for (std::map<std::string, NFClassProperty*>::iterator itProperty = pClassDta->xStructData.xPropertyList.begin();
 			itProperty != pClassDta->xStructData.xPropertyList.end(); ++itProperty)
 		{
 			const std::string& strPropertyName = itProperty->first;
-			NFlassProperty* xPropertyData = itProperty->second;
+			NFClassProperty* xPropertyData = itProperty->second;
 
 			std::string strElementData = "\t\t<Property Id=\"" + strPropertyName + "\" ";
 			for (std::map<std::string, std::string>::iterator itDesc = xPropertyData->descList.begin();
@@ -925,11 +1130,11 @@ bool NFFileProcess::SaveForStruct()
 		std::string strFileRecordBegin = "\t<Records>\n";
 		fwrite(strFileRecordBegin.c_str(), strFileRecordBegin.length(), 1, structWriter);
 
-		for (std::map<std::string, NFlassRecord*>::iterator itRecord = pClassDta->xStructData.xRecordList.begin();
+		for (std::map<std::string, NFClassRecord*>::iterator itRecord = pClassDta->xStructData.xRecordList.begin();
 			itRecord != pClassDta->xStructData.xRecordList.end(); ++itRecord)
 		{
 			const std::string& strRecordName = itRecord->first;
-			NFlassRecord* xRecordData = itRecord->second;
+			NFClassRecord* xRecordData = itRecord->second;
 
 			//for desc
 			std::string strElementData = "\t\t<Record Id=\"" + strRecordName + "\" ";
@@ -945,11 +1150,11 @@ bool NFFileProcess::SaveForStruct()
 			//for col list
 			for (int i = 0; i < xRecordData->colList.size(); ++i)
 			{
-				for (std::map<std::string, NFlassRecord::RecordColDesc*>::iterator itDesc = xRecordData->colList.begin();
+				for (std::map<std::string, NFClassRecord::RecordColDesc*>::iterator itDesc = xRecordData->colList.begin();
 					itDesc != xRecordData->colList.end(); ++itDesc)
 				{
 					const std::string& strKey = itDesc->first;
-					const NFlassRecord::RecordColDesc* pRecordColDesc = itDesc->second;
+					const NFClassRecord::RecordColDesc* pRecordColDesc = itDesc->second;
 
 					if (pRecordColDesc->index == i)
 					{
@@ -999,12 +1204,12 @@ bool NFFileProcess::SaveForIni()
 		std::string strFileHead = "<?xml version='1.0' encoding='utf-8' ?>\n<XML>\n";
 		fwrite(strFileHead.c_str(), strFileHead.length(), 1, iniWriter);
 
-		for (std::map<std::string, NFlassElement::ElementData*>::iterator itElement = pClassDta->xIniData.xElementList.begin();
+		for (std::map<std::string, NFClassElement::ElementData*>::iterator itElement = pClassDta->xIniData.xElementList.begin();
 			itElement != pClassDta->xIniData.xElementList.end(); ++itElement)
 		{
 
 			const std::string& strElementName = itElement->first;
-			NFlassElement::ElementData* pIniData = itElement->second;
+			NFClassElement::ElementData* pIniData = itElement->second;
 
 			std::string strElementData = "\t<Object Id=\"" + strElementName + "\" ";
 			for (std::map<std::string, std::string>::iterator itProperty = pIniData->xPropertyList.begin();

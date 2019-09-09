@@ -23,48 +23,20 @@
    limitations under the License.
 */
 
-#include "NFClanRedisModule.h"
-#include "NFComm/NFMessageDefine/NFProtocolDefine.hpp"
-#include "NFComm/NFPluginModule/NFINetModule.h"
+#ifndef NFI_CREATE_OBJECT_MODULE_H
+#define NFI_CREATE_OBJECT_MODULE_H
 
-NFClanRedisModule::NFClanRedisModule(NFIPluginManager * p)
+#include <iostream>
+#include "NFIModule.h"
+
+class NFICreateObjectModule
+    : public NFIModule
 {
-    pPluginManager = p;
-}
 
-bool NFClanRedisModule::Init()
-{
-    return true;
-}
+public:
+	virtual void LoadObjectData(const NFGUID & self, const std::string & strClassName) = 0;
+	virtual void AttachData(const NFGUID& self) = 0;
+	virtual void SaveData(const NFGUID& self) = 0;
+};
 
-bool NFClanRedisModule::Shut()
-{
-    return true;
-}
-
-bool NFClanRedisModule::Execute()
-{
-    return true;
-}
-
-bool NFClanRedisModule::AfterInit()
-{
-    m_pLogicClassModule = pPluginManager->FindModule<NFIClassModule>();
-    m_pNoSqlModule = pPluginManager->FindModule<NFINoSqlModule>();
-    m_pCommonRedisModule = pPluginManager->FindModule<NFICommonRedisModule>();
-    m_pKernelModule = pPluginManager->FindModule<NFIKernelModule>();
-
-    return true;
-}
-
-bool NFClanRedisModule::ExistClan(const std::string & strName)
-{
-	return false;
-}
-
-bool NFClanRedisModule::CreateClan(const NFGUID & self, const std::string & strClanName, const NFGUID & xCreater)
-{
-	return false;
-}
-
-
+#endif

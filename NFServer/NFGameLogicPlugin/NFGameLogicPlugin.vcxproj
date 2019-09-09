@@ -99,10 +99,9 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="NFCreateObjectModule.h" />
     <ClInclude Include="NFScenePropsModule.h" />
-    <ClInclude Include="NFBuffModule.h" />
     <ClInclude Include="NFCreateRoleModule.h" />
-    <ClInclude Include="NFGamePVPModule.h" />
     <ClInclude Include="NFSyncModule.h" />
     <ClInclude Include="NFGameLogicPlugin.h" />
   </ItemGroup>
@@ -115,9 +114,8 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="NFBuffModule.cpp" />
+    <ClCompile Include="NFCreateObjectModule.cpp" />
     <ClCompile Include="NFCreateRoleModule.cpp" />
-    <ClCompile Include="NFGamePVPModule.cpp" />
     <ClCompile Include="NFSyncModule.cpp" />
     <ClCompile Include="NFGameLogicPlugin.cpp" />
     <ClCompile Include="NFScenePropsModule.cpp" />

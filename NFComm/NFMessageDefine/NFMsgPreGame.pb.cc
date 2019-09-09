@@ -140,6 +140,11 @@ class RoleDataPackDefaultTypeInternal {
   ::google::protobuf::internal::ExplicitlyConstructed<RoleDataPack>
       _instance;
 } _RoleDataPack_default_instance_;
+class ObjectDataPackDefaultTypeInternal {
+ public:
+  ::google::protobuf::internal::ExplicitlyConstructed<ObjectDataPack>
+      _instance;
+} _ObjectDataPack_default_instance_;
 }  // namespace NFMsg
 namespace protobuf_NFMsgPreGame_2eproto {
 static void InitDefaultsServerInfoReport() {
@@ -462,6 +467,23 @@ LIBPROTOC_EXPORT ::google::protobuf::internal::SCCInfo<3> scc_info_RoleDataPack 
       &protobuf_NFMsgBase_2eproto::scc_info_ObjectPropertyList.base,
       &protobuf_NFMsgBase_2eproto::scc_info_ObjectRecordList.base,}};
 
+static void InitDefaultsObjectDataPack() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::NFMsg::_ObjectDataPack_default_instance_;
+    new (ptr) ::NFMsg::ObjectDataPack();
+    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::NFMsg::ObjectDataPack::InitAsDefaultInstance();
+}
+
+LIBPROTOC_EXPORT ::google::protobuf::internal::SCCInfo<3> scc_info_ObjectDataPack =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 3, InitDefaultsObjectDataPack}, {
+      &protobuf_NFMsgBase_2eproto::scc_info_Ident.base,
+      &protobuf_NFMsgBase_2eproto::scc_info_ObjectPropertyList.base,
+      &protobuf_NFMsgBase_2eproto::scc_info_ObjectRecordList.base,}};
+
 void InitDefaults() {
   ::google::protobuf::internal::InitSCC(&scc_info_ServerInfoReport.base);
   ::google::protobuf::internal::InitSCC(&scc_info_ServerInfoReportList.base);
@@ -485,9 +507,10 @@ void InitDefaults() {
   ::google::protobuf::internal::InitSCC(&scc_info_RoleOnlineNotify.base);
   ::google::protobuf::internal::InitSCC(&scc_info_RoleOfflineNotify.base);
   ::google::protobuf::internal::InitSCC(&scc_info_RoleDataPack.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_ObjectDataPack.base);
 }
 
-::google::protobuf::Metadata file_level_metadata[22];
+::google::protobuf::Metadata file_level_metadata[23];
 const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors[3];
 
 const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
@@ -687,6 +710,14 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::NFMsg::RoleDataPack, id_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::NFMsg::RoleDataPack, property_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::NFMsg::RoleDataPack, record_),
+  ~0u,  // no _has_bits_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::NFMsg::ObjectDataPack, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::NFMsg::ObjectDataPack, id_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::NFMsg::ObjectDataPack, property_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::NFMsg::ObjectDataPack, record_),
 };
 static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::NFMsg::ServerInfoReport)},
@@ -711,6 +742,7 @@ static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROT
   { 170, -1, sizeof(::NFMsg::RoleOnlineNotify)},
   { 179, -1, sizeof(::NFMsg::RoleOfflineNotify)},
   { 188, -1, sizeof(::NFMsg::RoleDataPack)},
+  { 196, -1, sizeof(::NFMsg::ObjectDataPack)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
@@ -736,6 +768,7 @@ static ::google::protobuf::Message const * const file_default_instances[] = {
   reinterpret_cast<const ::google::protobuf::Message*>(&::NFMsg::_RoleOnlineNotify_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::NFMsg::_RoleOfflineNotify_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::NFMsg::_RoleDataPack_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::NFMsg::_ObjectDataPack_default_instance_),
 };
 
 void protobuf_AssignDescriptors() {
@@ -753,7 +786,7 @@ void protobuf_AssignDescriptorsOnce() {
 void protobuf_RegisterTypes(const ::std::string&) GOOGLE_PROTOBUF_ATTRIBUTE_COLD;
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 22);
+  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 23);
 }
 
 void AddDescriptorsImpl() {
@@ -819,16 +852,19 @@ void AddDescriptorsImpl() {
       "\"~\n\014RoleDataPack\022\030\n\002id\030\001 \001(\0132\014.NFMsg.Ide"
       "nt\022+\n\010property\030\002 \001(\0132\031.NFMsg.ObjectPrope"
       "rtyList\022\'\n\006record\030\003 \001(\0132\027.NFMsg.ObjectRe"
-      "cordList*Z\n\014EServerState\022\r\n\tEST_CRASH\020\000\022"
-      "\016\n\nEST_NARMAL\020\001\022\014\n\010EST_BUSY\020\002\022\014\n\010EST_FIR"
-      "E\020\003\022\017\n\013EST_MAINTEN\020\004*J\n\nELoginMode\022\r\n\tEL"
-      "M_LOGIN\020\000\022\020\n\014ELM_REGISTER\020\001\022\033\n\027ELM_AUTO_"
-      "REGISTER_LOGIN\020\002*@\n\021ReqServerListType\022\025\n"
-      "\021RSLT_WORLD_SERVER\020\000\022\024\n\020RSLT_GAMES_ERVER"
-      "\020\001b\006proto3"
+      "cordList\"\200\001\n\016ObjectDataPack\022\030\n\002id\030\001 \001(\0132"
+      "\014.NFMsg.Ident\022+\n\010property\030\002 \001(\0132\031.NFMsg."
+      "ObjectPropertyList\022\'\n\006record\030\003 \001(\0132\027.NFM"
+      "sg.ObjectRecordList*Z\n\014EServerState\022\r\n\tE"
+      "ST_CRASH\020\000\022\016\n\nEST_NARMAL\020\001\022\014\n\010EST_BUSY\020\002"
+      "\022\014\n\010EST_FIRE\020\003\022\017\n\013EST_MAINTEN\020\004*J\n\nELogi"
+      "nMode\022\r\n\tELM_LOGIN\020\000\022\020\n\014ELM_REGISTER\020\001\022\033"
+      "\n\027ELM_AUTO_REGISTER_LOGIN\020\002*@\n\021ReqServer"
+      "ListType\022\025\n\021RSLT_WORLD_SERVER\020\000\022\024\n\020RSLT_"
+      "GAMES_ERVER\020\001b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 2650);
+      descriptor, 2781);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "NFMsgPreGame.proto", &protobuf_RegisterTypes);
   ::protobuf_NFDefine_2eproto::AddDescriptors();
@@ -8678,6 +8714,358 @@ void RoleDataPack::InternalSwap(RoleDataPack* other) {
 }
 
 
+// ===================================================================
+
+void ObjectDataPack::InitAsDefaultInstance() {
+  ::NFMsg::_ObjectDataPack_default_instance_._instance.get_mutable()->id_ = const_cast< ::NFMsg::Ident*>(
+      ::NFMsg::Ident::internal_default_instance());
+  ::NFMsg::_ObjectDataPack_default_instance_._instance.get_mutable()->property_ = const_cast< ::NFMsg::ObjectPropertyList*>(
+      ::NFMsg::ObjectPropertyList::internal_default_instance());
+  ::NFMsg::_ObjectDataPack_default_instance_._instance.get_mutable()->record_ = const_cast< ::NFMsg::ObjectRecordList*>(
+      ::NFMsg::ObjectRecordList::internal_default_instance());
+}
+void ObjectDataPack::clear_id() {
+  if (GetArenaNoVirtual() == NULL && id_ != NULL) {
+    delete id_;
+  }
+  id_ = NULL;
+}
+void ObjectDataPack::clear_property() {
+  if (GetArenaNoVirtual() == NULL && property_ != NULL) {
+    delete property_;
+  }
+  property_ = NULL;
+}
+void ObjectDataPack::clear_record() {
+  if (GetArenaNoVirtual() == NULL && record_ != NULL) {
+    delete record_;
+  }
+  record_ = NULL;
+}
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int ObjectDataPack::kIdFieldNumber;
+const int ObjectDataPack::kPropertyFieldNumber;
+const int ObjectDataPack::kRecordFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+ObjectDataPack::ObjectDataPack()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  ::google::protobuf::internal::InitSCC(
+      &protobuf_NFMsgPreGame_2eproto::scc_info_ObjectDataPack.base);
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:NFMsg.ObjectDataPack)
+}
+ObjectDataPack::ObjectDataPack(const ObjectDataPack& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(NULL) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  if (from.has_id()) {
+    id_ = new ::NFMsg::Ident(*from.id_);
+  } else {
+    id_ = NULL;
+  }
+  if (from.has_property()) {
+    property_ = new ::NFMsg::ObjectPropertyList(*from.property_);
+  } else {
+    property_ = NULL;
+  }
+  if (from.has_record()) {
+    record_ = new ::NFMsg::ObjectRecordList(*from.record_);
+  } else {
+    record_ = NULL;
+  }
+  // @@protoc_insertion_point(copy_constructor:NFMsg.ObjectDataPack)
+}
+
+void ObjectDataPack::SharedCtor() {
+  ::memset(&id_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&record_) -
+      reinterpret_cast<char*>(&id_)) + sizeof(record_));
+}
+
+ObjectDataPack::~ObjectDataPack() {
+  // @@protoc_insertion_point(destructor:NFMsg.ObjectDataPack)
+  SharedDtor();
+}
+
+void ObjectDataPack::SharedDtor() {
+  if (this != internal_default_instance()) delete id_;
+  if (this != internal_default_instance()) delete property_;
+  if (this != internal_default_instance()) delete record_;
+}
+
+void ObjectDataPack::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const ::google::protobuf::Descriptor* ObjectDataPack::descriptor() {
+  ::protobuf_NFMsgPreGame_2eproto::protobuf_AssignDescriptorsOnce();
+  return ::protobuf_NFMsgPreGame_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
+}
+
+const ObjectDataPack& ObjectDataPack::default_instance() {
+  ::google::protobuf::internal::InitSCC(&protobuf_NFMsgPreGame_2eproto::scc_info_ObjectDataPack.base);
+  return *internal_default_instance();
+}
+
+
+void ObjectDataPack::Clear() {
+// @@protoc_insertion_point(message_clear_start:NFMsg.ObjectDataPack)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  if (GetArenaNoVirtual() == NULL && id_ != NULL) {
+    delete id_;
+  }
+  id_ = NULL;
+  if (GetArenaNoVirtual() == NULL && property_ != NULL) {
+    delete property_;
+  }
+  property_ = NULL;
+  if (GetArenaNoVirtual() == NULL && record_ != NULL) {
+    delete record_;
+  }
+  record_ = NULL;
+  _internal_metadata_.Clear();
+}
+
+bool ObjectDataPack::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:NFMsg.ObjectDataPack)
+  for (;;) {
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // .NFMsg.Ident id = 1;
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
+               input, mutable_id()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // .NFMsg.ObjectPropertyList property = 2;
+      case 2: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
+               input, mutable_property()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // .NFMsg.ObjectRecordList record = 3;
+      case 3: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(26u /* 26 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
+               input, mutable_record()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:NFMsg.ObjectDataPack)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:NFMsg.ObjectDataPack)
+  return false;
+#undef DO_
+}
+
+void ObjectDataPack::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:NFMsg.ObjectDataPack)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // .NFMsg.Ident id = 1;
+  if (this->has_id()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      1, this->_internal_id(), output);
+  }
+
+  // .NFMsg.ObjectPropertyList property = 2;
+  if (this->has_property()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      2, this->_internal_property(), output);
+  }
+
+  // .NFMsg.ObjectRecordList record = 3;
+  if (this->has_record()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      3, this->_internal_record(), output);
+  }
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
+  }
+  // @@protoc_insertion_point(serialize_end:NFMsg.ObjectDataPack)
+}
+
+::google::protobuf::uint8* ObjectDataPack::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic; // Unused
+  // @@protoc_insertion_point(serialize_to_array_start:NFMsg.ObjectDataPack)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // .NFMsg.Ident id = 1;
+  if (this->has_id()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageToArray(
+        1, this->_internal_id(), deterministic, target);
+  }
+
+  // .NFMsg.ObjectPropertyList property = 2;
+  if (this->has_property()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageToArray(
+        2, this->_internal_property(), deterministic, target);
+  }
+
+  // .NFMsg.ObjectRecordList record = 3;
+  if (this->has_record()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageToArray(
+        3, this->_internal_record(), deterministic, target);
+  }
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:NFMsg.ObjectDataPack)
+  return target;
+}
+
+size_t ObjectDataPack::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:NFMsg.ObjectDataPack)
+  size_t total_size = 0;
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
+  }
+  // .NFMsg.Ident id = 1;
+  if (this->has_id()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSize(
+        *id_);
+  }
+
+  // .NFMsg.ObjectPropertyList property = 2;
+  if (this->has_property()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSize(
+        *property_);
+  }
+
+  // .NFMsg.ObjectRecordList record = 3;
+  if (this->has_record()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSize(
+        *record_);
+  }
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void ObjectDataPack::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:NFMsg.ObjectDataPack)
+  GOOGLE_DCHECK_NE(&from, this);
+  const ObjectDataPack* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const ObjectDataPack>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:NFMsg.ObjectDataPack)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:NFMsg.ObjectDataPack)
+    MergeFrom(*source);
+  }
+}
+
+void ObjectDataPack::MergeFrom(const ObjectDataPack& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:NFMsg.ObjectDataPack)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.has_id()) {
+    mutable_id()->::NFMsg::Ident::MergeFrom(from.id());
+  }
+  if (from.has_property()) {
+    mutable_property()->::NFMsg::ObjectPropertyList::MergeFrom(from.property());
+  }
+  if (from.has_record()) {
+    mutable_record()->::NFMsg::ObjectRecordList::MergeFrom(from.record());
+  }
+}
+
+void ObjectDataPack::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:NFMsg.ObjectDataPack)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void ObjectDataPack::CopyFrom(const ObjectDataPack& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:NFMsg.ObjectDataPack)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool ObjectDataPack::IsInitialized() const {
+  return true;
+}
+
+void ObjectDataPack::Swap(ObjectDataPack* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void ObjectDataPack::InternalSwap(ObjectDataPack* other) {
+  using std::swap;
+  swap(id_, other->id_);
+  swap(property_, other->property_);
+  swap(record_, other->record_);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+}
+
+::google::protobuf::Metadata ObjectDataPack::GetMetadata() const {
+  protobuf_NFMsgPreGame_2eproto::protobuf_AssignDescriptorsOnce();
+  return ::protobuf_NFMsgPreGame_2eproto::file_level_metadata[kIndexInFileMessages];
+}
+
+
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace NFMsg
 namespace google {
@@ -8747,6 +9135,9 @@ template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::NFMsg::RoleOfflineNotify* Arena:
 }
 template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::NFMsg::RoleDataPack* Arena::CreateMaybeMessage< ::NFMsg::RoleDataPack >(Arena* arena) {
   return Arena::CreateInternal< ::NFMsg::RoleDataPack >(arena);
+}
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::NFMsg::ObjectDataPack* Arena::CreateMaybeMessage< ::NFMsg::ObjectDataPack >(Arena* arena) {
+  return Arena::CreateInternal< ::NFMsg::ObjectDataPack >(arena);
 }
 }  // namespace protobuf
 }  // namespace google

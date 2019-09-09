@@ -913,7 +913,7 @@ int NFAutoBroadcastModule::OnObjectListEnter(const NFDataList& self, const NFDat
 		pEntryInfo->set_x(vPos.X());
 		pEntryInfo->set_y(vPos.Y());
 		pEntryInfo->set_z(vPos.Z());
-		pEntryInfo->set_career_type(m_pKernelModule->GetPropertyInt32(identOld, NFrame::Player::Job()));
+		//pEntryInfo->set_career_type(m_pKernelModule->GetPropertyInt32(identOld, NFrame::Player::Job()));
 		pEntryInfo->set_player_state(0);
 		pEntryInfo->set_config_id(m_pKernelModule->GetPropertyString(identOld, NFrame::Player::ConfigID()));
 		pEntryInfo->set_scene_id(m_pKernelModule->GetPropertyInt32(identOld, NFrame::Player::SceneID()));
@@ -965,7 +965,7 @@ int NFAutoBroadcastModule::OnObjectDataFinished(const NFDataList & self, const N
 		pEntryInfo->set_x(vPos.X());
 		pEntryInfo->set_y(vPos.Y());
 		pEntryInfo->set_z(vPos.Z());
-		pEntryInfo->set_career_type(m_pKernelModule->GetPropertyInt32(identOld, NFrame::Player::Job()));
+		//pEntryInfo->set_career_type(m_pKernelModule->GetPropertyInt32(identOld, NFrame::Player::Job()));
 		pEntryInfo->set_player_state(0);
 		pEntryInfo->set_config_id(m_pKernelModule->GetPropertyString(identOld, NFrame::Player::ConfigID()));
 		pEntryInfo->set_scene_id(m_pKernelModule->GetPropertyInt32(identOld, NFrame::Player::SceneID()));

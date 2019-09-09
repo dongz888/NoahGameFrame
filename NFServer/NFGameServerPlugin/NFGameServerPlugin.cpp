@@ -28,11 +28,11 @@
 #include "NFGameServerModule.h"
 #include "NFSceneProcessModule.h"
 #include "NFPropertyModule.h"
-#include "NFLevelModule.h"
+//#include "NFLevelModule.h"
 #include "NFPropertyConfigModule.h"
-#include "NFNPCRefreshModule.h"
+//#include "NFNPCRefreshModule.h"
 #include "NFSwitchGameServerModule.h"
-#include "NFMoveModule.h"
+//#include "NFMoveModule.h"
 
 class NFSwitchGameServerModule;
 
@@ -68,18 +68,18 @@ void NFGameServerPlugin::Install()
     REGISTER_MODULE(pPluginManager, NFISceneProcessModule, NFSceneProcessModule)
     REGISTER_MODULE(pPluginManager, NFISwitchGameServerModule, NFSwitchGameServerModule);
     REGISTER_MODULE(pPluginManager, NFIPropertyModule, NFPropertyModule)
-    REGISTER_MODULE(pPluginManager, NFILevelModule, NFLevelModule)
+    //REGISTER_MODULE(pPluginManager, NFILevelModule, NFLevelModule)
     REGISTER_MODULE(pPluginManager, NFIPropertyConfigModule, NFPropertyConfigModule)
-	REGISTER_MODULE(pPluginManager, NFINPCRefreshModule, NFNPCRefreshModule)
-	REGISTER_MODULE(pPluginManager, NFIMoveModule, NFMoveModule)
+	//REGISTER_MODULE(pPluginManager, NFINPCRefreshModule, NFNPCRefreshModule)
+	//REGISTER_MODULE(pPluginManager, NFIMoveModule, NFMoveModule)
 }
 
 void NFGameServerPlugin::Uninstall()
 {
-	UNREGISTER_MODULE(pPluginManager, NFIMoveModule, NFMoveModule)
-	UNREGISTER_MODULE(pPluginManager, NFINPCRefreshModule, NFNPCRefreshModule)
+	//UNREGISTER_MODULE(pPluginManager, NFIMoveModule, NFMoveModule)
+	//UNREGISTER_MODULE(pPluginManager, NFINPCRefreshModule, NFNPCRefreshModule)
 	UNREGISTER_MODULE(pPluginManager, NFIPropertyConfigModule, NFPropertyConfigModule)
-    UNREGISTER_MODULE(pPluginManager, NFILevelModule, NFLevelModule)
+    //UNREGISTER_MODULE(pPluginManager, NFILevelModule, NFLevelModule)
     UNREGISTER_MODULE(pPluginManager, NFIPropertyModule, NFPropertyModule)
     UNREGISTER_MODULE(pPluginManager, NFISwitchGameServerModule, NFSwitchGameServerModule);
     UNREGISTER_MODULE(pPluginManager, NFISceneProcessModule, NFSceneProcessModule)

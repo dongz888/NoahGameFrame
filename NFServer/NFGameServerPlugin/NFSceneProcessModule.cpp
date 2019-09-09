@@ -226,20 +226,20 @@ int NFSceneProcessModule::BeforeEnterSceneGroupEvent(const NFGUID & self, const 
 	NFMsg::ESceneType eSceneType = (NFMsg::ESceneType)m_pElementModule->GetPropertyInt32(std::to_string(nSceneID), NFrame::Scene::Type());
 	if (eSceneType == NFMsg::ESceneType::SCENE_SINGLE_CLONE)
 	{
-		NFDataList xDataList;
+		/*NFDataList xDataList;
 		xDataList << NFrame::NPC::AIOwnerID();
 		xDataList << self;
-		m_pSceneModule->CreateSceneNPC(nSceneID, nGroupID, xDataList);
+		m_pSceneModule->CreateSceneNPC(nSceneID, nGroupID, xDataList);*/
 	}
 	else if (eSceneType  == NFMsg::ESceneType::SCENE_MULTI_CLONE)
 	{
 		NFDataList varObjectList;
 		if (m_pKernelModule->GetGroupObjectList(nSceneID, nGroupID, varObjectList, true) && varObjectList.GetCount() <= 0)
 		{
-			NFDataList xDataList;
+			/*NFDataList xDataList;
 			xDataList << NFrame::NPC::AIOwnerID();
 			xDataList << self;
-			m_pSceneModule->CreateSceneNPC(nSceneID, nGroupID, xDataList);
+			m_pSceneModule->CreateSceneNPC(nSceneID, nGroupID, xDataList);*/
 		}
 	}
 	else if (eSceneType == NFMsg::ESceneType::SCENE_NORMAL)
@@ -265,15 +265,15 @@ int NFSceneProcessModule::AfterEnterSceneGroupEvent(const NFGUID & self, const i
 		const NFVector3& position = m_pKernelModule->GetPropertyVector3(self, NFrame::Player::Position());
 		if (m_pCellModule->GetCellObjectList(nSceneID, nGroupID, position, varObjectList, false) && varObjectList.GetCount() > 0)
 		{
-			for (int i = 0; i < varObjectList.GetCount(); ++i)
-			{
-				NFGUID npcID = varObjectList.Object(i);
-				NFGUID npcOnwerID = m_pKernelModule->GetPropertyObject(npcID, NFrame::NPC::AIOwnerID());
-				//if (npcOnwerID.IsNull())
-				{
-					m_pKernelModule->SetPropertyObject(npcID, NFrame::NPC::AIOwnerID(), self);
-				}
-			}
+			//for (int i = 0; i < varObjectList.GetCount(); ++i)
+			//{
+			//	NFGUID npcID = varObjectList.Object(i);
+			//	NFGUID npcOnwerID = m_pKernelModule->GetPropertyObject(npcID, NFrame::NPC::AIOwnerID());
+			//	//if (npcOnwerID.IsNull())
+			//	{
+			//		m_pKernelModule->SetPropertyObject(npcID, NFrame::NPC::AIOwnerID(), self);
+			//	}
+			//}
 		}
 	}
 

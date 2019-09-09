@@ -57,7 +57,7 @@ bool NFSyncModule::AfterInit()
 {
 	m_pScheduleModule->AddSchedule("NFSyncModule", this, &NFSyncModule::SyncHeart, 0.1f, -1);
 
-	m_pKernelModule->AddClassCallBack(NFrame::NPC::ThisName(), this, &NFSyncModule::OnNPCClassEvent);
+	//m_pKernelModule->AddClassCallBack(NFrame::NPC::ThisName(), this, &NFSyncModule::OnNPCClassEvent);
 	m_pKernelModule->AddClassCallBack(NFrame::Player::ThisName(), this, &NFSyncModule::OnPlayerClassEvent);
 
 
@@ -85,7 +85,7 @@ int NFSyncModule::OnNPCClassEvent(const NFGUID & self, const std::string & strCl
 {
 	if (CLASS_OBJECT_EVENT::COE_CREATE_FINISH == eClassEvent)
 	{
-		m_pKernelModule->AddPropertyCallBack(self, NFrame::NPC::Position(), this, &NFSyncModule::OnNPCPositionEvent);
+		//m_pKernelModule->AddPropertyCallBack(self, NFrame::NPC::Position(), this, &NFSyncModule::OnNPCPositionEvent);
 	}
 
 	return 0;

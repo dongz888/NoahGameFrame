@@ -100,9 +100,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="NFGameServerModule.h" />
-    <ClInclude Include="NFLevelModule.h" />
-    <ClInclude Include="NFMoveModule.h" />
-    <ClInclude Include="NFNPCRefreshModule.h" />
     <ClInclude Include="NFPropertyConfigModule.h" />
     <ClInclude Include="NFPropertyModule.h" />
     <ClInclude Include="NFSceneProcessModule.h" />
@@ -119,9 +116,6 @@
       </PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="NFGameServerModule.cpp" />
-    <ClCompile Include="NFLevelModule.cpp" />
-    <ClCompile Include="NFMoveModule.cpp" />
-    <ClCompile Include="NFNPCRefreshModule.cpp" />
     <ClCompile Include="NFPropertyConfigModule.cpp" />
     <ClCompile Include="NFPropertyModule.cpp" />
     <ClCompile Include="NFSceneProcessModule.cpp" />

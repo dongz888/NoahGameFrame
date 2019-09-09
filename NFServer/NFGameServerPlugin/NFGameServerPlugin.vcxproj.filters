@@ -1,17 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="NFLevelModule">
-      <UniqueIdentifier>{aa533cce-b50a-4d4d-8afa-bb17e50e601b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="NFSceneModule">
       <UniqueIdentifier>{d60b14e4-c04c-46c0-ab8e-f0d3b6bdddbf}</UniqueIdentifier>
     </Filter>
     <Filter Include="NFPropertyModule">
       <UniqueIdentifier>{8e42431a-1328-4cf4-8d08-38101ed10817}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="NFNPCRefreshModule">
-      <UniqueIdentifier>{c918611e-a4d0-445a-98cd-c048b4f6d003}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -27,15 +21,6 @@
     <ClInclude Include="NFPropertyModule.h">
       <Filter>NFPropertyModule</Filter>
     </ClInclude>
-    <ClInclude Include="NFNPCRefreshModule.h">
-      <Filter>NFNPCRefreshModule</Filter>
-    </ClInclude>
-    <ClInclude Include="NFLevelModule.h">
-      <Filter>NFLevelModule</Filter>
-    </ClInclude>
-    <ClInclude Include="NFMoveModule.h">
-      <Filter>NFSceneModule</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
@@ -50,15 +35,6 @@
     </ClCompile>
     <ClCompile Include="NFPropertyModule.cpp">
       <Filter>NFPropertyModule</Filter>
-    </ClCompile>
-    <ClCompile Include="NFNPCRefreshModule.cpp">
-      <Filter>NFNPCRefreshModule</Filter>
-    </ClCompile>
-    <ClCompile Include="NFLevelModule.cpp">
-      <Filter>NFLevelModule</Filter>
-    </ClCompile>
-    <ClCompile Include="NFMoveModule.cpp">
-      <Filter>NFSceneModule</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

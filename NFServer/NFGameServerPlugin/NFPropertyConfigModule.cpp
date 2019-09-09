@@ -69,7 +69,7 @@ NFINT64 NFPropertyConfigModule::CalculateBaseValue(const int nJob, const int nLe
 
 void NFPropertyConfigModule::Load()
 {
-    NF_SHARE_PTR<NFIClass> xLogicClass = m_pClassModule->GetElement(NFrame::InitProperty::ThisName());
+   /* NF_SHARE_PTR<NFIClass> xLogicClass = m_pClassModule->GetElement(NFrame::InitProperty::ThisName());
     if (xLogicClass)
     {
 		const std::vector<std::string>& strIdList = xLogicClass->GetIDList();
@@ -100,7 +100,7 @@ void NFPropertyConfigModule::Load()
 				xPropertyMap->AddElement(nLevel, xRefPropertyIDName);
             }
         }
-    }
+    }*/
 }
 
 bool NFPropertyConfigModule::LegalLevel(const int nJob, const int nLevel)

@@ -37,7 +37,7 @@
 #include "NFComm/NFPluginModule/NFIScheduleModule.h"
 #include "NFComm/NFPluginModule/NFIDataTailModule.h"
 #include "NFComm/NFPluginModule/NFISceneModule.h"
-
+#include "NFComm/NFPluginModule/NFICreateObjectModule.h"
 class NFCreateRoleModule
     : public NFICreateRoleModule
 {
@@ -55,11 +55,7 @@ public:
     virtual bool AfterInit();
 
 protected:
-	void OnReqiureRoleListProcess(const NFSOCK nSockIndex, const int nMsgID, const char* msg, const uint32_t nLen);
-	void OnReposeRoleListProcess(const NFSOCK nSockIndex, const int nMsgID, const char* msg, const uint32_t nLen);
-	
-	void OnCreateRoleGameProcess(const NFSOCK nSockIndex, const int nMsgID, const char* msg, const uint32_t nLen);
-	void OnDeleteRoleGameProcess(const NFSOCK nSockIndex, const int nMsgID, const char* msg, const uint32_t nLen);
+
 	void OnClienEnterGameProcess(const NFSOCK nSockIndex, const int nMsgID, const char* msg, const uint32_t nLen);
 	
 	void OnDBLoadRoleDataProcess(const NFSOCK nSockIndex, const int nMsgID, const char* msg, const uint32_t nLen);
@@ -68,18 +64,6 @@ protected:
 
 
 private:
-
-	bool ConvertRecordToPB(const NF_SHARE_PTR<NFIRecord>& pRecord, NFMsg::ObjectRecordBase* pRecordData);
-	bool ConvertPBToRecord(const NFMsg::ObjectRecordBase& pRecordData, NF_SHARE_PTR<NFIRecord> pRecord);
-	bool ConvertRecordManagerToPB(const NF_SHARE_PTR<NFIRecordManager>& pRecord, NFMsg::ObjectRecordList* pRecordData);
-	bool ConvertPBToRecordManager(const NFMsg::ObjectRecordList& pRecordData, NF_SHARE_PTR<NFIRecordManager> pRecord);
-
-	bool ConvertPropertyManagerToPB(const NF_SHARE_PTR<NFIPropertyManager>& pProps, NFMsg::ObjectPropertyList* pPropertyData);
-	bool ConvertPBToPropertyManager(const NFMsg::ObjectPropertyList& pPropertyData, NF_SHARE_PTR<NFIPropertyManager> pProps);
-
-
-	void AttachData(const NFGUID& self);
-	void SaveData(const NFGUID& self);
 
 	int SaveDataOnTime(const NFGUID& self, const std::string& name, const float fIntervalTime, const int nCount);
 
@@ -99,6 +83,7 @@ private:
 	NFINetClientModule* m_pNetClientModule;
 	NFIScheduleModule* m_pScheduleModule;
 	NFIDataTailModule* m_pDataTailModule;
+	NFICreateObjectModule* m_pCreateObjectModule;
 };
 
 #endif
