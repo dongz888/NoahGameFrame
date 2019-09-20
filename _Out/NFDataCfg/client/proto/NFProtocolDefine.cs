@@ -28,6 +28,87 @@ namespace NFrame
 		// Record
 
 	}
+	public class GameTable
+	{
+		//Class name
+		public static readonly String ThisName = "GameTable";
+		// IObject
+		public static readonly String ClassName = "ClassName";// string
+		public static readonly String ConfigID = "ConfigID";// string
+		public static readonly String GroupID = "GroupID";// int
+		public static readonly String ID = "ID";// string
+		public static readonly String MoveTo = "MoveTo";// vector3
+		public static readonly String Position = "Position";// vector3
+		public static readonly String SceneID = "SceneID";// int
+		// Property
+		public static readonly String Amount = "Amount";// int
+		public static readonly String BetMax = "BetMax";// int
+		public static readonly String BetMin = "BetMin";// int
+		public static readonly String BetTime = "BetTime";// int
+		public static readonly String CanBet = "CanBet";// int
+		public static readonly String EndTime = "EndTime";// int
+		public static readonly String GameID = "GameID";// int
+		public static readonly String GameName = "GameName";// string
+		public static readonly String GameRound = "GameRound";// int
+		public static readonly String GameState = "GameState";// int
+		public static readonly String IsOpen = "IsOpen";// int
+		public static readonly String PlayTimes = "PlayTimes";// int
+		public static readonly String PlayerCount = "PlayerCount";// int
+		public static readonly String StartTime = "StartTime";// int
+		public static readonly String TableID = "TableID";// int
+		// Record
+		public class Bet
+		{
+			//Class name
+			public static readonly String ThisName = "Bet";
+			public const int GUID = 0;//object
+			public const int Index = 1;//int
+			public const int Chip = 2;//int
+
+		}
+		public class BetLimit
+		{
+			//Class name
+			public static readonly String ThisName = "BetLimit";
+			public const int GUID = 0;//object
+			public const int BetIndex = 1;//int
+			public const int MaxBet = 2;//int
+			public const int MinBet = 3;//int
+			public const int MaxPay = 4;//int
+			public const int Odds = 5;//int
+			public const int MaxTotalBet = 6;//int
+
+		}
+		public class ChipIn
+		{
+			//Class name
+			public static readonly String ThisName = "ChipIn";
+			public const int GUID = 0;//object
+			public const int Odds = 1;//int
+			public const int Chip = 2;//int
+			public const int IsWin = 3;//int
+			public const int PrePay = 4;//int
+
+		}
+		public class History
+		{
+			//Class name
+			public static readonly String ThisName = "History";
+			public const int GUID = 0;//object
+			public const int Result = 1;//int
+
+		}
+		public class Poke
+		{
+			//Class name
+			public static readonly String ThisName = "Poke";
+			public const int GUID = 0;//object
+			public const int Index = 1;//int
+			public const int Play = 2;//int
+
+		}
+
+	}
 	public class Group
 	{
 		//Class name
@@ -41,29 +122,7 @@ namespace NFrame
 		public static readonly String Position = "Position";// vector3
 		public static readonly String SceneID = "SceneID";// int
 		// Property
-		public static readonly String MatchGambleDiamond = "MatchGambleDiamond";// int
 		public static readonly String MatchID = "MatchID";// object
-		public static readonly String MatchOpponentCup = "MatchOpponentCup";// int
-		public static readonly String MatchOpponentD = "MatchOpponentD";// int
-		public static readonly String MatchOpponentDiamond = "MatchOpponentDiamond";// int
-		public static readonly String MatchOpponentGold = "MatchOpponentGold";// int
-		public static readonly String MatchOpponentHead = "MatchOpponentHead";// string
-		public static readonly String MatchOpponentHeroCnf1 = "MatchOpponentHeroCnf1";// string
-		public static readonly String MatchOpponentHeroCnf2 = "MatchOpponentHeroCnf2";// string
-		public static readonly String MatchOpponentHeroCnf3 = "MatchOpponentHeroCnf3";// string
-		public static readonly String MatchOpponentHeroHP1 = "MatchOpponentHeroHP1";// int
-		public static readonly String MatchOpponentHeroHP2 = "MatchOpponentHeroHP2";// int
-		public static readonly String MatchOpponentHeroHP3 = "MatchOpponentHeroHP3";// int
-		public static readonly String MatchOpponentHeroID1 = "MatchOpponentHeroID1";// object
-		public static readonly String MatchOpponentHeroID2 = "MatchOpponentHeroID2";// object
-		public static readonly String MatchOpponentHeroID3 = "MatchOpponentHeroID3";// object
-		public static readonly String MatchOpponentHeroStar1 = "MatchOpponentHeroStar1";// int
-		public static readonly String MatchOpponentHeroStar2 = "MatchOpponentHeroStar2";// int
-		public static readonly String MatchOpponentHeroStar3 = "MatchOpponentHeroStar3";// int
-		public static readonly String MatchOpponentID = "MatchOpponentID";// object
-		public static readonly String MatchOpponentK = "MatchOpponentK";// int
-		public static readonly String MatchOpponentLevel = "MatchOpponentLevel";// int
-		public static readonly String MatchOpponentName = "MatchOpponentName";// string
 		public static readonly String MatchStar = "MatchStar";// int
 		public static readonly String MatchTeamID = "MatchTeamID";// object
 		// Record
@@ -76,19 +135,6 @@ namespace NFrame
 			public const int K = 2;//int
 			public const int D = 3;//int
 			public const int A = 4;//int
-			public const int Diamond = 5;//int
-			public const int Cup = 6;//int
-			public const int MVP = 7;//int
-			public const int Streak = 8;//int
-			public const int HeroCnf1 = 9;//string
-			public const int HeroCnf2 = 10;//string
-			public const int HeroCnf3 = 11;//string
-			public const int HeroStar1 = 12;//int
-			public const int HeroStar2 = 13;//int
-			public const int HeroStar3 = 14;//int
-			public const int HP1 = 15;//int
-			public const int HP2 = 16;//int
-			public const int HP3 = 17;//int
 
 		}
 
@@ -199,19 +245,11 @@ namespace NFrame
 		public static readonly String Position = "Position";// vector3
 		public static readonly String SceneID = "SceneID";// int
 		// Property
-		public static readonly String ActorID = "ActorID";// int
-		public static readonly String FilePath = "FilePath";// string
-		public static readonly String LoadingUI = "LoadingUI";// string
 		public static readonly String MaxGroup = "MaxGroup";// int
 		public static readonly String MaxGroupPlayers = "MaxGroupPlayers";// int
-		public static readonly String NavigationResPath = "NavigationResPath";// string
-		public static readonly String RelivePos = "RelivePos";// string
-		public static readonly String ResPath = "ResPath";// string
 		public static readonly String SceneName = "SceneName";// string
 		public static readonly String SceneShowName = "SceneShowName";// string
-		public static readonly String SoundList = "SoundList";// string
 		public static readonly String Type = "Type";// int
-		public static readonly String Width = "Width";// int
 		// Record
 
 	}

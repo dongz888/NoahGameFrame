@@ -2,6 +2,24 @@
 CREATE TABLE IF NOT EXISTS GM  ( `ID` varchar(128) NOT NULL, PRIMARY KEY (`ID`) ) ENGINE=InnoDB DEFAULT CHARSET=utf8; 
 ALTER TABLE `GM` ADD `CreateTime` datetime NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间' ; 
 ################################################################################
+CREATE TABLE IF NOT EXISTS GameTable  ( `ID` varchar(128) NOT NULL, PRIMARY KEY (`ID`) ) ENGINE=InnoDB DEFAULT CHARSET=utf8; 
+ALTER TABLE `GameTable` ADD `GameID` bigint(11) DEFAULT '0' COMMENT '游戏id'; 
+ALTER TABLE `GameTable` ADD `GameName` text  COMMENT '游戏名'; 
+ALTER TABLE `GameTable` ADD `IsOpen` bigint(11) DEFAULT '0' COMMENT '是否开机'; 
+ALTER TABLE `GameTable` ADD `TableID` bigint(11) DEFAULT '0' COMMENT '牌桌号'; 
+ALTER TABLE `GameTable` ADD `CreateTime` datetime NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间' ; 
+CREATE TABLE IF NOT EXISTS GameTable_BetLimit  ( `ID` varchar(128) NOT NULL, PRIMARY KEY (`ID`) ) ENGINE=InnoDB DEFAULT CHARSET=utf8; 
+ALTER TABLE `GameTable_BetLimit` ADD `GameTableID` text  COMMENT ''; 
+ALTER TABLE `GameTable_BetLimit` ADD `Row` INT DEFAULT '0' COMMENT ''; 
+ALTER TABLE `GameTable_BetLimit` ADD `BetIndex` bigint(11) DEFAULT '0' COMMENT ''; 
+ALTER TABLE `GameTable_BetLimit` ADD `GUID` varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT '' COMMENT ''; 
+ALTER TABLE `GameTable_BetLimit` ADD `MaxBet` bigint(11) DEFAULT '0' COMMENT ''; 
+ALTER TABLE `GameTable_BetLimit` ADD `MaxPay` bigint(11) DEFAULT '0' COMMENT ''; 
+ALTER TABLE `GameTable_BetLimit` ADD `MaxTotalBet` bigint(11) DEFAULT '0' COMMENT ''; 
+ALTER TABLE `GameTable_BetLimit` ADD `MinBet` bigint(11) DEFAULT '0' COMMENT ''; 
+ALTER TABLE `GameTable_BetLimit` ADD `Odds` bigint(11) DEFAULT '0' COMMENT ''; 
+ALTER TABLE `GameTable_BetLimit` ADD `CreateTime` datetime NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间' ; 
+################################################################################
 CREATE TABLE IF NOT EXISTS Group  ( `ID` varchar(128) NOT NULL, PRIMARY KEY (`ID`) ) ENGINE=InnoDB DEFAULT CHARSET=utf8; 
 ALTER TABLE `Group` ADD `CreateTime` datetime NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间' ; 
 ################################################################################

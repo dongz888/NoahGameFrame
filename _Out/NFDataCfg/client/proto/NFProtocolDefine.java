@@ -22,6 +22,87 @@ package nframe;
 		// Record
 
 	}
+	public class GameTable
+	{
+		//Class name
+		public static final String ThisName = "GameTable";
+		// IObject
+		public static final String ClassName = "ClassName";// string
+		public static final String ConfigID = "ConfigID";// string
+		public static final String GroupID = "GroupID";// int
+		public static final String ID = "ID";// string
+		public static final String MoveTo = "MoveTo";// vector3
+		public static final String Position = "Position";// vector3
+		public static final String SceneID = "SceneID";// int
+		// Property
+		public static final String Amount = "Amount";// int
+		public static final String BetMax = "BetMax";// int
+		public static final String BetMin = "BetMin";// int
+		public static final String BetTime = "BetTime";// int
+		public static final String CanBet = "CanBet";// int
+		public static final String EndTime = "EndTime";// int
+		public static final String GameID = "GameID";// int
+		public static final String GameName = "GameName";// string
+		public static final String GameRound = "GameRound";// int
+		public static final String GameState = "GameState";// int
+		public static final String IsOpen = "IsOpen";// int
+		public static final String PlayTimes = "PlayTimes";// int
+		public static final String PlayerCount = "PlayerCount";// int
+		public static final String StartTime = "StartTime";// int
+		public static final String TableID = "TableID";// int
+		// Record
+		public class Bet
+		{
+			//Class name
+			public static final String ThisName = "Bet";
+			public static final int GUID = 0;//object
+			public static final int Index = 1;//int
+			public static final int Chip = 2;//int
+
+		}
+		public class BetLimit
+		{
+			//Class name
+			public static final String ThisName = "BetLimit";
+			public static final int GUID = 0;//object
+			public static final int BetIndex = 1;//int
+			public static final int MaxBet = 2;//int
+			public static final int MinBet = 3;//int
+			public static final int MaxPay = 4;//int
+			public static final int Odds = 5;//int
+			public static final int MaxTotalBet = 6;//int
+
+		}
+		public class ChipIn
+		{
+			//Class name
+			public static final String ThisName = "ChipIn";
+			public static final int GUID = 0;//object
+			public static final int Odds = 1;//int
+			public static final int Chip = 2;//int
+			public static final int IsWin = 3;//int
+			public static final int PrePay = 4;//int
+
+		}
+		public class History
+		{
+			//Class name
+			public static final String ThisName = "History";
+			public static final int GUID = 0;//object
+			public static final int Result = 1;//int
+
+		}
+		public class Poke
+		{
+			//Class name
+			public static final String ThisName = "Poke";
+			public static final int GUID = 0;//object
+			public static final int Index = 1;//int
+			public static final int Play = 2;//int
+
+		}
+
+	}
 	public class Group
 	{
 		//Class name
@@ -35,29 +116,7 @@ package nframe;
 		public static final String Position = "Position";// vector3
 		public static final String SceneID = "SceneID";// int
 		// Property
-		public static final String MatchGambleDiamond = "MatchGambleDiamond";// int
 		public static final String MatchID = "MatchID";// object
-		public static final String MatchOpponentCup = "MatchOpponentCup";// int
-		public static final String MatchOpponentD = "MatchOpponentD";// int
-		public static final String MatchOpponentDiamond = "MatchOpponentDiamond";// int
-		public static final String MatchOpponentGold = "MatchOpponentGold";// int
-		public static final String MatchOpponentHead = "MatchOpponentHead";// string
-		public static final String MatchOpponentHeroCnf1 = "MatchOpponentHeroCnf1";// string
-		public static final String MatchOpponentHeroCnf2 = "MatchOpponentHeroCnf2";// string
-		public static final String MatchOpponentHeroCnf3 = "MatchOpponentHeroCnf3";// string
-		public static final String MatchOpponentHeroHP1 = "MatchOpponentHeroHP1";// int
-		public static final String MatchOpponentHeroHP2 = "MatchOpponentHeroHP2";// int
-		public static final String MatchOpponentHeroHP3 = "MatchOpponentHeroHP3";// int
-		public static final String MatchOpponentHeroID1 = "MatchOpponentHeroID1";// object
-		public static final String MatchOpponentHeroID2 = "MatchOpponentHeroID2";// object
-		public static final String MatchOpponentHeroID3 = "MatchOpponentHeroID3";// object
-		public static final String MatchOpponentHeroStar1 = "MatchOpponentHeroStar1";// int
-		public static final String MatchOpponentHeroStar2 = "MatchOpponentHeroStar2";// int
-		public static final String MatchOpponentHeroStar3 = "MatchOpponentHeroStar3";// int
-		public static final String MatchOpponentID = "MatchOpponentID";// object
-		public static final String MatchOpponentK = "MatchOpponentK";// int
-		public static final String MatchOpponentLevel = "MatchOpponentLevel";// int
-		public static final String MatchOpponentName = "MatchOpponentName";// string
 		public static final String MatchStar = "MatchStar";// int
 		public static final String MatchTeamID = "MatchTeamID";// object
 		// Record
@@ -70,19 +129,6 @@ package nframe;
 			public static final int K = 2;//int
 			public static final int D = 3;//int
 			public static final int A = 4;//int
-			public static final int Diamond = 5;//int
-			public static final int Cup = 6;//int
-			public static final int MVP = 7;//int
-			public static final int Streak = 8;//int
-			public static final int HeroCnf1 = 9;//string
-			public static final int HeroCnf2 = 10;//string
-			public static final int HeroCnf3 = 11;//string
-			public static final int HeroStar1 = 12;//int
-			public static final int HeroStar2 = 13;//int
-			public static final int HeroStar3 = 14;//int
-			public static final int HP1 = 15;//int
-			public static final int HP2 = 16;//int
-			public static final int HP3 = 17;//int
 
 		}
 
@@ -193,19 +239,11 @@ package nframe;
 		public static final String Position = "Position";// vector3
 		public static final String SceneID = "SceneID";// int
 		// Property
-		public static final String ActorID = "ActorID";// int
-		public static final String FilePath = "FilePath";// string
-		public static final String LoadingUI = "LoadingUI";// string
 		public static final String MaxGroup = "MaxGroup";// int
 		public static final String MaxGroupPlayers = "MaxGroupPlayers";// int
-		public static final String NavigationResPath = "NavigationResPath";// string
-		public static final String RelivePos = "RelivePos";// string
-		public static final String ResPath = "ResPath";// string
 		public static final String SceneName = "SceneName";// string
 		public static final String SceneShowName = "SceneShowName";// string
-		public static final String SoundList = "SoundList";// string
 		public static final String Type = "Type";// int
-		public static final String Width = "Width";// int
 		// Record
 
 	}

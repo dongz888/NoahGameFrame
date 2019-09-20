@@ -53,12 +53,13 @@ bool NFCreateRoleModule::AfterInit()
 bool NFCreateRoleModule::ReadyExecute()
 {
 	m_pNetModule->RemoveReceiveCallBack(NFMsg::EGMI_REQ_ENTER_GAME);
-
+	m_pNetModule->RemoveReceiveCallBack(NFMsg::EGMI_REQ_ROLE_LIST);
 
 	m_pNetModule->AddReceiveCallBack(NFMsg::EGMI_REQ_ENTER_GAME, this, &NFCreateRoleModule::OnClienEnterGameProcess);
+	m_pNetModule->AddReceiveCallBack(NFMsg::EGMI_REQ_ROLE_LIST, this, &NFCreateRoleModule::OnReqiureRoleListProcess);
 
 	m_pNetClientModule->AddReceiveCallBack(NF_SERVER_TYPES::NF_ST_DB, NFMsg::EGMI_ACK_LOAD_ROLE_DATA, this, &NFCreateRoleModule::OnDBLoadRoleDataProcess);
-
+	m_pNetClientModule->AddReceiveCallBack(NF_SERVER_TYPES::NF_ST_DB, NFMsg::EGMI_ACK_ROLE_LIST, this, &NFCreateRoleModule::OnReposeRoleListProcess);
 	return true;
 }
 
@@ -243,3 +244,23 @@ int NFCreateRoleModule::SaveDataOnTime(const NFGUID & self, const std::string & 
 	return 0;
 }
 
+void NFCreateRoleModule::OnReqiureRoleListProcess(const NFSOCK nSockIndex, const int nMsgID, const char * msg, const uint32_t nLen)
+{
+	m_pNetClientModule->SendBySuitWithOutHead(NF_SERVER_TYPES::NF_ST_DB, nSockIndex, nMsgID, std::string(msg, nLen));
+}
+
+void NFCreateRoleModule::OnReposeRoleListProcess(const NFSOCK nSockIndex, const int nMsgID, const char * msg, const uint32_t nLen)
+{
+	NFGUID nClientID;
+	NFMsg::AckRoleLiteInfoList xData;
+	if (!m_pNetModule->ReceivePB(nMsgID, msg, nLen, xData, nClientID))
+	{
+		return;
+	}
+
+	NF_SHARE_PTR<NFIGameServerNet_ServerModule::GateServerInfo> xGateInfo = m_pGameServerNet_ServerModule->GetGateServerInfo(nClientID.GetHead());
+	if (xGateInfo)
+	{
+		m_pNetModule->SendMsgWithOutHead(nMsgID, std::string(msg, nLen), xGateInfo->xServerData.nFD);
+	}
+}

@@ -52,7 +52,8 @@ enum NF_SERVER_TYPES
     NF_ST_GAME          = 6,    //
 	NF_ST_WORLD			= 7,    //
 	NF_ST_DB			= 8,    //
-	NF_ST_MAX			= 9,    //
+	NF_ST_LOBBY			= 9,    //
+	NF_ST_MAX			= 10,    //
 
 };
 

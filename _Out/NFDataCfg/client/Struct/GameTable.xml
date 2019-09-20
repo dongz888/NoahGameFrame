@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<XML>
+	<Propertys>
+		<Property Id="Amount" Cache="0" Desc="数量" Force="0" Private="0" Public="1" Ref="0" Save="0" Type="int" Upload="0" />
+		<Property Id="BetMax" Cache="0" Desc="最大" Force="0" Private="0" Public="1" Ref="0" Save="0" Type="int" Upload="0" />
+		<Property Id="BetMin" Cache="0" Desc="最小" Force="0" Private="0" Public="1" Ref="0" Save="0" Type="int" Upload="0" />
+		<Property Id="BetTime" Cache="0" Desc="押注时间" Force="0" Private="0" Public="1" Ref="0" Save="0" Type="int" Upload="0" />
+		<Property Id="CanBet" Cache="0" Desc="是否可以押分" Force="0" Private="0" Public="1" Ref="0" Save="0" Type="int" Upload="0" />
+		<Property Id="EndTime" Cache="0" Desc="结束时间" Force="0" Private="0" Public="1" Ref="0" Save="0" Type="int" Upload="0" />
+		<Property Id="GameID" Cache="1" Desc="游戏id" Force="0" Private="0" Public="1" Ref="0" Save="1" Type="int" Upload="0" />
+		<Property Id="GameName" Cache="1" Desc="游戏名" Force="0" Private="0" Public="1" Ref="0" Save="1" Type="string" Upload="0" />
+		<Property Id="GameRound" Cache="0" Desc="局数" Force="0" Private="0" Public="1" Ref="0" Save="0" Type="int" Upload="0" />
+		<Property Id="GameState" Cache="0" Desc="状态" Force="0" Private="0" Public="1" Ref="0" Save="0" Type="int" Upload="0" />
+		<Property Id="IsOpen" Cache="1" Desc="是否开机" Force="0" Private="0" Public="1" Ref="0" Save="1" Type="int" Upload="0" />
+		<Property Id="PlayTimes" Cache="0" Desc="次数" Force="0" Private="0" Public="1" Ref="0" Save="0" Type="int" Upload="0" />
+		<Property Id="PlayerCount" Cache="0" Desc="玩家数量" Force="0" Private="0" Public="1" Ref="0" Save="0" Type="int" Upload="0" />
+		<Property Id="StartTime" Cache="0" Desc="开始时间" Force="0" Private="0" Public="1" Ref="0" Save="0" Type="int" Upload="0" />
+		<Property Id="TableID" Cache="1" Desc="牌桌号" Force="0" Private="0" Public="1" Ref="0" Save="1" Type="int" Upload="0" />
+	</Propertys>
+	<Records>
+		<Record Id="Bet" Cache="0"	 Col="3"	 Force="0"	 Private="1"	 Public="0"	 Ref="0"	 Row="10"	 Save="0"	 Upload="0"	 >
+			<Col Type ="object"	Tag="GUID"/><!--- Desc-->
+			<Col Type ="int"	Tag="Index"/><!--- 位置-->
+			<Col Type ="int"	Tag="Chip"/><!--- 押注额-->
+		</Record>
+		<Record Id="BetLimit" Cache="1"	 Col="7"	 Force="0"	 Private="1"	 Public="1"	 Ref="0"	 Row="10"	 Save="1"	 Upload="0"	 >
+			<Col Type ="object"	Tag="GUID"/><!--- Desc-->
+			<Col Type ="int"	Tag="BetIndex"/><!--- 位置-->
+			<Col Type ="int"	Tag="MaxBet"/><!--- 最大押注额-->
+			<Col Type ="int"	Tag="MinBet"/><!--- 最小押注额-->
+			<Col Type ="int"	Tag="MaxPay"/><!--- 限红-->
+			<Col Type ="int"	Tag="Odds"/><!--- 固定倍率-->
+			<Col Type ="int"	Tag="MaxTotalBet"/><!--- 押注上限-->
+		</Record>
+		<Record Id="ChipIn" Cache="0"	 Col="5"	 Force="0"	 Private="1"	 Public="1"	 Ref="0"	 Row="10"	 Save="0"	 Upload="0"	 >
+			<Col Type ="object"	Tag="GUID"/><!--- Desc-->
+			<Col Type ="int"	Tag="Odds"/><!--- 赔率，不中奖时候为0-->
+			<Col Type ="int"	Tag="Chip"/><!--- 押注额-->
+			<Col Type ="int"	Tag="IsWin"/><!--- 是否中奖-->
+			<Col Type ="int"	Tag="PrePay"/><!--- 预赔分-->
+		</Record>
+		<Record Id="History" Cache="0"	 Col="2"	 Force="0"	 Private="1"	 Public="1"	 Ref="0"	 Row="100"	 Save="0"	 Upload="0"	 >
+			<Col Type ="object"	Tag="GUID"/><!--- Desc-->
+			<Col Type ="int"	Tag="Result"/><!--- 开奖结果-->
+		</Record>
+		<Record Id="Poke" Cache="0"	 Col="3"	 Force="0"	 Private="1"	 Public="1"	 Ref="0"	 Row="32"	 Save="0"	 Upload="0"	 >
+			<Col Type ="object"	Tag="GUID"/><!--- Desc-->
+			<Col Type ="int"	Tag="Index"/><!--- 牌-->
+			<Col Type ="int"	Tag="Play"/><!--- 玩家-->
+		</Record>
+	</Records>
+</XML>

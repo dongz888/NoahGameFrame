@@ -282,7 +282,7 @@ int NFSceneProcessModule::AfterEnterSceneGroupEvent(const NFGUID & self, const i
 
 bool NFSceneProcessModule::LoadSceneResource(const std::string& strSceneIDName)
 {
-    const std::string& strSceneFilePath = m_pElementModule->GetPropertyString(strSceneIDName, NFrame::Scene::FilePath());
+    /*const std::string& strSceneFilePath = m_pElementModule->GetPropertyString(strSceneIDName, NFrame::Scene::FilePath());
  
     rapidxml::file<> xFileSource(strSceneFilePath.c_str());
     rapidxml::xml_document<>  xFileDoc;
@@ -301,9 +301,9 @@ bool NFSceneProcessModule::LoadSceneResource(const std::string& strSceneIDName)
 		int nWeight = lexical_cast<int>(pSeedFileNode->first_attribute("Weight")->value());
 		m_pSceneModule->AddSeedData(nSceneID, strSeedID, strConfigID, NFVector3(fSeedX, fSeedY, fSeedZ), nWeight);
 
-	}
+	}*/
 
-	const std::string& strRelivePosition = m_pElementModule->GetPropertyString(strSceneIDName, NFrame::Scene::RelivePos());
+	/*const std::string& strRelivePosition = m_pElementModule->GetPropertyString(strSceneIDName, NFrame::Scene::RelivePos());
 	NFDataList xRelivePositionList;
 	xRelivePositionList.Split(strRelivePosition, ";");
 	for (int i = 0; i < xRelivePositionList.GetCount(); ++i)
@@ -321,7 +321,7 @@ bool NFSceneProcessModule::LoadSceneResource(const std::string& strSceneIDName)
 				m_pSceneModule->AddRelivePosition(nSceneID, i, NFVector3(fPosX, fPosY, fPosZ));
 			}
 		}
-	}
+	}*/
 	/*
 	const std::string& strTagPosition = m_pElementModule->GetPropertyString(strSceneIDName, NFrame::Scene::TagPos());
 	NFDataList xTagPositionList;

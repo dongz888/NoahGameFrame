@@ -1,0 +1,5 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<XML>
+	<Object Id="Table_1" Amount="5" BetMax="1000" BetMin="1" BetTime="15" CanBet="0" EndTime="2" GameID="10" GameName="LongHu" GameRound="0" GameState="0" IsOpen="0" PlayTimes="0" PlayerCount="0" StartTime="4" TableID="2000" />
+	<Object Id="Table_2" Amount="5" BetMax="1000" BetMin="1" BetTime="30" CanBet="0" EndTime="2" GameID="11" GameName="BaiJiaLe" GameRound="0" GameState="0" IsOpen="0" PlayTimes="0" PlayerCount="0" StartTime="4" TableID="1000" />
+</XML>

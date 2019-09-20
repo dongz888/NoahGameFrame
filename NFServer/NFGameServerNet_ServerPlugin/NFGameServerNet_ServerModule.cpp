@@ -54,8 +54,8 @@ bool NFGameServerNet_ServerModule::AfterInit()
 	m_pNetModule->AddReceiveCallBack(NFMsg::EGMI_REQ_ENTER_GAME, this, &NFGameServerNet_ServerModule::OnClientEnterGameProcess);
 	m_pNetModule->AddReceiveCallBack(NFMsg::EGMI_REQ_LEAVE_GAME, this, &NFGameServerNet_ServerModule::OnClientLeaveGameProcess);
 	m_pNetModule->AddReceiveCallBack(NFMsg::EGMI_REQ_ROLE_LIST, this, &NFGameServerNet_ServerModule::OnReqRoleListProcess);
-	m_pNetModule->AddReceiveCallBack(NFMsg::EGMI_REQ_CREATE_ROLE, this, &NFGameServerNet_ServerModule::OnCreateRoleGameProcess);
-	m_pNetModule->AddReceiveCallBack(NFMsg::EGMI_REQ_DELETE_ROLE, this, &NFGameServerNet_ServerModule::OnDeleteRoleGameProcess);
+	//m_pNetModule->AddReceiveCallBack(NFMsg::EGMI_REQ_CREATE_ROLE, this, &NFGameServerNet_ServerModule::OnCreateRoleGameProcess);
+	//m_pNetModule->AddReceiveCallBack(NFMsg::EGMI_REQ_DELETE_ROLE, this, &NFGameServerNet_ServerModule::OnDeleteRoleGameProcess);
 	m_pNetModule->AddReceiveCallBack(NFMsg::EGMI_REQ_SWAP_SCENE, this, &NFGameServerNet_ServerModule::OnClientSwapSceneProcess);
 	m_pNetModule->AddReceiveCallBack(NFMsg::EGMI_REQ_ENTER_GAME_FINISH, this, &NFGameServerNet_ServerModule::OnClientEnterGameFinishProcess);
 	
@@ -79,19 +79,19 @@ bool NFGameServerNet_ServerModule::AfterInit()
 	//EGMI_ACK_RECORD_CLEAR = 228,
 	//EGMI_ACK_RECORD_SORT = 229,
 
-	m_pNetModule->AddReceiveCallBack(NFMsg::EGMI_REQ_CREATE_CLAN, this, &NFGameServerNet_ServerModule::OnClanTransWorld);
-	m_pNetModule->AddReceiveCallBack(NFMsg::EGMI_REQ_JOIN_CLAN, this, &NFGameServerNet_ServerModule::OnClanTransWorld);
-	m_pNetModule->AddReceiveCallBack(NFMsg::EGMI_REQ_LEAVE_CLAN, this, &NFGameServerNet_ServerModule::OnClanTransWorld);
-	m_pNetModule->AddReceiveCallBack(NFMsg::EGMI_REQ_OPR_CLAN, this, &NFGameServerNet_ServerModule::OnClanTransWorld);
-	m_pNetModule->AddReceiveCallBack(NFMsg::EGMI_REQ_SEARCH_CLAN, this, &NFGameServerNet_ServerModule::OnClanTransWorld);
+	//m_pNetModule->AddReceiveCallBack(NFMsg::EGMI_REQ_CREATE_CLAN, this, &NFGameServerNet_ServerModule::OnClanTransWorld);
+	//m_pNetModule->AddReceiveCallBack(NFMsg::EGMI_REQ_JOIN_CLAN, this, &NFGameServerNet_ServerModule::OnClanTransWorld);
+	//m_pNetModule->AddReceiveCallBack(NFMsg::EGMI_REQ_LEAVE_CLAN, this, &NFGameServerNet_ServerModule::OnClanTransWorld);
+	//m_pNetModule->AddReceiveCallBack(NFMsg::EGMI_REQ_OPR_CLAN, this, &NFGameServerNet_ServerModule::OnClanTransWorld);
+	//m_pNetModule->AddReceiveCallBack(NFMsg::EGMI_REQ_SEARCH_CLAN, this, &NFGameServerNet_ServerModule::OnClanTransWorld);
 
-	m_pNetModule->AddReceiveCallBack(NFMsg::EGEC_REQ_CREATE_CHATGROUP, this, &NFGameServerNet_ServerModule::OnTransWorld);
-	m_pNetModule->AddReceiveCallBack(NFMsg::EGEC_REQ_JOIN_CHATGROUP, this, &NFGameServerNet_ServerModule::OnTransWorld);
-	m_pNetModule->AddReceiveCallBack(NFMsg::EGEC_REQ_LEAVE_CHATGROUP, this, &NFGameServerNet_ServerModule::OnTransWorld);
-	m_pNetModule->AddReceiveCallBack(NFMsg::EGEC_REQ_SUBSCRIPTION_CHATGROUP, this, &NFGameServerNet_ServerModule::OnTransWorld);
+	//m_pNetModule->AddReceiveCallBack(NFMsg::EGEC_REQ_CREATE_CHATGROUP, this, &NFGameServerNet_ServerModule::OnTransWorld);
+	//m_pNetModule->AddReceiveCallBack(NFMsg::EGEC_REQ_JOIN_CHATGROUP, this, &NFGameServerNet_ServerModule::OnTransWorld);
+	//m_pNetModule->AddReceiveCallBack(NFMsg::EGEC_REQ_LEAVE_CHATGROUP, this, &NFGameServerNet_ServerModule::OnTransWorld);
+	//m_pNetModule->AddReceiveCallBack(NFMsg::EGEC_REQ_SUBSCRIPTION_CHATGROUP, this, &NFGameServerNet_ServerModule::OnTransWorld);
 
-	m_pNetModule->AddReceiveCallBack(NFMsg::EGMI_REQ_MOVE, this, &NFGameServerNet_ServerModule::OnClientReqMoveProcess);
-	m_pNetModule->AddReceiveCallBack(NFMsg::EGMI_REQ_MOVE_IMMUNE, this, &NFGameServerNet_ServerModule::OnClientReqMoveImmuneProcess);
+	//m_pNetModule->AddReceiveCallBack(NFMsg::EGMI_REQ_MOVE, this, &NFGameServerNet_ServerModule::OnClientReqMoveProcess);
+	//m_pNetModule->AddReceiveCallBack(NFMsg::EGMI_REQ_MOVE_IMMUNE, this, &NFGameServerNet_ServerModule::OnClientReqMoveImmuneProcess);
 	m_pNetModule->AddReceiveCallBack(NFMsg::EGMI_REQ_STATE_SYNC, this, &NFGameServerNet_ServerModule::OnClientReqStateSyncProcess);
 	m_pNetModule->AddReceiveCallBack(NFMsg::EGMI_REQ_POS_SYNC, this, &NFGameServerNet_ServerModule::OnClientReqPosSyncProcess);
 
@@ -336,49 +336,49 @@ void NFGameServerNet_ServerModule::OnReqRoleListProcess(const NFSOCK nSockIndex,
 	m_pNetModule->SendMsgPB(NFMsg::EGMI_ACK_ROLE_LIST, xAckRoleLiteInfoList, nSockIndex, nClientID);
 }
 
-void NFGameServerNet_ServerModule::OnCreateRoleGameProcess(const NFSOCK nSockIndex, const int nMsgID, const char* msg, const uint32_t nLen)
-{
-	NFGUID nClientID;
-	NFMsg::ReqCreateRole xMsg;
-	if (!m_pNetModule->ReceivePB( nMsgID, msg, nLen, xMsg, nClientID))
-	{
-		return;
-	}
+//void NFGameServerNet_ServerModule::OnCreateRoleGameProcess(const NFSOCK nSockIndex, const int nMsgID, const char* msg, const uint32_t nLen)
+//{
+//	NFGUID nClientID;
+//	NFMsg::ReqCreateRole xMsg;
+//	if (!m_pNetModule->ReceivePB( nMsgID, msg, nLen, xMsg, nClientID))
+//	{
+//		return;
+//	}
+//
+//	NFMsg::AckRoleLiteInfoList xAckRoleLiteInfoList;
+//	xAckRoleLiteInfoList.set_account(xMsg.account());
+//
+//	NFMsg::RoleLiteInfo* pData = xAckRoleLiteInfoList.add_char_data();
+//	pData->mutable_id()->CopyFrom(NFINetModule::NFToPB(m_pKernelModule->CreateGUID()));
+//	pData->set_career(xMsg.career());
+//	pData->set_sex(xMsg.sex());
+//	pData->set_race(xMsg.race());
+//	pData->set_noob_name(xMsg.noob_name());
+//	pData->set_game_id(xMsg.game_id());
+//	pData->set_role_level(1);
+//	pData->set_delete_time(0);
+//	pData->set_reg_time(0);
+//	pData->set_last_offline_time(0);
+//	pData->set_last_offline_ip(0);
+//	pData->set_view_record("");
+//
+//	m_pNetModule->SendMsgPB(NFMsg::EGMI_ACK_ROLE_LIST, xAckRoleLiteInfoList, nSockIndex, nClientID);
+//}
 
-	NFMsg::AckRoleLiteInfoList xAckRoleLiteInfoList;
-	xAckRoleLiteInfoList.set_account(xMsg.account());
-
-	NFMsg::RoleLiteInfo* pData = xAckRoleLiteInfoList.add_char_data();
-	pData->mutable_id()->CopyFrom(NFINetModule::NFToPB(m_pKernelModule->CreateGUID()));
-	pData->set_career(xMsg.career());
-	pData->set_sex(xMsg.sex());
-	pData->set_race(xMsg.race());
-	pData->set_noob_name(xMsg.noob_name());
-	pData->set_game_id(xMsg.game_id());
-	pData->set_role_level(1);
-	pData->set_delete_time(0);
-	pData->set_reg_time(0);
-	pData->set_last_offline_time(0);
-	pData->set_last_offline_ip(0);
-	pData->set_view_record("");
-
-	m_pNetModule->SendMsgPB(NFMsg::EGMI_ACK_ROLE_LIST, xAckRoleLiteInfoList, nSockIndex, nClientID);
-}
-
-void NFGameServerNet_ServerModule::OnDeleteRoleGameProcess(const NFSOCK nSockIndex, const int nMsgID, const char* msg, const uint32_t nLen)
-{
-	NFGUID nPlayerID;
-	NFMsg::ReqDeleteRole xMsg;
-	if (!m_pNetModule->ReceivePB( nMsgID, msg, nLen, xMsg, nPlayerID))
-	{
-		return;
-	}
-
-	NFMsg::AckRoleLiteInfoList xAckRoleLiteInfoList;
-	xAckRoleLiteInfoList.set_account(xMsg.account());
-
-	m_pNetModule->SendMsgPB(NFMsg::EGMI_ACK_ROLE_LIST, xAckRoleLiteInfoList, nSockIndex, nPlayerID);
-}
+//void NFGameServerNet_ServerModule::OnDeleteRoleGameProcess(const NFSOCK nSockIndex, const int nMsgID, const char* msg, const uint32_t nLen)
+//{
+//	NFGUID nPlayerID;
+//	NFMsg::ReqDeleteRole xMsg;
+//	if (!m_pNetModule->ReceivePB( nMsgID, msg, nLen, xMsg, nPlayerID))
+//	{
+//		return;
+//	}
+//
+//	NFMsg::AckRoleLiteInfoList xAckRoleLiteInfoList;
+//	xAckRoleLiteInfoList.set_account(xMsg.account());
+//
+//	m_pNetModule->SendMsgPB(NFMsg::EGMI_ACK_ROLE_LIST, xAckRoleLiteInfoList, nSockIndex, nPlayerID);
+//}
 
 void NFGameServerNet_ServerModule::OnClientEnterGameFinishProcess(const NFSOCK nSockIndex, const int nMsgID, const char *msg, const uint32_t nLen)
 {
@@ -441,71 +441,71 @@ void NFGameServerNet_ServerModule::OnClientSwapSceneProcess(const NFSOCK nSockIn
 	*/
 }
 
-void NFGameServerNet_ServerModule::OnClientReqMoveProcess(const NFSOCK nSockIndex, const int nMsgID, const char *msg,  const uint32_t nLen)
-{
-	CLIENT_MSG_PROCESS_NO_OBJECT(nMsgID, msg, nLen, NFMsg::ReqAckPlayerMove)
+//void NFGameServerNet_ServerModule::OnClientReqMoveProcess(const NFSOCK nSockIndex, const int nMsgID, const char *msg,  const uint32_t nLen)
+//{
+//	CLIENT_MSG_PROCESS_NO_OBJECT(nMsgID, msg, nLen, NFMsg::ReqAckPlayerMove)
+//
+//
+//	const NFGUID& xMover = NFINetModule::PBToNF(xMsg.mover());
+//	if (xMover == nPlayerID)
+//	{
+//		const int nSceneID = m_pKernelModule->GetPropertyInt32(xMover, NFrame::Player::SceneID());
+//		const int nGroupID = m_pKernelModule->GetPropertyInt32(xMover, NFrame::Player::GroupID());
+//
+//		this->SendGroupMsgPBToGate(NFMsg::EGMI_ACK_MOVE, xMsg, nSceneID, nGroupID);
+//	}
+//	else
+//	{
+//		//const NFGUID xAIOwnerID = m_pKernelModule->GetPropertyObject(xMover, NFrame::NPC::AIOwnerID());
+//		//if (xAIOwnerID == nPlayerID)
+//		//{
+//
+//		//	NFMsg::Vector3 vPos = xMsg.target_pos(0);
+//
+//		//	NFVector3 v;
+//		//	v.SetX(vPos.x());
+//		//	v.SetY(vPos.y());
+//		//	v.SetZ(vPos.z());
+//
+//		//	//m_pKernelModule->SetPropertyVector3(xMover, NFrame::IObject::Position(), v);
+//		//	const int nSceneID = m_pKernelModule->GetPropertyInt32(xMover, NFrame::Player::SceneID());
+//		//	const int nGroupID = m_pKernelModule->GetPropertyInt32(xMover, NFrame::Player::GroupID());
+//
+//		//	this->SendGroupMsgPBToGate(NFMsg::EGMI_ACK_MOVE, xMsg, nSceneID, nGroupID);
+//		//}
+//	}
+//
+//}
 
-
-	const NFGUID& xMover = NFINetModule::PBToNF(xMsg.mover());
-	if (xMover == nPlayerID)
-	{
-		const int nSceneID = m_pKernelModule->GetPropertyInt32(xMover, NFrame::Player::SceneID());
-		const int nGroupID = m_pKernelModule->GetPropertyInt32(xMover, NFrame::Player::GroupID());
-
-		this->SendGroupMsgPBToGate(NFMsg::EGMI_ACK_MOVE, xMsg, nSceneID, nGroupID);
-	}
-	else
-	{
-		//const NFGUID xAIOwnerID = m_pKernelModule->GetPropertyObject(xMover, NFrame::NPC::AIOwnerID());
-		//if (xAIOwnerID == nPlayerID)
-		//{
-
-		//	NFMsg::Vector3 vPos = xMsg.target_pos(0);
-
-		//	NFVector3 v;
-		//	v.SetX(vPos.x());
-		//	v.SetY(vPos.y());
-		//	v.SetZ(vPos.z());
-
-		//	//m_pKernelModule->SetPropertyVector3(xMover, NFrame::IObject::Position(), v);
-		//	const int nSceneID = m_pKernelModule->GetPropertyInt32(xMover, NFrame::Player::SceneID());
-		//	const int nGroupID = m_pKernelModule->GetPropertyInt32(xMover, NFrame::Player::GroupID());
-
-		//	this->SendGroupMsgPBToGate(NFMsg::EGMI_ACK_MOVE, xMsg, nSceneID, nGroupID);
-		//}
-	}
-
-}
-
-void NFGameServerNet_ServerModule::OnClientReqMoveImmuneProcess(const NFSOCK nSockIndex, const int nMsgID,
-                                                                 const char *msg, const uint32_t nLen)
-{
-	CLIENT_MSG_PROCESS(nMsgID, msg, nLen, NFMsg::ReqAckPlayerMove)
-
-	/*const NFGUID& self = NFINetModule::PBToNF(xMsg.mover());
-	const NFGUID& xOwnerID = m_pKernelModule->GetPropertyObject(self, NFrame::NPC::AIOwnerID());
-	if (self == nPlayerID
-		|| xOwnerID == nPlayerID)
-	{
-		const int nSceneID = m_pKernelModule->GetPropertyInt32(self, NFrame::Player::SceneID());
-		const int nGroupID = m_pKernelModule->GetPropertyInt32(self, NFrame::Player::GroupID());
-
-		if (xMsg.target_pos_size() > 0)
-		{
-			NFMsg::Vector3 vPos = xMsg.target_pos(0);
-
-			NFVector3 v;
-			v.SetX(vPos.x());
-			v.SetY(vPos.y());
-			v.SetZ(vPos.z());
-
-			m_pKernelModule->SetPropertyVector3(self, NFrame::IObject::Position(), v);
-		}
-
-
-		this->SendGroupMsgPBToGate(NFMsg::EGMI_ACK_MOVE_IMMUNE, xMsg, nSceneID, nGroupID);
-	}*/
-}
+//void NFGameServerNet_ServerModule::OnClientReqMoveImmuneProcess(const NFSOCK nSockIndex, const int nMsgID,
+//                                                                 const char *msg, const uint32_t nLen)
+//{
+//	CLIENT_MSG_PROCESS(nMsgID, msg, nLen, NFMsg::ReqAckPlayerMove)
+//
+//	/*const NFGUID& self = NFINetModule::PBToNF(xMsg.mover());
+//	const NFGUID& xOwnerID = m_pKernelModule->GetPropertyObject(self, NFrame::NPC::AIOwnerID());
+//	if (self == nPlayerID
+//		|| xOwnerID == nPlayerID)
+//	{
+//		const int nSceneID = m_pKernelModule->GetPropertyInt32(self, NFrame::Player::SceneID());
+//		const int nGroupID = m_pKernelModule->GetPropertyInt32(self, NFrame::Player::GroupID());
+//
+//		if (xMsg.target_pos_size() > 0)
+//		{
+//			NFMsg::Vector3 vPos = xMsg.target_pos(0);
+//
+//			NFVector3 v;
+//			v.SetX(vPos.x());
+//			v.SetY(vPos.y());
+//			v.SetZ(vPos.z());
+//
+//			m_pKernelModule->SetPropertyVector3(self, NFrame::IObject::Position(), v);
+//		}
+//
+//
+//		this->SendGroupMsgPBToGate(NFMsg::EGMI_ACK_MOVE_IMMUNE, xMsg, nSceneID, nGroupID);
+//	}*/
+//}
 
 void NFGameServerNet_ServerModule::OnClientReqStateSyncProcess(const NFSOCK nSockIndex, const int nMsgID,
                                                                 const char *msg, const uint32_t nLen)
@@ -1380,50 +1380,50 @@ void NFGameServerNet_ServerModule::OnTransWorld(const NFSOCK nSockIndex, const i
 	m_pNetClientModule->SendBySuitWithOutHead(NF_SERVER_TYPES::NF_ST_WORLD, nHasKey, nMsgID, std::string(msg, nLen));
 }
 
-void NFGameServerNet_ServerModule::OnClanTransWorld(const NFSOCK nSockIndex, const int nMsgID, const char* msg, const uint32_t nLen)
-{
-	switch (nMsgID)
-	{
-		case NFMsg::EGMI_REQ_CREATE_CLAN:
-		case NFMsg::EGMI_REQ_JOIN_CLAN:
-		{
-			std::string strMsg;
-			NFGUID nPlayer;
-			if (NFINetModule::ReceivePB(nMsgID, msg, nLen, strMsg, nPlayer) && !nPlayer.IsNull())
-			{
-				/*NFGUID xClanID = m_pKernelModule->GetPropertyObject(nPlayer, NFrame::Player::Clan_ID());
-				if (xClanID.IsNull())
-				{
-					int nHashKey = nPlayer.nHead64;
-					m_pNetClientModule->SendBySuitWithOutHead(NF_SERVER_TYPES::NF_ST_WORLD, nHashKey, nMsgID, std::string(msg, nLen));
-				}*/
-			}
-		}
-			break;
-		case NFMsg::EGMI_REQ_LEAVE_CLAN:
-		case NFMsg::EGMI_REQ_OPR_CLAN:
-		{
-
-		}
-			break;
-		case NFMsg::EGMI_REQ_SEARCH_CLAN:
-		{
-
-		}
-			break;
-		default:
-			break;
-	}
-
-	CLIENT_MSG_PROCESS(nMsgID, msg, nLen, NFMsg::ObjectRecordVector2)
-
-	std::string strMsg;
-	NFGUID nPlayer;
-	int nHasKey = 0;
-	if (NFINetModule::ReceivePB(nMsgID, msg, nLen, strMsg, nPlayer))
-	{
-		nHasKey = nPlayer.nData64;
-		m_pNetClientModule->SendBySuitWithOutHead(NF_SERVER_TYPES::NF_ST_WORLD, nHasKey, nMsgID, std::string(msg, nLen));
-	}
-}
-
+//void NFGameServerNet_ServerModule::OnClanTransWorld(const NFSOCK nSockIndex, const int nMsgID, const char* msg, const uint32_t nLen)
+//{
+//	switch (nMsgID)
+//	{
+//		case NFMsg::EGMI_REQ_CREATE_CLAN:
+//		case NFMsg::EGMI_REQ_JOIN_CLAN:
+//		{
+//			std::string strMsg;
+//			NFGUID nPlayer;
+//			if (NFINetModule::ReceivePB(nMsgID, msg, nLen, strMsg, nPlayer) && !nPlayer.IsNull())
+//			{
+//				/*NFGUID xClanID = m_pKernelModule->GetPropertyObject(nPlayer, NFrame::Player::Clan_ID());
+//				if (xClanID.IsNull())
+//				{
+//					int nHashKey = nPlayer.nHead64;
+//					m_pNetClientModule->SendBySuitWithOutHead(NF_SERVER_TYPES::NF_ST_WORLD, nHashKey, nMsgID, std::string(msg, nLen));
+//				}*/
+//			}
+//		}
+//			break;
+//		case NFMsg::EGMI_REQ_LEAVE_CLAN:
+//		case NFMsg::EGMI_REQ_OPR_CLAN:
+//		{
+//
+//		}
+//			break;
+//		case NFMsg::EGMI_REQ_SEARCH_CLAN:
+//		{
+//
+//		}
+//			break;
+//		default:
+//			break;
+//	}
+//
+//	CLIENT_MSG_PROCESS(nMsgID, msg, nLen, NFMsg::ObjectRecordVector2)
+//
+//	std::string strMsg;
+//	NFGUID nPlayer;
+//	int nHasKey = 0;
+//	if (NFINetModule::ReceivePB(nMsgID, msg, nLen, strMsg, nPlayer))
+//	{
+//		nHasKey = nPlayer.nData64;
+//		m_pNetClientModule->SendBySuitWithOutHead(NF_SERVER_TYPES::NF_ST_WORLD, nHasKey, nMsgID, std::string(msg, nLen));
+//	}
+//}
+//
